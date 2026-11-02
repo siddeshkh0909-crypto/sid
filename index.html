@@ -656,11 +656,12 @@
       background: white;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: var(--shadow-xl);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
       min-width: 220px;
       z-index: 200;
       overflow: hidden;
       display: none;
+      color: var(--ink);
     }
 
     .user-dropdown.open {
@@ -670,30 +671,64 @@
     .user-dropdown-header {
       padding: 14px 16px;
       border-bottom: 1px solid var(--border);
+      background: #f8fafc;
+      color: var(--ink);
+    }
+
+    .user-dropdown-header div {
+      color: var(--ink);
     }
 
     .user-dropdown-email {
       font-size: 0.75rem;
-      color: var(--muted);
+      color: var(--muted) !important;
       margin-top: 2px;
     }
 
     .user-dropdown-item {
-      padding: 10px 16px;
-      font-size: 0.85rem;
+      padding: 11px 16px;
+      font-size: 0.86rem;
+      font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: background 0.15s;
+      color: var(--ink) !important;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .user-dropdown-item i,
+    .user-dropdown-item svg {
+      color: var(--accent);
+      stroke: var(--accent);
+      flex-shrink: 0;
     }
 
     .user-dropdown-item:hover {
-      background: var(--paper);
+      background: rgba(13, 148, 136, 0.08);
+      color: var(--accent-hover) !important;
+    }
+
+    .user-dropdown-item:hover i,
+    .user-dropdown-item:hover svg {
+      stroke: var(--accent-hover);
+      color: var(--accent-hover);
     }
 
     .user-dropdown-item.danger {
+      color: var(--red) !important;
+      border-top: 1px solid var(--border);
+    }
+
+    .user-dropdown-item.danger i,
+    .user-dropdown-item.danger svg {
       color: var(--red);
+      stroke: var(--red);
+    }
+
+    .user-dropdown-item.danger:hover {
+      background: #fef2f2;
+      color: #dc2626 !important;
     }
 
     .badge-count {
@@ -1274,6 +1309,7 @@
 
     .modal {
       background: white;
+      color: var(--ink);
       border-radius: var(--radius-lg);
       padding: 28px 32px;
       width: 500px;
@@ -3439,9 +3475,14 @@
 
       <!-- ═══ HOD / PRINCIPAL VIEW ═══ -->
       <div class="view" id="view-hod">
-        <div class="hod-hero">
-          <h3 id="hodGreeting">HOD / Principal Dashboard</h3>
-          <p>Departmental oversight: Monitor attendance, faculty workload, and student VTU semester results.</p>
+        <div class="hod-hero" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+          <div>
+            <h3 id="hodGreeting">HOD / Principal Dashboard</h3>
+            <p>Departmental oversight: Monitor attendance, faculty workload, and student VTU semester results.</p>
+          </div>
+          <button class="btn" onclick="openProfileModal()" style="background:rgba(255,255,255,0.14);color:#ffffff;border:1px solid rgba(255,255,255,0.25);display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:var(--radius-sm);cursor:pointer;font-weight:600;font-size:0.85rem;backdrop-filter:blur(6px);transition:all .2s;">
+            <i data-lucide="user-cog" class="icon-sm" style="color:#38bdf8;"></i> Edit Profile
+          </button>
         </div>
 
         <div class="sub-tabs">
@@ -6861,6 +6902,7 @@
         $('profName').value = d.name || u.displayName || ''; $('profPhone').value = d.phone || ''; $('profBloodGroup').value = d.bloodGroup || 'O +ve'; $('profBio').value = d.bio || '';
         $('profStudentUsnField').style.display = $('profStudentSemField').style.display = st ? '' : 'none';
         $('profStudentCourseField').style.display = (st || role() === 'hod') ? '' : 'none';
+        const _cfLbl = document.querySelector('#profStudentCourseField label'); if (_cfLbl) _cfLbl.textContent = role() === 'hod' ? 'Department' : 'Branch / Course';
         if (st || role() === 'hod') $('profCourse').value = d.course || 'CSE';
         if (st) { $('profUsn').value = d.usn || ''; $('profSemester').value = d.semester || '1'; }
         setPreview(d.photoData, d.name || u.displayName);
