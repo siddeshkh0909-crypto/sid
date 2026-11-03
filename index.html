@@ -5379,17 +5379,26 @@
     }
 
     function hodTab(tab) {
-      ['overview', 'students', 'teachers', 'timetable', 'vtu'].forEach(t => {
-        const tabBtn = document.getElementById(`hTab${t[0].toUpperCase() + t.slice(1)}`);
-        const panel = document.getElementById(`hPanel${t[0].toUpperCase() + t.slice(1)}`);
-        if (tabBtn) tabBtn.classList.toggle('active', t === tab);
-        if (panel) panel.classList.toggle('active', t === tab);
+      if (tab !== 'take' && typeof toggleHodQrScanner === 'function') {
+        toggleHodQrScanner(false);
+      }
+      const tabs = ['overview', 'take', 'timetable', 'subjects', 'reports', 'teachers', 'students', 'vtu'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('hTab' + t.charAt(0).toUpperCase() + t.slice(1));
+        const pnl = document.getElementById('hPanel' + t.charAt(0).toUpperCase() + t.slice(1));
+        if (btn) btn.classList.toggle('active', t === tab);
+        if (pnl) pnl.classList.toggle('active', t === tab);
       });
-      if (tab === 'overview') loadHodDashboard();
-      if (tab === 'students') renderHodStudentsTable();
-      if (tab === 'teachers') renderHodTeachersTable();
-      if (tab === 'timetable') renderHodTimetable();
-      if (tab === 'vtu') renderHodVtuResults();
+
+      if (tab === 'overview' && typeof loadHodDashboard === 'function') loadHodDashboard();
+      if (tab === 'take' && typeof initHodTakeAttendance === 'function') initHodTakeAttendance();
+      if (tab === 'timetable' && typeof renderHodTimetable === 'function') renderHodTimetable();
+      if (tab === 'subjects' && typeof renderHodSubjects === 'function') renderHodSubjects();
+      if (tab === 'reports' && typeof populateHodReportSelect === 'function') populateHodReportSelect();
+      if (tab === 'teachers' && typeof renderHodTeachersTable === 'function') renderHodTeachersTable();
+      if (tab === 'students' && typeof renderHodStudentsTable === 'function') renderHodStudentsTable();
+      if (tab === 'vtu' && typeof renderHodVtuResults === 'function') renderHodVtuResults();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
     function principalTab(tab) {
@@ -6628,49 +6637,7 @@
       }
     }
 
-    window.teacherPortalTab = teacherPortalTab;
-    window.copyTeacherDirectLoginLink = copyTeacherDirectLoginLink;
-    window.copyTeacherGeneralLoginLink = copyTeacherGeneralLoginLink;
-    window.loadTeacherAttendanceRoster = loadTeacherAttendanceRoster;
-    window.toggleTeacherStudentAtt = toggleTeacherStudentAtt;
-    window.markAllTeacherStudents = markAllTeacherStudents;
-    window.filterTeacherAttRoster = filterTeacherAttRoster;
-    window.saveTeacherAttendanceSession = saveTeacherAttendanceSession;
-    window.toggleTeacherQrScanner = toggleTeacherQrScanner;
-    window.loadTeacherInternalsRoster = loadTeacherInternalsRoster;
-    window.handleTeacherIaMarkChange = handleTeacherIaMarkChange;
-    window.calcTeacherInternalsSummary = calcTeacherInternalsSummary;
-    window.filterTeacherIaRoster = filterTeacherIaRoster;
-    window.saveTeacherInternalMarks = saveTeacherInternalMarks;
-    window.exportTeacherInternalsCsv = exportTeacherInternalsCsv;
-    window.renderTeacherVtuResultsList = renderTeacherVtuResultsList;
-    window.renderTeacherPersonalSchedule = renderTeacherPersonalSchedule;
-    window.previewTeacherPic = previewTeacherPic;
-    window.selectHodTimetableDay = selectHodTimetableDay;
-    window.openTimetableSlotModal = openTimetableSlotModal;
-    window.closeTimetableSlotModal = closeTimetableSlotModal;
-    window.autoFillPeriodTime = autoFillPeriodTime;
-    window.autoFillSubjectTeacher = autoFillSubjectTeacher;
-    window.saveTimetableSlot = saveTimetableSlot;
-    window.deleteTimetableSlot = deleteTimetableSlot;
-    window.resetDefaultTimetable = resetDefaultTimetable;
-    window.openPeriodAttendanceModal = openPeriodAttendanceModal;
-    window.closePeriodAttendanceModal = closePeriodAttendanceModal;
-    window.switchAttMode = switchAttMode;
-    window.markAllStudentsInModal = markAllStudentsInModal;
-    window.filterPeriodStudents = filterPeriodStudents;
-    window.toggleStudentPeriodAtt = toggleStudentPeriodAtt;
-    window.savePeriodAttendanceSession = savePeriodAttendanceSession;
-    window.loadHodTakeAttendanceRoster = loadHodTakeAttendanceRoster;
-    window.toggleHodStudentAttendance = toggleHodStudentAttendance;
-    window.markAllHodStudents = markAllHodStudents;
-    window.filterHodRollCall = filterHodRollCall;
-    window.saveHodAttendanceSession = saveHodAttendanceSession;
-    window.toggleHodQrScanner = toggleHodQrScanner;
-    window.renderHodSubjects = renderHodSubjects;
-    window.loadHodAttendanceReport = loadHodAttendanceReport;
-    window.exportAttendanceCsv = exportAttendanceCsv;
-    window.printAttendanceReport = printAttendanceReport;
+    
     window.openTeacherModal = openTeacherModal;
     window.closeTeacherModal = closeTeacherModal;
     window.saveTeacher = saveTeacher;
@@ -6876,7 +6843,12 @@
     //  VTU LINK SCRAPER LOGIC
     // ══════════════════════════════════════════
     function openVtuLinkModal() {
-      document.getElementById('vtuLinkModalBg').classList.add('open');
+      const modal = document.getElementById('vtuLinkModalBg');
+      if (modal) {
+        modal.classList.add('open');
+      } else {
+        window.open('https://results.vtu.ac.in', '_blank');
+      }
     }
 
     function closeVtuLinkModal() {
@@ -6985,7 +6957,7 @@
       const USN_RE = /^\d[A-Z]{2}\d{2}[A-Z]{2,3}\d{3}$/;
 
       /* ---------- 1. Startup fixes ---------- */
-      checkDirectTeacherAccessFromUrl();
+      if (typeof checkDirectTeacherAccessFromUrl === "function") checkDirectTeacherAccessFromUrl();
       if (!window.currentUser) { $('authOverlay').style.display = 'flex'; $('appShell').style.display = 'none'; }
       const pm = $('profileModalBg'); if (pm) document.body.appendChild(pm);   // was nested inside another modal
       const lm = $('vtuLinkModalBg'); if (lm) lm.remove();                      // fake "scraper" removed
