@@ -2912,6 +2912,8 @@
         <div class="auth-role-picker">
           <button class="role-btn active" onclick="selectRole('student')" id="roleStudent"><i
               data-lucide="graduation-cap" class="icon-sm"></i> Student</button>
+          <button class="role-btn" onclick="selectRole('teacher')" id="roleTeacher"><i
+              data-lucide="presentation" class="icon-sm"></i> Faculty</button>
           <button class="role-btn" onclick="selectRole('hod')" id="roleHod"><i data-lucide="shield" class="icon-sm"></i>
             HOD</button>
         </div>
@@ -3111,6 +3113,11 @@
         <!-- Nav (teachers only) -->
         
 
+        <!-- Nav (Faculty only) -->
+        <div class="mode-toggle" id="teacherNav" style="display:none">
+          <button class="mode-btn" onclick="switchView('teacher')"><i data-lucide="presentation" class="icon-sm"></i>
+            Faculty Portal</button>
+        </div>
         <!-- Nav (HOD only) -->
         <div class="mode-toggle" id="hodNav" style="display:none">
           <button class="mode-btn" onclick="switchView('hod')"><i data-lucide="shield" class="icon-sm"></i> HOD
@@ -3346,6 +3353,275 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ FACULTY / TEACHER VIEW ═══ -->
+      <div class="view" id="view-teacher">
+        <div class="att-hero" style="background:linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);color:white;border-radius:var(--radius-lg);padding:24px 30px;margin-bottom:20px;border:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <span class="scheme-badge" style="background:rgba(255,255,255,0.2);color:#fff;font-size:0.72rem;font-weight:700;">Faculty Portal</span>
+              <span id="teacherDeptHeroBadge" class="scheme-badge" style="background:var(--accent);color:#fff;font-size:0.72rem;">Department</span>
+            </div>
+            <h3 id="teacherGreeting" style="font-size:1.35rem;font-weight:700;margin:0 0 4px 0;">Welcome, Professor!</h3>
+            <p style="font-size:0.84rem;color:rgba(255,255,255,0.7);margin:0;">Take attendance for your assigned subjects, record Internal Assessment (IA) marks, and enter semester results.</p>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn" onclick="openProfileModal()" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.25);font-size:0.82rem;padding:7px 14px;border-radius:var(--radius-sm);cursor:pointer;">
+              <i data-lucide="user" class="icon-sm"></i> My Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="sub-tabs" style="overflow-x:auto;white-space:nowrap;padding-bottom:4px;">
+          <button class="sub-tab active" id="tfTabAttendance" onclick="teacherPortalTab('attendance')">
+            <i data-lucide="scan-line" class="icon-sm"></i> Subject Attendance
+          </button>
+          <button class="sub-tab" id="tfTabInternals" onclick="teacherPortalTab('internals')">
+            <i data-lucide="clipboard-list" class="icon-sm"></i> Internal Assessment (IA Marks)
+          </button>
+          <button class="sub-tab" id="tfTabVtu" onclick="teacherPortalTab('vtu')">
+            <i data-lucide="award" class="icon-sm"></i> Semester Results (VTU)
+          </button>
+          <button class="sub-tab" id="tfTabTimetable" onclick="teacherPortalTab('timetable')">
+            <i data-lucide="calendar" class="icon-sm"></i> My Teaching Schedule
+          </button>
+        </div>
+
+        <!-- 1. Teacher Subject Attendance Panel -->
+        <div class="att-panel active" id="tfPanelAttendance">
+          <div class="att-select-row" style="background:white;padding:16px 20px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;align-items:end;">
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">My Assigned Subject *</label>
+              <select id="teacherAttSubjectSelect" onchange="loadTeacherAttendanceRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="">Select subject…</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Class Date *</label>
+              <input type="date" id="teacherAttDateInput" onchange="loadTeacherAttendanceRoster()" style="width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Class Period / Slot</label>
+              <select id="teacherAttPeriodSelect" onchange="loadTeacherAttendanceRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="1">Period 1 (09:00 - 10:00 AM)</option>
+                <option value="2">Period 2 (10:00 - 11:00 AM)</option>
+                <option value="3">Period 3 (11:15 - 12:15 PM)</option>
+                <option value="4">Period 4 (12:15 - 01:15 PM)</option>
+                <option value="5">Period 5 (02:00 - 03:00 PM)</option>
+                <option value="6">Period 6 (03:00 - 04:00 PM)</option>
+                <option value="General">General Class Session</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-primary" id="teacherQrScanToggleBtn" onclick="toggleTeacherQrScanner()" style="width:100%;height:42px;justify-content:center;">
+                <i data-lucide="qr-code" class="icon-sm"></i> <span id="teacherQrBtnText">Camera QR Scan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Stats & Actions -->
+          <div style="background:#f8fafc;border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Enrolled</span>
+                <span id="teacherAttTotalCount" style="font-size:1.15rem;font-weight:800;color:var(--ink);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Present</span>
+                <span id="teacherAttPresentCount" style="font-size:1.15rem;font-weight:800;color:var(--green);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Absent</span>
+                <span id="teacherAttAbsentCount" style="font-size:1.15rem;font-weight:800;color:var(--red);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Turnout</span>
+                <span class="pct-badge pct-good" id="teacherAttTurnoutBadge" style="font-size:0.85rem;padding:3px 10px;">0%</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-ghost" onclick="markAllTeacherStudents(true)"><i data-lucide="check-check" class="icon-sm" style="color:var(--green);"></i> Mark All Present</button>
+              <button class="btn btn-sm btn-ghost" onclick="markAllTeacherStudents(false)"><i data-lucide="x" class="icon-sm" style="color:var(--red);"></i> Clear All</button>
+              <button class="btn btn-sm btn-primary" id="teacherSaveAttBtn" onclick="saveTeacherAttendanceSession()"><i data-lucide="save" class="icon-sm"></i> Save Attendance</button>
+            </div>
+          </div>
+
+          <!-- Camera Scanner Section (Collapsible) -->
+          <div id="teacherQrScannerBox" style="display:none;background:white;border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:16px;">
+            <div style="display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start;">
+              <div>
+                <div id="teacherQrReaderEl" style="width:100%;min-height:240px;background:#000;border-radius:var(--radius-sm);overflow:hidden;"></div>
+                <div style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:6px;">Scan Student QR Code</div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <h4 style="font-size:0.92rem;font-weight:700;">Scanned Students (<span id="teacherQrScannedCount">0</span>)</h4>
+                  <button class="btn btn-sm btn-ghost" onclick="toggleTeacherQrScanner(false)">Close Camera</button>
+                </div>
+                <div id="teacherQrScannedList" style="max-height:220px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm);background:#f8fafc;padding:8px 12px;">
+                  <div class="empty-note">Ready to scan student QR codes…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roster Table -->
+          <div style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;">
+            <div style="margin-bottom:12px;">
+              <input type="text" id="teacherAttSearchInput" placeholder="Filter student by Name or USN…" oninput="filterTeacherAttRoster()" style="width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.86rem;outline:none;">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:50px;">#</th>
+                    <th>Student Name & USN</th>
+                    <th>Course & Semester</th>
+                    <th>Status</th>
+                    <th style="text-align:right;">Toggle</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherAttRosterTbody">
+                  <tr>
+                    <td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Select your assigned subject above to mark attendance.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Teacher Internal Assessment Marks (IA Marks) Panel -->
+        <div class="att-panel" id="tfPanelInternals">
+          <div class="section-head" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+                <i data-lucide="clipboard-list" class="icon-sm" style="color:var(--accent);"></i> Internal Assessment (IA Marks Entry)
+              </h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Record IA-1, IA-2, IA-3 internal test scores and continuous evaluation marks per student.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost" onclick="exportTeacherInternalsCsv()"><i data-lucide="file-spreadsheet" class="icon-sm"></i> Export CSV</button>
+              <button class="btn btn-primary" id="teacherSaveInternalsBtn" onclick="saveTeacherInternalMarks()"><i data-lucide="check" class="icon-sm"></i> Save IA Marks</button>
+            </div>
+          </div>
+
+          <div class="att-select-row" style="background:white;padding:16px 20px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;align-items:end;">
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Subject *</label>
+              <select id="teacherIaSubjectSelect" onchange="loadTeacherInternalsRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="">Select subject…</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Assessment Test *</label>
+              <select id="teacherIaTypeSelect" onchange="loadTeacherInternalsRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="IA-1">Internal Assessment 1 (IA-1)</option>
+                <option value="IA-2">Internal Assessment 2 (IA-2)</option>
+                <option value="IA-3">Internal Assessment 3 (IA-3)</option>
+                <option value="Lab">Lab Internal Continuous Evaluation</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Max Marks</label>
+              <input type="number" id="teacherIaMaxMarks" value="25" min="1" max="100" onchange="calcTeacherInternalsSummary()" style="width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Min Passing Marks</label>
+              <input type="number" id="teacherIaPassMarks" value="10" min="1" max="100" onchange="calcTeacherInternalsSummary()" style="width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+            </div>
+          </div>
+
+          <!-- IA Summary Bar -->
+          <div style="background:#f8fafc;border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Total Evaluated</span>
+                <span id="teacherIaTotalCount" style="font-size:1.15rem;font-weight:800;color:var(--ink);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Passing Students</span>
+                <span id="teacherIaPassCount" style="font-size:1.15rem;font-weight:800;color:var(--green);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.72rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Class Average</span>
+                <span id="teacherIaAvgMarks" style="font-size:1.15rem;font-weight:800;color:var(--accent2);">0.0</span>
+              </div>
+            </div>
+            <div style="font-size:0.78rem;color:var(--muted);" id="teacherIaSavedNotice">Auto-calculates pass/fail status live.</div>
+          </div>
+
+          <!-- IA Table -->
+          <div style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;">
+            <div style="margin-bottom:12px;">
+              <input type="text" id="teacherIaSearchInput" placeholder="Filter student by Name or USN…" oninput="filterTeacherIaRoster()" style="width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.86rem;outline:none;">
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:50px;">#</th>
+                    <th>Student Name & USN</th>
+                    <th>Semester</th>
+                    <th style="width:180px;">Marks Obtained</th>
+                    <th>Percentage</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="teacherIaRosterTbody">
+                  <tr>
+                    <td colspan="6" style="text-align:center;color:var(--muted);padding:24px;">Select a subject above to enter internal assessment marks.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Teacher VTU Semester Results Panel -->
+        <div class="att-panel" id="tfPanelVtu">
+          <div class="section-head" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Student VTU Semester Results</h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Add and manage official university semester marks (internal + external) for your department students.</p>
+            </div>
+            <button class="btn btn-primary" onclick="openVtuModal()"><i data-lucide="plus" class="icon-sm"></i> Add Student Semester Result</button>
+          </div>
+          <div class="student-search-wrap" style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+            <input type="text" id="teacherVtuSearchInput" placeholder="Search by student name or USN…" oninput="renderTeacherVtuResultsList()" style="flex:1;min-width:200px;">
+            <select id="teacherVtuSemFilterSelect" onchange="renderTeacherVtuResultsList()" style="padding:8px 12px;border:1px solid var(--border);border-radius:6px;outline:none;">
+              <option value="">All Semesters (1-8)</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+          </div>
+          <div id="teacherVtuListContainer">
+            <div class="empty-note">Loading student semester results…</div>
+          </div>
+        </div>
+
+        <!-- 4. Teacher Teaching Schedule Panel -->
+        <div class="att-panel" id="tfPanelTimetable">
+          <div class="section-head" style="margin-bottom:16px;">
+            <h3 style="font-size:1.15rem;font-weight:700;">My Teaching Timetable</h3>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Your weekly scheduled lectures as arranged by the Head of Department.</p>
+          </div>
+          <div id="teacherWeeklyScheduleGrid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:14px;">
+            <div class="empty-note">Loading your schedule…</div>
           </div>
         </div>
       </div>
@@ -3655,11 +3931,17 @@
           <div class="section-head"
             style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
             <div>
-              <h3 style="font-size:1.15rem;font-weight:700;">Lecturers & Faculty Directory</h3>
-              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Manage department teachers, assign subjects
-                per faculty, and generate Teacher ID Cards (max 3 profile changes allowed).</p>
+              <h3 style="font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+                <i data-lucide="users-round" class="icon-sm" style="color:var(--accent);"></i> Faculty & Lecturer Management
+              </h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Add or remove faculty members. Faculty can use their <strong>direct one-click login link</strong> to take subject attendance, record internal assessment marks (IA1/IA2/IA3), and enter semester results.</p>
             </div>
-            <button class="btn btn-primary" onclick="openTeacherModal()"><i data-lucide="user-plus" class="icon-sm"></i> Add Lecturer</button>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-ghost" onclick="copyTeacherGeneralLoginLink()" style="background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe;">
+                <i data-lucide="link" class="icon-sm"></i> Copy Faculty Portal Link
+              </button>
+              <button class="btn btn-primary" onclick="openTeacherModal()"><i data-lucide="user-plus" class="icon-sm"></i> Add Faculty Member</button>
+            </div>
           </div>
           <div class="student-search-wrap" style="margin-bottom:14px;">
             <input type="text" id="hodTeacherSearch"
@@ -5006,6 +5288,8 @@
       // Show/hide mobile tabs
       document.getElementById('mobileStudentBtn').style.display = role === 'student' ? 'flex' : 'none';
       document.getElementById('mobileTeacherBtn').style.display = role === 'teacher' ? 'flex' : 'none';
+      const tNav = document.getElementById('teacherNav');
+      if (tNav) tNav.style.display = role === 'teacher' ? 'flex' : 'none';
       const mobHod = document.getElementById('mobileHodBtn');
       if (mobHod) mobHod.style.display = (role === 'hod' || role === 'principal') ? 'flex' : 'none';
       if (mobHod && role === 'principal') {
@@ -5050,8 +5334,10 @@
         loadMyAttendance();
         loadStudentProfileBadges();
       } else if (view === 'teacher') {
-        switchView('hod');
-        return;
+        const name = window.currentUser?.displayName || window.currentUser?.email?.split('@')[0] || '';
+        const g = document.getElementById('teacherGreeting'); if (g) g.textContent = `Welcome, Prof. ${name}!`;
+        const b = document.getElementById('teacherDeptHeroBadge'); if (b) b.textContent = (window.currentUserDoc?.department || 'Department');
+        teacherPortalTab('attendance');
       } else if (view === 'hod') {
         const name = window.currentUser?.displayName || window.currentUser?.email?.split('@')[0] || '';
         const g = document.getElementById('hodGreeting'); if (g) g.textContent = `Welcome, HOD ${name}!`;
@@ -6326,6 +6612,7 @@
               <td>${editBadge}</td>
               <td class="actions-cell">
                 <div style="display:flex;gap:6px;align-items:center;">
+                  <button class="btn btn-sm" onclick="copyTeacherDirectLoginLink('${escapeAttr(t.id || t.uid)}', '${escapeAttr(t.email || '')}', '${escapeAttr(t.name || '')}')" style="background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe;display:inline-flex;align-items:center;gap:4px;" title="Copy One-Click Direct Login Link"><i data-lucide="link" class="icon-sm"></i> Login Link</button>
                   <button class="btn btn-sm btn-primary" onclick="openTeacherIdCardModal('${escapeAttr(t.id || t.uid)}')"><i data-lucide="contact-2" class="icon-sm"></i> ID Card</button>
                   <button class="btn btn-sm btn-ghost" onclick="openTeacherModal('${escapeAttr(t.id || t.uid)}')"><i data-lucide="pencil" class="icon-sm"></i> Edit</button>
                   <button class="btn btn-sm btn-danger" onclick="deleteTeacher('${escapeAttr(t.id || t.uid)}')"><i data-lucide="trash-2" class="icon-sm"></i></button>
@@ -6341,6 +6628,23 @@
       }
     }
 
+    window.teacherPortalTab = teacherPortalTab;
+    window.copyTeacherDirectLoginLink = copyTeacherDirectLoginLink;
+    window.copyTeacherGeneralLoginLink = copyTeacherGeneralLoginLink;
+    window.loadTeacherAttendanceRoster = loadTeacherAttendanceRoster;
+    window.toggleTeacherStudentAtt = toggleTeacherStudentAtt;
+    window.markAllTeacherStudents = markAllTeacherStudents;
+    window.filterTeacherAttRoster = filterTeacherAttRoster;
+    window.saveTeacherAttendanceSession = saveTeacherAttendanceSession;
+    window.toggleTeacherQrScanner = toggleTeacherQrScanner;
+    window.loadTeacherInternalsRoster = loadTeacherInternalsRoster;
+    window.handleTeacherIaMarkChange = handleTeacherIaMarkChange;
+    window.calcTeacherInternalsSummary = calcTeacherInternalsSummary;
+    window.filterTeacherIaRoster = filterTeacherIaRoster;
+    window.saveTeacherInternalMarks = saveTeacherInternalMarks;
+    window.exportTeacherInternalsCsv = exportTeacherInternalsCsv;
+    window.renderTeacherVtuResultsList = renderTeacherVtuResultsList;
+    window.renderTeacherPersonalSchedule = renderTeacherPersonalSchedule;
     window.previewTeacherPic = previewTeacherPic;
     window.selectHodTimetableDay = selectHodTimetableDay;
     window.openTimetableSlotModal = openTimetableSlotModal;
@@ -6681,6 +6985,7 @@
       const USN_RE = /^\d[A-Z]{2}\d{2}[A-Z]{2,3}\d{3}$/;
 
       /* ---------- 1. Startup fixes ---------- */
+      checkDirectTeacherAccessFromUrl();
       if (!window.currentUser) { $('authOverlay').style.display = 'flex'; $('appShell').style.display = 'none'; }
       const pm = $('profileModalBg'); if (pm) document.body.appendChild(pm);   // was nested inside another modal
       const lm = $('vtuLinkModalBg'); if (lm) lm.remove();                      // fake "scraper" removed
