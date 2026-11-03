@@ -3109,10 +3109,7 @@
         </div>
 
         <!-- Nav (teachers only) -->
-        <div class="mode-toggle" id="teacherNav" style="display:none">
-          <button class="mode-btn" onclick="switchView('teacher')"><i data-lucide="layout-dashboard"
-              class="icon-sm"></i> Dashboard</button>
-        </div>
+        
 
         <!-- Nav (HOD only) -->
         <div class="mode-toggle" id="hodNav" style="display:none">
@@ -3353,126 +3350,6 @@
         </div>
       </div>
 
-      <!-- ═══ TEACHER VIEW ═══ -->
-      <div class="view" id="view-teacher">
-        <div class="att-hero">
-          <h3 id="teacherGreeting">Hello!</h3>
-          <p>Manage subjects, take attendance, and track student percentages.</p>
-        </div>
-
-        <div class="sub-tabs">
-          <button class="sub-tab active" id="tTabSubjects" onclick="teacherTab('subjects')"><i data-lucide="book-open"
-              class="icon-sm"></i> Subjects</button>
-          <button class="sub-tab" id="tTabTake" onclick="teacherTab('take')"><i data-lucide="scan-line"
-              class="icon-sm"></i> Take Attendance</button>
-          <button class="sub-tab" id="tTabReports" onclick="teacherTab('reports')"><i data-lucide="bar-chart-3"
-              class="icon-sm"></i> Reports</button>
-          <button class="sub-tab" id="tTabVtu" onclick="teacherTab('vtu')"><i data-lucide="award" class="icon-sm"></i>
-            VTU Results</button>
-        </div>
-
-        <!-- Subjects panel -->
-        <div class="att-panel active" id="tPanelSubjects">
-          <div class="section-head">
-            <h3>Your Subjects</h3>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <button class="btn btn-primary" onclick="openSubjectModal()"><i data-lucide="plus" class="icon-sm"></i>
-                Add Subject</button>
-              <button class="btn btn-ghost" onclick="seedDefaultSubjects()"><i data-lucide="book-copy"
-                  class="icon-sm"></i> Add Default Subjects</button>
-            </div>
-          </div>
-          <div class="subject-grid" id="subjectGrid">
-            <div class="empty-note">Loading subjects…</div>
-          </div>
-        </div>
-
-        <!-- Take attendance panel -->
-        <div class="att-panel" id="tPanelTake">
-          <div class="att-select-row">
-            <select id="takeSubjectSelect">
-              <option value="">Select a subject…</option>
-            </select>
-            <button class="btn btn-primary" id="startSessionBtn" onclick="startAttendanceSession()"><i
-                data-lucide="play" class="icon-sm"></i> Start / Resume Today's Session</button>
-            <button class="btn btn-danger" id="stopSessionBtn" style="display:none" onclick="stopAttendanceSession()"><i
-                data-lucide="square" class="icon-sm"></i> Stop Scanning</button>
-          </div>
-          <div id="sessionInfo"></div>
-
-          <div class="scanner-wrap" id="scannerWrap" style="display:none">
-            <div>
-              <div id="qrReader"></div>
-              <div class="manual-search-wrap">
-                <input type="text" id="manualSearchInput" placeholder="Search student by name to mark manually…"
-                  oninput="renderManualList()">
-                <div class="manual-list" id="manualList"></div>
-              </div>
-            </div>
-            <div class="present-list-wrap">
-              <h3 style="font-family:'Inter',sans-serif;font-size:0.95rem;font-weight:700;margin-bottom:12px;">Present
-                Today (<span id="presentCount">0</span>)</h3>
-              <div id="presentList"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Reports panel -->
-        <div class="att-panel" id="tPanelReports">
-          <div class="att-select-row">
-            <select id="reportSubjectSelect" onchange="loadAttendanceReport()">
-              <option value="">Select a subject…</option>
-            </select>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Student</th>
-                  <th>Email</th>
-                  <th>Sessions Held</th>
-                  <th>Present</th>
-                  <th>Percentage</th>
-                </tr>
-              </thead>
-              <tbody id="reportBody">
-                <tr>
-                  <td colspan="5" style="text-align:center;color:var(--muted);padding:20px;">Select a subject to view
-                    its report</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- VTU Results panel (Teacher view) -->
-        <div class="att-panel" id="tPanelVtu">
-          <div class="section-head">
-            <h3>Student VTU Results (All Semesters)</h3>
-            <button class="btn btn-primary" onclick="openVtuModal()"><i data-lucide="plus" class="icon-sm"></i> Add
-              Student VTU Result</button>
-          </div>
-          <div class="student-search-wrap">
-            <input type="text" id="teacherVtuSearch" placeholder="Search by student name, USN, or email…"
-              oninput="renderTeacherVtuResults()">
-            <select id="teacherVtuSemFilter" onchange="renderTeacherVtuResults()">
-              <option value="">All Semesters</option>
-              <option value="1">Semester 1</option>
-              <option value="2">Semester 2</option>
-              <option value="3">Semester 3</option>
-              <option value="4">Semester 4</option>
-              <option value="5">Semester 5</option>
-              <option value="6">Semester 6</option>
-              <option value="7">Semester 7</option>
-              <option value="8">Semester 8</option>
-            </select>
-          </div>
-          <div id="teacherVtuResultsList">
-            <div class="empty-note">Loading student results…</div>
-          </div>
-        </div>
-      </div>
-
       <!-- ═══ HOD / PRINCIPAL VIEW ═══ -->
       <div class="view" id="view-hod">
         <div class="hod-hero" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
@@ -3485,17 +3362,23 @@
           </button>
         </div>
 
-        <div class="sub-tabs">
+        <div class="sub-tabs" style="overflow-x:auto;white-space:nowrap;padding-bottom:4px;">
           <button class="sub-tab active" id="hTabOverview" onclick="hodTab('overview')"><i
               data-lucide="layout-dashboard" class="icon-sm"></i> Department Overview</button>
+          <button class="sub-tab" id="hTabTake" onclick="hodTab('take')"><i data-lucide="scan-line"
+              class="icon-sm" style="color:var(--accent);"></i> Take Attendance</button>
+          <button class="sub-tab" id="hTabTimetable" onclick="hodTab('timetable')"><i data-lucide="calendar-clock"
+              class="icon-sm"></i> Timetable & Lectures</button>
+          <button class="sub-tab" id="hTabSubjects" onclick="hodTab('subjects')"><i data-lucide="book-open"
+              class="icon-sm"></i> Subjects</button>
+          <button class="sub-tab" id="hTabReports" onclick="hodTab('reports')"><i data-lucide="bar-chart-3"
+              class="icon-sm"></i> Attendance Reports</button>
+          <button class="sub-tab" id="hTabTeachers" onclick="hodTab('teachers')"><i data-lucide="user-check"
+              class="icon-sm"></i> Lecturers & Faculty</button>
           <button class="sub-tab" id="hTabStudents" onclick="hodTab('students')"><i data-lucide="users"
               class="icon-sm"></i> All Students</button>
-          <button class="sub-tab" id="hTabTeachers" onclick="hodTab('teachers')"><i data-lucide="user-check"
-              class="icon-sm"></i> Faculty Members</button>
-          <button class="sub-tab" id="hTabTimetable" onclick="hodTab('timetable')"><i data-lucide="calendar-clock"
-              class="icon-sm"></i> Timetable & Daily Attendance</button>
           <button class="sub-tab" id="hTabVtu" onclick="hodTab('vtu')"><i data-lucide="award" class="icon-sm"></i> VTU
-            Results & Reports</button>
+            Results</button>
         </div>
 
         <!-- HOD Overview Panel -->
@@ -3539,6 +3422,186 @@
                 <div class="empty-note">Loading results…</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- HOD Take Attendance Panel (Upgraded Smart System) -->
+        <div class="att-panel" id="hPanelTake">
+          <div class="section-head" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+                <i data-lucide="scan-line" class="icon-sm" style="color:var(--accent);"></i> Smart Attendance System
+              </h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Select subject & date to take fast roll-call attendance or scan student QR codes.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost" onclick="hodTab('timetable')"><i data-lucide="calendar" class="icon-sm"></i> From Timetable</button>
+            </div>
+          </div>
+
+          <div class="att-select-row" style="background:white;padding:16px 20px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;align-items:end;">
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Subject *</label>
+              <select id="hodTakeSubjectSelect" onchange="loadHodTakeAttendanceRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="">Select a subject…</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Date *</label>
+              <input type="date" id="hodTakeDateInput" onchange="loadHodTakeAttendanceRoster()" style="width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+            </div>
+            <div>
+              <label style="display:block;font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:6px;text-transform:uppercase;">Class Period / Slot</label>
+              <select id="hodTakePeriodSelect" onchange="loadHodTakeAttendanceRoster()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="1">Period 1 (09:00 - 10:00 AM)</option>
+                <option value="2">Period 2 (10:00 - 11:00 AM)</option>
+                <option value="3">Period 3 (11:15 - 12:15 PM)</option>
+                <option value="4">Period 4 (12:15 - 01:15 PM)</option>
+                <option value="5">Period 5 (02:00 - 03:00 PM)</option>
+                <option value="6">Period 6 (03:00 - 04:00 PM)</option>
+                <option value="General">General Class Session</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-primary" id="hodStartQrBtn" onclick="toggleHodQrScanner()" style="height:42px;width:100%;justify-content:center;">
+                <i data-lucide="qr-code" class="icon-sm"></i> <span id="hodQrBtnText">Camera QR Scan</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Attendance Status Strip -->
+          <div id="hodAttStatsStrip" style="background:#f8fafc;border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+              <div>
+                <span style="font-size:0.75rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Enrolled</span>
+                <span id="hodAttTotalEnrolled" style="font-size:1.15rem;font-weight:800;color:var(--ink);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.75rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Present</span>
+                <span id="hodAttPresentCount" style="font-size:1.15rem;font-weight:800;color:var(--green);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.75rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Absent</span>
+                <span id="hodAttAbsentCount" style="font-size:1.15rem;font-weight:800;color:var(--red);">0</span>
+              </div>
+              <div style="height:28px;width:1px;background:var(--border);"></div>
+              <div>
+                <span style="font-size:0.75rem;color:var(--muted);display:block;text-transform:uppercase;font-weight:600;">Turnout</span>
+                <span class="pct-badge pct-good" id="hodAttTurnoutBadge" style="font-size:0.85rem;padding:3px 10px;">0%</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-ghost" onclick="markAllHodStudents(true)"><i data-lucide="check-check" class="icon-sm" style="color:var(--green);"></i> Mark All Present</button>
+              <button class="btn btn-sm btn-ghost" onclick="markAllHodStudents(false)"><i data-lucide="x" class="icon-sm" style="color:var(--red);"></i> Clear All</button>
+              <button class="btn btn-sm btn-primary" id="hodSaveAttBtn" onclick="saveHodAttendanceSession()"><i data-lucide="save" class="icon-sm"></i> Save Attendance</button>
+            </div>
+          </div>
+
+          <!-- Camera Scanner Box (Collapsible) -->
+          <div id="hodQrScannerBox" style="display:none;background:white;border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:16px;">
+            <div style="display:grid;grid-template-columns:320px 1fr;gap:20px;align-items:start;">
+              <div>
+                <div id="hodQrReaderEl" style="width:100%;min-height:240px;background:#000;border-radius:var(--radius-sm);overflow:hidden;"></div>
+                <div style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:6px;">Scan Student Digital ID QR Code</div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                  <h4 style="font-size:0.92rem;font-weight:700;">Live QR Scans (<span id="hodQrScannedCount">0</span>)</h4>
+                  <button class="btn btn-sm btn-ghost" onclick="toggleHodQrScanner()">Close Camera</button>
+                </div>
+                <div id="hodQrScannedList" style="max-height:220px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius-sm);background:#f8fafc;padding:8px 12px;">
+                  <div class="empty-note">Ready to scan student QR codes…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student Roll-Call Table & Search -->
+          <div style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+              <div style="flex:1;min-width:240px;">
+                <input type="text" id="hodRollCallSearch" placeholder="Search student by Name or USN…" oninput="filterHodRollCall()" style="width:100%;padding:9px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.86rem;outline:none;">
+              </div>
+              <div style="font-size:0.78rem;color:var(--muted);" id="hodRollCallSummaryNote">Select subject to load student roster.</div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width:50px;">#</th>
+                    <th>Student Name & USN</th>
+                    <th>Branch & Sem</th>
+                    <th>Status</th>
+                    <th style="text-align:right;">Action Toggle</th>
+                  </tr>
+                </thead>
+                <tbody id="hodRollCallTbody">
+                  <tr>
+                    <td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Please select a subject from above to take attendance.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOD Subjects Panel -->
+        <div class="att-panel" id="hPanelSubjects">
+          <div class="section-head" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Department Subjects & Curriculum</h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Add subjects, manage codes, schemes, and assign faculty lecturers.</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-primary" onclick="openSubjectModal()"><i data-lucide="plus" class="icon-sm"></i> Add Subject</button>
+              <button class="btn btn-ghost" onclick="seedDefaultSubjects()"><i data-lucide="book-copy" class="icon-sm"></i> Add Default Subjects</button>
+            </div>
+          </div>
+          <div class="subject-grid" id="hodSubjectGrid">
+            <div class="empty-note">Loading subjects…</div>
+          </div>
+        </div>
+
+        <!-- HOD Attendance Reports Panel -->
+        <div class="att-panel" id="hPanelReports">
+          <div class="section-head" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h3 style="font-size:1.15rem;font-weight:700;">Subject-wise Attendance Reports & Analytics</h3>
+              <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Comprehensive attendance logs, VTU shortage tracking (&lt;75%), and CSV exports.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-ghost" onclick="exportAttendanceCsv()"><i data-lucide="file-spreadsheet" class="icon-sm"></i> Export to CSV</button>
+              <button class="btn btn-primary" onclick="printAttendanceReport()"><i data-lucide="printer" class="icon-sm"></i> Print Report</button>
+            </div>
+          </div>
+          <div class="att-select-row" style="background:white;padding:14px 18px;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;">
+            <div style="flex:1;min-width:240px;">
+              <select id="hodReportSubjectSelect" onchange="loadHodAttendanceReport()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:0.88rem;outline:none;background:white;">
+                <option value="">Select a subject to view report…</option>
+              </select>
+            </div>
+            <div id="hodReportSummaryBadge" style="display:flex;gap:8px;align-items:center;"></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name & USN</th>
+                  <th>Email</th>
+                  <th>Classes Held</th>
+                  <th>Classes Attended</th>
+                  <th>Attendance %</th>
+                  <th>VTU Status</th>
+                </tr>
+              </thead>
+              <tbody id="hodReportTbody">
+                <tr>
+                  <td colspan="6" style="text-align:center;color:var(--muted);padding:24px;">Select a subject above to view student attendance report.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -3592,12 +3655,11 @@
           <div class="section-head"
             style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
             <div>
-              <h3 style="font-size:1.15rem;font-weight:700;">Faculty & Teacher Directory</h3>
+              <h3 style="font-size:1.15rem;font-weight:700;">Lecturers & Faculty Directory</h3>
               <p style="font-size:0.8rem;color:var(--muted);margin-top:2px;">Manage department teachers, assign subjects
                 per faculty, and generate Teacher ID Cards (max 3 profile changes allowed).</p>
             </div>
-            <button class="btn btn-primary" onclick="openTeacherModal()"><i data-lucide="user-plus" class="icon-sm"></i>
-              Add Teacher</button>
+            <button class="btn btn-primary" onclick="openTeacherModal()"><i data-lucide="user-plus" class="icon-sm"></i> Add Lecturer</button>
           </div>
           <div class="student-search-wrap" style="margin-bottom:14px;">
             <input type="text" id="hodTeacherSearch"
@@ -4048,7 +4110,7 @@
       <!-- Add/Edit Faculty/Teacher Modal (Managed by HOD) -->
       <div class="modal-bg" id="teacherModalBg">
         <div class="modal" style="width:620px;max-width:95vw;max-height:90vh;overflow-y:auto;">
-          <h3 id="teacherModalTitle">Add Faculty Member</h3>
+          <h3 id="teacherModalTitle">Add Lecturer / Faculty Member</h3>
           <p class="muted" style="margin-bottom:12px;">Enter teacher details, assign subjects, and upload photo for
             Teacher ID Card.</p>
 
@@ -4922,7 +4984,8 @@
     // ══════════ HEADER USER UPDATE ══════════
     function updateHeaderUser(user) {
       const name = user.displayName || user.email.split('@')[0];
-      const role = window.currentUserRole || 'student';
+      let role = window.currentUserRole || 'student';
+      if (role === 'teacher') role = 'hod';
       document.getElementById('userName').textContent = name;
       document.getElementById('userInitial').textContent = name[0].toUpperCase();
       document.getElementById('dropdownName').textContent = name;
@@ -4987,12 +5050,8 @@
         loadMyAttendance();
         loadStudentProfileBadges();
       } else if (view === 'teacher') {
-        document.querySelectorAll('.mode-btn')[0]?.classList.add('active');
-        document.getElementById('mobileTeacherBtn')?.classList.add('active');
-        const name = window.currentUser?.displayName || window.currentUser?.email?.split('@')[0] || '';
-        const g = document.getElementById('teacherGreeting'); if (g) g.textContent = `Hello, ${name}!`;
-        loadSubjectsForTeacher();
-        populateSubjectSelects();
+        switchView('hod');
+        return;
       } else if (view === 'hod') {
         const name = window.currentUser?.displayName || window.currentUser?.email?.split('@')[0] || '';
         const g = document.getElementById('hodGreeting'); if (g) g.textContent = `Welcome, HOD ${name}!`;
@@ -5015,7 +5074,7 @@
       document.getElementById('stPanelAttendance').classList.toggle('active', tab === 'attendance');
       const vtuPanel = document.getElementById('stPanelVtu'); if (vtuPanel) vtuPanel.classList.toggle('active', tab === 'vtu');
 
-      if (tab === 'attendance') { renderStudentQR(); loadMyAttendance(); }
+      if (tab === 'attendance') { renderStudentQR(); loadMyAttendance(); renderStudentTodayTimetable(); }
       if (tab === 'vtu') { loadMyVtuResults(); }
     }
 
@@ -6283,6 +6342,31 @@
     }
 
     window.previewTeacherPic = previewTeacherPic;
+    window.selectHodTimetableDay = selectHodTimetableDay;
+    window.openTimetableSlotModal = openTimetableSlotModal;
+    window.closeTimetableSlotModal = closeTimetableSlotModal;
+    window.autoFillPeriodTime = autoFillPeriodTime;
+    window.autoFillSubjectTeacher = autoFillSubjectTeacher;
+    window.saveTimetableSlot = saveTimetableSlot;
+    window.deleteTimetableSlot = deleteTimetableSlot;
+    window.resetDefaultTimetable = resetDefaultTimetable;
+    window.openPeriodAttendanceModal = openPeriodAttendanceModal;
+    window.closePeriodAttendanceModal = closePeriodAttendanceModal;
+    window.switchAttMode = switchAttMode;
+    window.markAllStudentsInModal = markAllStudentsInModal;
+    window.filterPeriodStudents = filterPeriodStudents;
+    window.toggleStudentPeriodAtt = toggleStudentPeriodAtt;
+    window.savePeriodAttendanceSession = savePeriodAttendanceSession;
+    window.loadHodTakeAttendanceRoster = loadHodTakeAttendanceRoster;
+    window.toggleHodStudentAttendance = toggleHodStudentAttendance;
+    window.markAllHodStudents = markAllHodStudents;
+    window.filterHodRollCall = filterHodRollCall;
+    window.saveHodAttendanceSession = saveHodAttendanceSession;
+    window.toggleHodQrScanner = toggleHodQrScanner;
+    window.renderHodSubjects = renderHodSubjects;
+    window.loadHodAttendanceReport = loadHodAttendanceReport;
+    window.exportAttendanceCsv = exportAttendanceCsv;
+    window.printAttendanceReport = printAttendanceReport;
     window.openTeacherModal = openTeacherModal;
     window.closeTeacherModal = closeTeacherModal;
     window.saveTeacher = saveTeacher;
