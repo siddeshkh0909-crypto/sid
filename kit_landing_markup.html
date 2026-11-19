@@ -1,0 +1,1327 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     KARAVALI INSTITUTION OF TECHNOLOGY (KIT) — OFFICIAL LANDING PAGE
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="landingPage" style="display: block;">
+
+  <!-- 1. Top Institutional Ribbon -->
+  <div class="kit-top-bar">
+    <div class="kit-container">
+      <div class="kit-top-info">
+        <span><i data-lucide="award" class="icon-sm" style="color:#38bdf8;"></i> AICTE Approved | Affiliated to VTU Belagavi | NAAC 'A+' Accredited</span>
+        <span style="color:#64748b;">|</span>
+        <span><i data-lucide="hash" class="icon-sm" style="color:#facc15;"></i> VTU College Code: <strong>4KT</strong></span>
+      </div>
+
+      <div class="kit-ticker-wrap">
+        <div class="kit-ticker-dot"></div>
+        <span style="font-size:12.5px; font-weight:500;">
+          <strong>ADMISSIONS 2026-27 OPEN:</strong> B.E. (CSE, AI &amp; DS, ECE, ME, CV) &amp; M.Tech | TECHNOVA Hackathon Registrations Live!
+        </span>
+      </div>
+
+      <div class="kit-top-links">
+        <a href="tel:+918242223785"><i data-lucide="phone" class="icon-sm"></i> +91 824 2223785</a>
+        <a href="mailto:info@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> info@karavali.edu.in</a>
+        <a href="https://results.vtu.ac.in" target="_blank" rel="noopener"><i data-lucide="external-link" class="icon-sm"></i> VTU Results</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Main Sticky Navbar -->
+  <nav class="kit-navbar" id="kitNavbar">
+    <div class="kit-container kit-nav-inner">
+      <a href="#landingPage" class="kit-brand">
+        <img class="kit-brand-logo" src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT Logo" onerror="this.src='https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=100&q=80'">
+        <div class="kit-brand-text">
+          <h1>KARAVALI INSTITUTION OF TECHNOLOGY</h1>
+          <span>Autonomous Smart Campus • Estd. 1996 • Mangalore</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="kit-nav-menu">
+        <li><a href="#hero" class="kit-nav-link active">Home</a></li>
+        <li><a href="#companies" class="kit-nav-link">Recruiters &amp; MoUs</a></li>
+        <li><a href="#faculty" class="kit-nav-link">Faculty</a></li>
+        <li><a href="#events" class="kit-nav-link">Campus Events</a></li>
+        <li><a href="#alumni" class="kit-nav-link">Alumni</a></li>
+        <li><a href="#gallery" class="kit-nav-link">Gallery</a></li>
+        <li><a href="#policies" class="kit-nav-link">Legal Policies</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="kit-nav-actions">
+        <button class="kit-btn kit-btn-sm kit-badge-gold" onclick="openAdmissionsModal()" style="cursor:pointer; border:1px solid rgba(245,158,11,0.4); text-transform:none;">
+          <i data-lucide="sparkles" class="icon-sm"></i> Admissions 2026
+        </button>
+
+        <button class="kit-btn kit-btn-sm kit-btn-portal" onclick="openAuthModal()" id="btnPortalNav" title="Access Student &amp; Faculty Attendance Portal">
+          <i data-lucide="log-in" class="icon-sm" style="color:#38bdf8;"></i> KIT SMART Portal
+        </button>
+
+        <button class="kit-mobile-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="kitMobileDrawer" style="display:none; background:#ffffff; border-top:1px solid #e2e8f0; padding:20px 24px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <a href="#hero" class="kit-nav-link" onclick="toggleMobileNav()">Home</a>
+        <a href="#companies" class="kit-nav-link" onclick="toggleMobileNav()">Tied-up Companies &amp; MoUs</a>
+        <a href="#faculty" class="kit-nav-link" onclick="toggleMobileNav()">Distinguished Faculty</a>
+        <a href="#events" class="kit-nav-link" onclick="toggleMobileNav()">Campus Events &amp; Hackathons</a>
+        <a href="#alumni" class="kit-nav-link" onclick="toggleMobileNav()">Global Alumni</a>
+        <a href="#gallery" class="kit-nav-link" onclick="toggleMobileNav()">Campus Gallery</a>
+        <a href="#policies" class="kit-nav-link" onclick="toggleMobileNav()">Legal Policies &amp; Governance</a>
+        <hr style="border:none; border-top:1px solid #f1f5f9; margin:4px 0;">
+        <button class="kit-btn kit-btn-primary" onclick="openAuthModal(); toggleMobileNav();" style="width:100%;">
+          <i data-lucide="log-in" class="icon-sm"></i> Access KIT SMART Portal
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO SECTION -->
+  <header class="kit-hero" id="hero">
+    <div class="kit-hero-glow"></div>
+    <div class="kit-hero-glow-2"></div>
+
+    <div class="kit-container">
+      <div class="kit-hero-grid">
+        <!-- Hero Left Content -->
+        <div class="kit-hero-left">
+          <div class="kit-badge">
+            <i data-lucide="shield-check" class="icon-sm"></i> NAAC 'A+' Accredited • VTU Affiliated • AICTE Approved
+          </div>
+
+          <h2 class="kit-hero-title">
+            Empowering Future <br>
+            <span class="gradient-text">Technologists &amp; Innovators</span>
+          </h2>
+
+          <p class="kit-hero-desc">
+            Karavali Institution of Technology (KIT), Mangalore is a premier engineering college dedicated to academic rigor, cutting-edge AI and robotics laboratories, interdisciplinary research, and proven industry placements since 1996.
+          </p>
+
+          <div class="kit-hero-ctas">
+            <button class="kit-btn kit-btn-lg kit-btn-primary" onclick="openAuthModal()">
+              <i data-lucide="arrow-right-circle" class="icon-md"></i> Enter KIT SMART Portal
+            </button>
+            <button class="kit-btn kit-btn-lg kit-btn-outline-white" onclick="openAdmissionsModal()">
+              <i data-lucide="file-text" class="icon-md"></i> Admissions Enquiry 2026
+            </button>
+            <button class="kit-btn kit-btn-lg kit-btn-outline-white" onclick="openVirtualTourModal()">
+              <i data-lucide="play-circle" class="icon-md"></i> Campus Tour
+            </button>
+          </div>
+
+          <div class="kit-hero-trust">
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>VTU Belagavi Affiliated</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>AICTE New Delhi Approved</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>ISO 9001:2015 Certified</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>180+ Recruiter MoUs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Interactive Card -->
+        <div class="kit-hero-right">
+          <div class="kit-hero-card">
+            <div class="kit-hero-card-header">
+              <div class="kit-card-user">
+                <div class="kit-card-avatar">KIT</div>
+                <div class="kit-card-user-info">
+                  <h4>KIT SMART CAMPUS</h4>
+                  <span>Next-Gen Academic Cloud</span>
+                </div>
+              </div>
+              <span class="kit-badge kit-badge-primary" style="font-size:11px; padding:3px 8px;">
+                <span class="kit-ticker-dot" style="width:6px; height:6px;"></span> Active Portal
+              </span>
+            </div>
+
+            <div class="kit-hero-stat-box">
+              <div class="kit-stat-subcard">
+                <div class="val">₹44.5 <span style="font-size:15px; font-weight:600; color:#2dd4bf;">LPA</span></div>
+                <div class="lbl">Highest Global CTC Package</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">98.4%</div>
+                <div class="lbl">Campus Placement Rate</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">1,250+</div>
+                <div class="lbl">Placement Offers (2025-26)</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">12 <span style="font-size:15px; font-weight:600; color:#facc15;">CoEs</span></div>
+                <div class="lbl">Corporate Sponsored Labs</div>
+              </div>
+            </div>
+
+            <div class="kit-hero-notice">
+              <i data-lucide="cpu" class="icon-md"></i>
+              <p>
+                <strong>Industry 4.0 Labs:</strong> Partnered with Bosch Automotive, Cisco Academy, and Intel Embedded Computing to offer certified micro-degrees.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. KEY METRICS BAR -->
+  <section class="kit-metrics-section">
+    <div class="kit-container">
+      <div class="kit-metrics-card">
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">28+</div>
+          <div class="kit-metric-label">Years of Excellence</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">15,000+</div>
+          <div class="kit-metric-label">Global Alumni</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">98.4%</div>
+          <div class="kit-metric-label">Placement Record</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">₹44.5 L</div>
+          <div class="kit-metric-label">Highest Package</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">180+</div>
+          <div class="kit-metric-label">Corporate MoUs</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">45+</div>
+          <div class="kit-metric-label">Patents &amp; Research</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TIED-UP COMPANIES & RECRUITERS SECTION -->
+  <section class="kit-section" id="companies">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="briefcase" class="icon-sm"></i> Industry Partnerships &amp; Placements</span>
+        <h2 class="kit-section-title">Corporate Tie-ups, MoUs &amp; Top Recruiters</h2>
+        <p class="kit-section-subtitle">
+          Our specialized Centers of Excellence (CoE) and curriculum alignment with Fortune 500 multinationals give KIT graduates a definitive competitive edge in technical campus recruitments.
+        </p>
+      </div>
+
+      <!-- Strategic MoUs & Centers of Excellence -->
+      <div class="kit-coe-grid">
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Embedded &amp; Automotive</span>
+            <i data-lucide="cpu" style="color:#0d9488;"></i>
+          </div>
+          <h3>Bosch Automotive IoT Center of Excellence</h3>
+          <p>Jointly established with Robert Bosch to provide direct hands-on training on CAN bus architectures, ADAS hardware, and embedded microcontrollers.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> Certified Industrial Testbenches</li>
+            <li><i data-lucide="check"></i> Pre-placement Internship Fast-track</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Cloud &amp; Networking</span>
+            <i data-lucide="network" style="color:#0284c7;"></i>
+          </div>
+          <h3>Cisco Networking &amp; Cyber Security Academy</h3>
+          <p>Official Cisco certified academy offering student credentials in CCNA, CyberOps, Cloud Infrastructure, and Enterprise Routing architectures.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> 100% Subsidized Global Certifications</li>
+            <li><i data-lucide="check"></i> Dedicated Routing &amp; Switching Lab</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Semiconductor &amp; AI</span>
+            <i data-lucide="microchip" style="color:#6366f1;"></i>
+          </div>
+          <h3>Intel FPGA &amp; Edge Intelligence Lab</h3>
+          <p>Equipped with Intel FPGA Quartus Prime toolchains, RISC-V development boards, and edge computing vision processing units for hardware research.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> Edge AI Prototype Incubation</li>
+            <li><i data-lucide="check"></i> VLSI &amp; ASIC System Design</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Enterprise Cloud</span>
+            <i data-lucide="cloud" style="color:#f59e0b;"></i>
+          </div>
+          <h3>AWS Academy &amp; Oracle WDP</h3>
+          <p>Direct institutional tie-up providing free AWS Cloud credits, hands-on DevOps pipelines, serverless architecture training, and database mastery.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> AWS Certified Cloud Practitioner</li>
+            <li><i data-lucide="check"></i> Oracle Database Administrator Track</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Infinite Logo Marquee of Top Tied-up Recruiters -->
+      <div style="margin-top:60px; text-align:center;">
+        <h4 style="font-size:15px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:20px;">
+          Trusted by 180+ Global Technology Giants &amp; Core Employers
+        </h4>
+      </div>
+
+      <div class="kit-companies-marquee-wrap">
+        <div class="kit-companies-track">
+          <!-- Company Pills (Set 1) -->
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea4335; color:#fff;">G</span> Google Cloud</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00a4ef; color:#fff;">M</span> Microsoft</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ff9900; color:#fff;">A</span> Amazon AWS</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#007cc3; color:#fff;">I</span> Infosys</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#003366; color:#fff;">T</span> Tata Consultancy (TCS)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea1d25; color:#fff;">B</span> Robert Bosch</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00539b; color:#fff;">L</span> Larsen &amp; Toubro (L&amp;T)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#0071c5; color:#fff;">I</span> Intel Corporation</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#049fd9; color:#fff;">C</span> Cisco Systems</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#133370; color:#fff;">W</span> Wipro Technologies</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#153d8a; color:#fff;">C</span> Cognizant</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#e41b13; color:#fff;">T</span> Tech Mahindra</div>
+
+          <!-- Company Pills (Duplicate for Seamless Loop) -->
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea4335; color:#fff;">G</span> Google Cloud</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00a4ef; color:#fff;">M</span> Microsoft</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ff9900; color:#fff;">A</span> Amazon AWS</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#007cc3; color:#fff;">I</span> Infosys</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#003366; color:#fff;">T</span> Tata Consultancy (TCS)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea1d25; color:#fff;">B</span> Robert Bosch</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00539b; color:#fff;">L</span> Larsen &amp; Toubro (L&amp;T)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#0071c5; color:#fff;">I</span> Intel Corporation</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#049fd9; color:#fff;">C</span> Cisco Systems</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#133370; color:#fff;">W</span> Wipro Technologies</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#153d8a; color:#fff;">C</span> Cognizant</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#e41b13; color:#fff;">T</span> Tech Mahindra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FACULTY SECTION -->
+  <section class="kit-section kit-section-alt" id="faculty">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="graduation-cap" class="icon-sm"></i> Academic Leadership &amp; Research</span>
+        <h2 class="kit-section-title">Distinguished Faculty &amp; Mentors</h2>
+        <p class="kit-section-subtitle">
+          Learn from eminent doctorates and researchers from premier institutions like IITs, IISc, NITs, and VTU with over 150+ published papers, patents, and government funded grants.
+        </p>
+      </div>
+
+      <!-- Department Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterFaculty('all', this)">All Departments</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('leadership', this)">Leadership &amp; Deans</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('cse', this)">Computer Science (CSE)</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('aids', this)">AI &amp; Data Science</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('ece', this)">Electronics &amp; Comm (ECE)</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('mech', this)">Mechanical &amp; Civil</button>
+      </div>
+
+      <!-- Faculty Grid -->
+      <div class="kit-faculty-grid" id="facultyGrid">
+
+        <!-- Faculty 1 -->
+        <div class="kit-faculty-card" data-dept="leadership">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80" alt="Dr. B. R. Hegde">
+            <span class="kit-faculty-dept-badge">Principal &amp; Director</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. B. R. Hegde</h3>
+            <div class="kit-faculty-qual">Ph.D. (IIT Madras), M.Tech (NITK)</div>
+            <div class="kit-faculty-designation">Principal &amp; Professor of Computer Science</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Wireless Ad-hoc Networks, High Performance Distributed Computing &amp; Green Routing Protocols.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 48 Papers • 4 Patents</span>
+              <a href="mailto:principal@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 2 -->
+        <div class="kit-faculty-card" data-dept="cse">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Dr. Shailesh Kumar">
+            <span class="kit-faculty-dept-badge">HOD - Computer Science</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Shailesh Kumar</h3>
+            <div class="kit-faculty-qual">Ph.D. (NITK Surathkal), M.Tech (VTU)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of CSE</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Deep Neural Networks, Scalable Microservices, Cloud Security &amp; Distributed Ledger Systems.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 34 Papers • 2 Books</span>
+              <a href="mailto:hod.cse@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 3 -->
+        <div class="kit-faculty-card" data-dept="leadership">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80" alt="Dr. Priya Shenoy">
+            <span class="kit-faculty-dept-badge">Dean (R&amp;D)</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Priya Shenoy</h3>
+            <div class="kit-faculty-qual">Ph.D. (IISc Bangalore), Post-Doc (NUS)</div>
+            <div class="kit-faculty-designation">Professor &amp; Dean (Research &amp; Consultancy)</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Computer Vision, Medical Diagnostic Imaging, Edge AI &amp; Autonomous Robotic Navigation.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="award" class="icon-sm"></i> VTU Best Researcher 2024</span>
+              <a href="mailto:dean.rnd@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 4 -->
+        <div class="kit-faculty-card" data-dept="ece">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80" alt="Dr. Anand V. Shetty">
+            <span class="kit-faculty-dept-badge">HOD - Electronics</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Anand V. Shetty</h3>
+            <div class="kit-faculty-qual">Ph.D. (VTU), M.Tech (Manipal)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of ECE</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Low-Power VLSI Architecture, FPGA Accelerators, Embedded IoT &amp; Optical Fiber Networks.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 29 Papers • 3 Patents</span>
+              <a href="mailto:hod.ece@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 5 -->
+        <div class="kit-faculty-card" data-dept="aids">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80" alt="Dr. Meenakshi Rao">
+            <span class="kit-faculty-dept-badge">AI &amp; Data Science</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Meenakshi Rao</h3>
+            <div class="kit-faculty-qual">Ph.D. (MAHE), M.Tech (NITK)</div>
+            <div class="kit-faculty-designation">Associate Professor, AI &amp; DS Dept.</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Natural Language Processing, Transformer LLMs, Predictive Health Analytics &amp; Algorithmic Ethics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 21 Scopus Papers</span>
+              <a href="mailto:meenakshi.ai@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 6 -->
+        <div class="kit-faculty-card" data-dept="mech">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80" alt="Dr. Raghavendra Kamath">
+            <span class="kit-faculty-dept-badge">HOD - Mechanical</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Raghavendra Kamath</h3>
+            <div class="kit-faculty-qual">Ph.D. (IIT Bombay), M.Tech (IIT Madras)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of Mechanical</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Additive Manufacturing (3D Printing), Smart Biomaterials, Thermal CFD &amp; Industrial Robotics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 32 Papers • 3 Patents</span>
+              <a href="mailto:hod.mech@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 7 -->
+        <div class="kit-faculty-card" data-dept="mech">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=80" alt="Dr. Vinod Acharya">
+            <span class="kit-faculty-dept-badge">HOD - Civil</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Vinod Acharya</h3>
+            <div class="kit-faculty-qual">Ph.D. (NITK Surathkal)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of Civil Engineering</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Earthquake-Resistant Structural Design, Sustainable Green Concrete &amp; Smart Geo-informatics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 26 Papers • Govt Consultant</span>
+              <a href="mailto:hod.civil@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 8 -->
+        <div class="kit-faculty-card" data-dept="cse">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=500&q=80" alt="Prof. Radhika Pai">
+            <span class="kit-faculty-dept-badge">Innovation Hub Lead</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Prof. Radhika Pai</h3>
+            <div class="kit-faculty-qual">M.Tech (Gold Medalist), (Ph.D.)</div>
+            <div class="kit-faculty-designation">Assistant Professor, CSE &amp; IIC Convener</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Cloud Native Cyber Defense, Blockchain Consensus Protocols &amp; Full Stack System Architectures.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="trophy" class="icon-sm"></i> Hackathon Mentor (8 Wins)</span>
+              <a href="mailto:radhika.pai@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CAMPUS EVENTS SECTION -->
+  <section class="kit-section" id="events">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-gold"><i data-lucide="calendar" class="icon-sm"></i> Campus Life &amp; Hackathons</span>
+        <h2 class="kit-section-title">Events, Symposiums &amp; Cultural Fests</h2>
+        <p class="kit-section-subtitle">
+          From 36-hour national hackathons to IEEE international conferences and coastal cultural extravaganzas, our campus buzzes with year-round energy.
+        </p>
+      </div>
+
+      <!-- Events Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterEvents('all', this)">All Events</button>
+        <button class="kit-tab-btn" onclick="filterEvents('tech', this)">Technical &amp; Hackathons</button>
+        <button class="kit-tab-btn" onclick="filterEvents('conf', this)">Conferences &amp; Seminars</button>
+        <button class="kit-tab-btn" onclick="filterEvents('cultural', this)">Cultural &amp; Sports</button>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="kit-events-grid" id="eventsGrid">
+
+        <!-- Event 1: TECHNOVA 2026 -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="TECHNOVA 2026">
+            <div class="kit-event-date-badge">
+              <span class="day">12</span>
+              <span class="mon">DEC</span>
+            </div>
+            <span class="kit-event-category">National Hackathon</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 36 Hours</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Innovation Arena</span>
+            </div>
+            <h3>TECHNOVA 2026: National Level 36-Hour Hackathon</h3>
+            <p>India's premier student innovation marathon with over 400 competing teams across AI for Healthcare, Clean Energy, and Rural FinTech. Total cash prize pool of ₹2,50,000 + Angel Incubation.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0d9488;">Prize Pool: ₹2.5 Lakhs</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('TECHNOVA 2026', '36-Hour National Hackathon', 'December 12-14, 2026', 'KIT Innovation Arena', '₹2,50,000')">
+                Register Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2: IEEE Conference -->
+        <div class="kit-event-card" data-cat="conf">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="ICASC-2027">
+            <div class="kit-event-date-badge">
+              <span class="day">22</span>
+              <span class="mon">JAN</span>
+            </div>
+            <span class="kit-event-category">IEEE Conference</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 2 Days</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Central Auditorium</span>
+            </div>
+            <h3>International Conference on AI &amp; Sustainable Computing</h3>
+            <p>Indexed in IEEE Xplore. Keynote addresses by world-renowned researchers from IISc Bangalore and MIT. 120+ peer-reviewed papers on Edge AI, Quantum Computing, and Smart Grids.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0284c7;">IEEE Xplore Indexed</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('ICASC-2027 IEEE Conference', 'International Technical Conference', 'January 22-23, 2027', 'Central Auditorium', 'Best Paper Award ₹50,000')">
+                View &amp; Register
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3: Bosch Masterclass -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" alt="Bosch Workshop">
+            <div class="kit-event-date-badge">
+              <span class="day">05</span>
+              <span class="mon">DEC</span>
+            </div>
+            <span class="kit-event-category">Industry Workshop</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> Hands-on Lab</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Bosch CoE Lab</span>
+            </div>
+            <h3>Bosch Electric Mobility &amp; AUTOSAR Workshop</h3>
+            <p>Intensive certification masterclass conducted by Senior Lead Architects from Robert Bosch on CAN/LIN bus vehicle diagnostic networks, Battery Management Systems, and Motor Controllers.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#f59e0b;">Bosch Certificate</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('Bosch Electric Mobility Masterclass', 'Automotive Hands-on Workshop', 'December 05, 2026', 'Bosch CoE Lab', 'Certificate of Completion')">
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 4: KARAVALI UTSAV -->
+        <div class="kit-event-card" data-cat="cultural">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Karavali Utsav">
+            <div class="kit-event-date-badge">
+              <span class="day">18</span>
+              <span class="mon">FEB</span>
+            </div>
+            <span class="kit-event-category">Annual Cultural Fest</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 3 Days &amp; Nights</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Open Amphitheater</span>
+            </div>
+            <h3>KARAVALI UTSAV 2027: Cultural &amp; Youth Extravaganza</h3>
+            <p>Our grand coastal cultural fest celebrating Yakshagana, classical Carnatic concerts, battle of the rock bands, fashion pageants, food carnivals, and high-octane Bollywood celebrity pro-nite.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#e11d48;">Celebrity Pro-Nite</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('KARAVALI UTSAV 2027', 'Annual Inter-Collegiate Cultural Fest', 'February 18-20, 2027', 'Open Air Amphitheater', 'Fest Passes Available')">
+                Event Pass
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 5: VTU Cricket Tournament -->
+        <div class="kit-event-card" data-cat="cultural">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&q=80" alt="Sports Meet">
+            <div class="kit-event-date-badge">
+              <span class="day">28</span>
+              <span class="mon">NOV</span>
+            </div>
+            <span class="kit-event-category">VTU Sports Tournament</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 5 Days</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> KIT Sports Complex</span>
+            </div>
+            <h3>VTU Inter-Collegiate Cricket &amp; Badminton Cup</h3>
+            <p>Hosting 32 premier engineering colleges across Karnataka for the prestigious VTU zonal athletic championship at our floodlit cricket oval, turf badminton courts, and basketball arena.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#10b981;">Zonal Championship</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('VTU Inter-Collegiate Sports Cup', 'Zonal Athletic &amp; Cricket Tournament', 'Nov 28 - Dec 02, 2026', 'KIT Sports Arena', 'Championship Trophy')">
+                View Fixtures
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 6: Job Fair 2027 -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Mega Job Fair">
+            <div class="kit-event-date-badge">
+              <span class="day">10</span>
+              <span class="mon">JAN</span>
+            </div>
+            <span class="kit-event-category">Campus Placement Drive</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 1 Full Day</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Academic Block 3</span>
+            </div>
+            <h3>Mega Career Expo &amp; On-Spot Hiring Fair 2027</h3>
+            <p>Over 60+ tier-1 IT, core engineering, and startup recruiters conducting face-to-face interviews, coding assessments, and offering immediate letter-of-intents for final year students.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0284c7;">60+ Recruiters</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('Annual Mega Job Fair 2027', 'Campus Placement Drive &amp; Career Expo', 'January 10, 2027', 'Academic Block 3 &amp; Placement Cell', 'Spot Offer Letters')">
+                Student Slot
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ALUMNI SECTION -->
+  <section class="kit-section kit-section-alt" id="alumni">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="users" class="icon-sm"></i> Global Legacy &amp; Impact</span>
+        <h2 class="kit-section-title">Our Illustrious Alumni</h2>
+        <p class="kit-section-subtitle">
+          Over 15,000+ graduates across 30+ countries are driving breakthroughs at top tech multinationals, authoring groundbreaking research, and establishing venture-backed unicorns.
+        </p>
+      </div>
+
+      <!-- Alumni Cards Grid -->
+      <div class="kit-alumni-grid">
+
+        <!-- Alumni 1 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Rohan Mendonca">
+            <div class="kit-alumni-info">
+              <h3>Rohan Mendonca</h3>
+              <div class="kit-alumni-batch">Class of 2015 • B.E. Computer Science</div>
+              <div class="kit-alumni-role">Senior Staff Software Engineer</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="building-2" class="icon-sm" style="color:#4285f4;"></i> Google Cloud, Mountain View, CA
+          </div>
+          <p class="kit-alumni-quote">
+            "The rigorous data structures labs, algorithms mentoring, and late-night hackathons at KIT gave me the engineering resilience that powers my daily work on planetary-scale Google Cloud infrastructure."
+          </p>
+        </div>
+
+        <!-- Alumni 2 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Sneha K. Rao">
+            <div class="kit-alumni-info">
+              <h3>Sneha K. Rao</h3>
+              <div class="kit-alumni-batch">Class of 2017 • B.E. Electronics &amp; Comm</div>
+              <div class="kit-alumni-role">Principal Hardware Systems Architect</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="cpu" class="icon-sm" style="color:#0071c5;"></i> Intel Labs, Bangalore
+          </div>
+          <p class="kit-alumni-quote">
+            "Hands-on exposure to VLSI design suites and FPGA emulation boards in our ECE department was ahead of its time. It formed the bedrock of my career in next-generation silicon chip architecture."
+          </p>
+        </div>
+
+        <!-- Alumni 3 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Karthik Poojary">
+            <div class="kit-alumni-info">
+              <h3>Karthik Poojary</h3>
+              <div class="kit-alumni-batch">Class of 2018 • B.E. Mechanical Engineering</div>
+              <div class="kit-alumni-role">Autonomous Systems Perception Lead</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="car" class="icon-sm" style="color:#e82127;"></i> Tesla, Austin, Texas
+          </div>
+          <p class="kit-alumni-quote">
+            "Building our student SAE formula racing vehicle from scratch in the KIT mechanical workshops taught me how to bridge mechanical thermodynamics with modern autonomous perception software."
+          </p>
+        </div>
+
+        <!-- Alumni 4 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Ananya Bhat">
+            <div class="kit-alumni-info">
+              <h3>Ananya Bhat</h3>
+              <div class="kit-alumni-batch">Class of 2019 • B.E. Information Science</div>
+              <div class="kit-alumni-role">Founder &amp; CEO (Forbes 30 Under 30)</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="zap" class="icon-sm" style="color:#f59e0b;"></i> FinEdge AI, Singapore &amp; Bengaluru
+          </div>
+          <p class="kit-alumni-quote">
+            "The incubation cell at KIT granted us seed mentoring and legal incorporation support when we were just 6th-semester undergrads. That faculty belief transformed our prototype into a $40M enterprise."
+          </p>
+        </div>
+
+        <!-- Alumni 5 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="Vikramaditya Hegde">
+            <div class="kit-alumni-info">
+              <h3>Vikramaditya Hegde</h3>
+              <div class="kit-alumni-batch">Class of 2016 • B.E. Civil Engineering</div>
+              <div class="kit-alumni-role">Deputy Project Director (Mega Works)</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="hard-hat" class="icon-sm" style="color:#00539b;"></i> Larsen &amp; Toubro (L&amp;T)
+          </div>
+          <p class="kit-alumni-quote">
+            "Managing multi-thousand crore coastal expressway and metro projects requires uncompromised structural precision and ethical standards — qualities deeply rooted during my engineering days at KIT."
+          </p>
+        </div>
+
+        <!-- Alumni 6 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Dr. Divya Kamath">
+            <div class="kit-alumni-info">
+              <h3>Dr. Divya Kamath</h3>
+              <div class="kit-alumni-batch">Class of 2014 • B.E. Computer Science</div>
+              <div class="kit-alumni-role">Research Scientist, Deep Learning</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="dna" class="icon-sm" style="color:#10b981;"></i> European Molecular Biology Lab (EMBL)
+          </div>
+          <p class="kit-alumni-quote">
+            "KIT taught us how to formulate bold scientific hypotheses and validate them computationally. That spirit propelled my doctoral research and postdoctoral computational biology work in Heidelberg."
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Alumni Global Association Banner -->
+      <div class="kit-alumni-hub-box">
+        <div class="kit-alumni-hub-text">
+          <h3>Join the KIT Global Alumni Association</h3>
+          <p>Reconnect with your batchmates, mentor current engineering students, offer corporate internships, and participate in our worldwide alumni chapters in US, UK, Singapore, Dubai, and Bengaluru.</p>
+        </div>
+        <button class="kit-btn kit-btn-lg kit-btn-primary" onclick="openAlumniModal()">
+          <i data-lucide="user-plus" class="icon-md"></i> Join Alumni Network
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CAMPUS GALLERY SECTION -->
+  <section class="kit-section" id="gallery">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="camera" class="icon-sm"></i> Campus Infrastructure &amp; Life</span>
+        <h2 class="kit-section-title">Life @ KIT — Campus Gallery</h2>
+        <p class="kit-section-subtitle">
+          Explore our lush 35-acre Wi-Fi enabled campus in Mangalore featuring high-tech computing labs, smart amphitheaters, modern sports complexes, and vibrant green lawns.
+        </p>
+      </div>
+
+      <!-- Gallery Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterGallery('all', this)">All Highlights</button>
+        <button class="kit-tab-btn" onclick="filterGallery('labs', this)">Advanced Labs &amp; CoEs</button>
+        <button class="kit-tab-btn" onclick="filterGallery('campus', this)">Campus &amp; Greenery</button>
+        <button class="kit-tab-btn" onclick="filterGallery('academics', this)">Smart Classrooms &amp; Library</button>
+        <button class="kit-tab-btn" onclick="filterGallery('sports', this)">Sports &amp; Recreation</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="kit-gallery-grid" id="galleryGrid">
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=1200&q=80', 'Advanced Robotics &amp; AI Research Hub', 'Students programming industrial multi-axis robotic arms and edge computing controllers.')">
+          <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&q=80" alt="Robotics Lab">
+          <div class="kit-gallery-overlay">
+            <h4>Robotics &amp; AI Research Hub</h4>
+            <span>Advanced Research Lab</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1200&q=80', 'Central Digital Library', 'Over 50,000+ volumes, 100+ IEEE journals, and 24/7 digital research terminals.')">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&q=80" alt="Central Library">
+          <div class="kit-gallery-overlay">
+            <h4>Central Digital Library</h4>
+            <span>50,000+ Academic Volumes</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1562774053-701939374585?w=1200&q=80', 'Main Administrative &amp; Academic Block', 'Iconic red brick architecture amidst lush coastal Mangaluru flora.')">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80" alt="Main Building">
+          <div class="kit-gallery-overlay">
+            <h4>Main Academic Block</h4>
+            <span>Lush 35-Acre Campus</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80', 'High-Performance Cloud Computing Cluster', 'Equipped with dual Xeon workstations, GPU accelerators, and 10Gbps campus fiber.')">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80" alt="Cloud Lab">
+          <div class="kit-gallery-overlay">
+            <h4>High-Performance Computing Lab</h4>
+            <span>GPU Accelerated Clusters</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200&q=80', 'Sir M. Visvesvaraya Central Auditorium', '800-seater air-conditioned acoustic hall for international conventions.')">
+          <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600&q=80" alt="Auditorium">
+          <div class="kit-gallery-overlay">
+            <h4>Sir M.V. Central Auditorium</h4>
+            <span>800-Seater Acoustic Hall</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="sports" onclick="openLightbox('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80', 'Indoor Gymnasium &amp; Fitness Complex', 'State-of-the-art cardiovascular and strength training equipment for athletes.')">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Gymnasium">
+          <div class="kit-gallery-overlay">
+            <h4>Indoor Fitness Complex</h4>
+            <span>Modern Sports Facilities</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=80', 'Bosch Automotive Electronics CoE', 'Industrial CAN bus testbenches, ECU diagnostics, and electronic mobility stations.')">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" alt="Bosch Lab">
+          <div class="kit-gallery-overlay">
+            <h4>Bosch Automotive Center</h4>
+            <span>CoE Industrial Testbenches</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80', 'Smart Interactive Amphitheater Classrooms', 'Equipped with dual 4K touch displays, lecture capture systems, and ergonomic seating.')">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Smart Classroom">
+          <div class="kit-gallery-overlay">
+            <h4>Smart Lecture Theaters</h4>
+            <span>Lecture Capture Enabled</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="sports" onclick="openLightbox('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1200&q=80', 'Floodlit Athletic Oval &amp; Cricket Stadium', 'Hosting VTU regional tournaments, athletics meets, and evening sports leagues.')">
+          <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&q=80" alt="Sports Oval">
+          <div class="kit-gallery-overlay">
+            <h4>Floodlit Sports Oval</h4>
+            <span>VTU Zonal Tournament Host</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80', 'Student Innovation &amp; Cafeteria Plaza', 'Vibrant open-air quadrangle for student club meetings and coastal cuisine.')">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="Student Plaza">
+          <div class="kit-gallery-overlay">
+            <h4>Innovation &amp; Food Plaza</h4>
+            <span>Vibrant Student Life</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80', 'TECHNOVA 36-Hour Hackathon Arena', 'Students hacking continuous solutions through the night with mentors.')">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Hackathon Arena">
+          <div class="kit-gallery-overlay">
+            <h4>Hackathon Innovation Arena</h4>
+            <span>TECHNOVA 2026 Venue</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&q=80', 'Annual Karavali Cultural Night', 'Electrifying student performances and coastal Yakshagana traditions under the stars.')">
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Cultural Fest">
+          <div class="kit-gallery-overlay">
+            <h4>Karavali Cultural Utsav</h4>
+            <span>Annual Fest &amp; Pro-Nite</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. COMPREHENSIVE FOOTER WITH FULLY LEGAL POLICIES -->
+  <footer class="kit-footer" id="policies">
+    <div class="kit-container">
+
+      <!-- Footer Top Columns -->
+      <div class="kit-footer-top">
+
+        <!-- Col 1: About Institution -->
+        <div class="kit-footer-col kit-footer-about">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <img src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:2px;" onerror="this.style.display='none'">
+            <div>
+              <h3 style="margin:0; font-size:16px; padding:0; border:none;">KARAVALI INSTITUTION OF TECHNOLOGY</h3>
+              <span style="font-size:11px; color:#38bdf8; font-weight:600; text-transform:uppercase;">Mangalore, Karnataka</span>
+            </div>
+          </div>
+          <p>
+            An autonomous center of technical excellence approved by AICTE, New Delhi, affiliated to Visvesvaraya Technological University (VTU), Belagavi, and accredited with NAAC 'A+' Grade. Committed to value-based engineering education since 1996.
+          </p>
+          <div class="kit-accred-badges">
+            <span class="kit-accred-pill">AICTE Approved</span>
+            <span class="kit-accred-pill">VTU Affiliated (4KT)</span>
+            <span class="kit-accred-pill">NAAC 'A+' Grade</span>
+            <span class="kit-accred-pill">ISO 9001:2015</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Academic Programs -->
+        <div class="kit-footer-col">
+          <h3>Academic Programs</h3>
+          <ul class="kit-footer-links">
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Computer Science (CSE)</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Artificial Intelligence &amp; DS</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Electronics &amp; Comm (ECE)</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Mechanical Engineering</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Civil Engineering</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> M.Tech &amp; Ph.D. Research Centers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Campus & Student Services -->
+        <div class="kit-footer-col">
+          <h3>Student &amp; Campus Services</h3>
+          <ul class="kit-footer-links">
+            <li><a href="#hero" onclick="openAuthModal()"><i data-lucide="chevron-right" class="icon-sm"></i> KIT SMART Attendance Portal</a></li>
+            <li><a href="https://results.vtu.ac.in" target="_blank" rel="noopener"><i data-lucide="external-link" class="icon-sm"></i> VTU Semester Results &amp; SGPA</a></li>
+            <li><a href="#companies"><i data-lucide="chevron-right" class="icon-sm"></i> Training &amp; Placement Cell</a></li>
+            <li><a href="#events"><i data-lucide="chevron-right" class="icon-sm"></i> TECHNOVA Hackathon Portal</a></li>
+            <li><a href="#alumni"><i data-lucide="chevron-right" class="icon-sm"></i> Global Alumni Association</a></li>
+            <li><a href="#gallery"><i data-lucide="chevron-right" class="icon-sm"></i> Central Digital Library OPAC</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Campus Contact & Helplines -->
+        <div class="kit-footer-col">
+          <h3>Contact Campus</h3>
+          <ul class="kit-contact-list">
+            <li>
+              <i data-lucide="map-pin"></i>
+              <span>Karavali Institution of Technology Campus, NH-66, Mangalore - 575028, Karnataka, India</span>
+            </li>
+            <li>
+              <i data-lucide="phone"></i>
+              <span>Admissions Desk: +91 824 2223785 / +91 94481 23456</span>
+            </li>
+            <li>
+              <i data-lucide="mail"></i>
+              <span>General: info@karavali.edu.in | Principal: principal@karavali.edu.in</span>
+            </li>
+            <li>
+              <i data-lucide="clock"></i>
+              <span>Mon - Sat: 9:00 AM - 5:00 PM IST (Campus &amp; Office)</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DEDICATED FULLY COMPLIANT LEGAL POLICIES SECTION -->
+    <div class="kit-legal-policies-section">
+      <div class="kit-container">
+        <div class="kit-legal-policies-header">
+          <h4>
+            <i data-lucide="scale" style="color:#facc15;"></i>
+            Institutional Governance, Statutory Policies &amp; Legal Disclosures
+          </h4>
+          <span>Fully compliant with UGC Regulations, AICTE Norms, VTU Statutes &amp; DPDP Act 2023</span>
+        </div>
+
+        <!-- 8 Full-Featured Legal Policy Cards -->
+        <div class="kit-legal-grid">
+
+          <!-- 1. Privacy Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('privacy')">
+            <span class="kit-legal-card-icon">🛡️</span>
+            <div class="kit-legal-card-title">Privacy &amp; Data Protection Policy</div>
+            <div class="kit-legal-card-desc">Indian DPDP Act 2023 &amp; IT Act 2000 compliant. Explains how student USN, biometric records, and academic data are encrypted and safeguarded.</div>
+          </div>
+
+          <!-- 2. Terms of Service -->
+          <div class="kit-legal-card" onclick="openPolicyModal('terms')">
+            <span class="kit-legal-card-icon">⚖️</span>
+            <div class="kit-legal-card-title">Terms of Service &amp; IT Usage</div>
+            <div class="kit-legal-card-desc">Acceptable use policy for KIT SMART attendance portal, campus Wi-Fi, anti-scraping mandates, and credential accountability.</div>
+          </div>
+
+          <!-- 3. Anti-Ragging Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('antiragging')">
+            <span class="kit-legal-card-icon">🛑</span>
+            <div class="kit-legal-card-title">Anti-Ragging Policy (Zero Tolerance)</div>
+            <div class="kit-legal-card-desc">UGC Regulations 2009 statutory mandate. Strict zero-tolerance rules, squad rosters, and 24x7 National Helpline (1800-180-5522).</div>
+          </div>
+
+          <!-- 4. Code of Conduct -->
+          <div class="kit-legal-card" onclick="openPolicyModal('conduct')">
+            <span class="kit-legal-card-icon">📜</span>
+            <div class="kit-legal-card-title">Code of Conduct &amp; Academic Integrity</div>
+            <div class="kit-legal-card-desc">Mandatory VTU 75% attendance rule, anti-malpractice committee rules, exam ethics, and plagiarism thresholds (&lt; 15%).</div>
+          </div>
+
+          <!-- 5. POSH / ICC -->
+          <div class="kit-legal-card" onclick="openPolicyModal('posh')">
+            <span class="kit-legal-card-icon">🌸</span>
+            <div class="kit-legal-card-title">Internal Complaints Committee (ICC / POSH)</div>
+            <div class="kit-legal-card-desc">Sexual Harassment of Women at Workplace (Prevention) Act 2013 compliance. Confidential redressal, committee members &amp; guidelines.</div>
+          </div>
+
+          <!-- 6. Grievance Redressal -->
+          <div class="kit-legal-card" onclick="openPolicyModal('grievance')">
+            <span class="kit-legal-card-icon">📋</span>
+            <div class="kit-legal-card-title">Student Grievance Redressal Mechanism</div>
+            <div class="kit-legal-card-desc">UGC (Redressal of Grievances of Students) Regulations 2023. Multi-tier resolution process, student ombudsperson &amp; appeal procedures.</div>
+          </div>
+
+          <!-- 7. Fee Refund Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('refund')">
+            <span class="kit-legal-card-icon">💰</span>
+            <div class="kit-legal-card-title">Fee Refund &amp; Cancellation Policy</div>
+            <div class="kit-legal-card-desc">AICTE and Karnataka Higher Education Department prescribed fee refund timelines and deduction matrices upon admission withdrawal.</div>
+          </div>
+
+          <!-- 8. Mandatory Disclosures -->
+          <div class="kit-legal-card" onclick="openPolicyModal('disclosures')">
+            <span class="kit-legal-card-icon">📊</span>
+            <div class="kit-legal-card-title">Mandatory Disclosures &amp; NIRF Data</div>
+            <div class="kit-legal-card-desc">Public statutory reports: AICTE EOA orders, VTU Affiliation records, faculty cadre ratios, and audited balance sheets.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Social Links -->
+    <div class="kit-container">
+      <div class="kit-footer-bottom">
+        <div>
+          © 2026 <strong>Karavali Institution of Technology (KIT)</strong>. All Rights Reserved. Affiliated to VTU Belagavi &amp; Approved by AICTE, New Delhi.
+        </div>
+        <div class="kit-social-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="LinkedIn"><i data-lucide="linkedin" class="icon-sm"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="YouTube"><i data-lucide="youtube" class="icon-sm"></i></a>
+          <a href="https://x.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Twitter"><i data-lucide="twitter" class="icon-sm"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Instagram"><i data-lucide="instagram" class="icon-sm"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Facebook"><i data-lucide="facebook" class="icon-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       INTERACTIVE MODALS (LEGAL, ADMISSION, EVENT, LIGHTBOX)
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- 1. FULL LEGAL POLICY VIEWER MODAL -->
+  <div class="kit-modal-backdrop" id="policyModalBackdrop" onclick="if(event.target===this)closePolicyModal()">
+    <div class="kit-modal-container">
+      <div class="kit-modal-header">
+        <h3 id="policyModalTitle"><i data-lucide="scale"></i> Institutional Legal Policy</h3>
+        <button class="kit-modal-close-btn" onclick="closePolicyModal()" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body" id="policyModalBody">
+        <!-- Injected dynamically based on policy key -->
+      </div>
+      <div class="kit-modal-footer">
+        <span style="font-size:12px; color:#64748b;" id="policyModalCitation">KIT Statutory Governance Doc • Ref: KIT/LEGAL/2026</span>
+        <div style="display:flex; gap:10px;">
+          <button class="kit-btn kit-btn-sm kit-btn-secondary" onclick="window.print()"><i data-lucide="printer" class="icon-sm"></i> Print Policy</button>
+          <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="closePolicyModal()">I Understand &amp; Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EVENT REGISTRATION MODAL -->
+  <div class="kit-modal-backdrop" id="eventModalBackdrop" onclick="if(event.target===this)closeEventModal()">
+    <div class="kit-modal-container" style="max-width:580px;">
+      <div class="kit-modal-header">
+        <h3 id="eventRegTitle"><i data-lucide="calendar"></i> Event Registration</h3>
+        <button class="kit-modal-close-btn" onclick="closeEventModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <div id="eventRegDetails" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:20px;">
+          <!-- Injected info -->
+        </div>
+
+        <form id="eventRegForm" onsubmit="handleEventRegSubmit(event)">
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Full Name *</label>
+            <input type="text" id="evRegName" required class="auth-input" placeholder="e.g. Rahul Sharma" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">College USN / Roll No *</label>
+              <input type="text" id="evRegUsn" required class="auth-input" placeholder="e.g. 4KT22CS045" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Department / Semester *</label>
+              <select id="evRegDept" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="CSE">Computer Science (CSE)</option>
+                <option value="AIDS">AI &amp; Data Science (AI &amp; DS)</option>
+                <option value="ECE">Electronics &amp; Comm (ECE)</option>
+                <option value="MECH">Mechanical Engineering</option>
+                <option value="CIVIL">Civil Engineering</option>
+                <option value="OTHER">External College Participant</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Email Address *</label>
+              <input type="email" id="evRegEmail" required class="auth-input" placeholder="rahul@example.com" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">WhatsApp Phone *</label>
+              <input type="tel" id="evRegPhone" required class="auth-input" placeholder="+91 98765 43210" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:12px;">
+            <i data-lucide="check-circle" class="icon-sm"></i> Confirm My Registration
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ADMISSIONS ENQUIRY 2026 MODAL -->
+  <div class="kit-modal-backdrop" id="admissionsModalBackdrop" onclick="if(event.target===this)closeAdmissionsModal()">
+    <div class="kit-modal-container" style="max-width:620px;">
+      <div class="kit-modal-header" style="background:linear-gradient(135deg, #0f172a 0%, #0d9488 100%); color:#fff;">
+        <h3 style="color:#fff;"><i data-lucide="sparkles" style="color:#facc15;"></i> Admissions Enquiry 2026-27</h3>
+        <button class="kit-modal-close-btn" onclick="closeAdmissionsModal()" style="color:#fff;"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <p style="font-size:14px; color:#475569; margin-bottom:18px;">
+          Join Karnataka's leading technology campus in Mangalore. Fill out your details below to receive the official 2026-27 Information Brochure, Fee Structure, and KCET/COMEDK seat cutoff counseling.
+        </p>
+
+        <form id="admForm" onsubmit="handleAdmissionsSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Student Full Name *</label>
+              <input type="text" id="admName" required class="auth-input" placeholder="e.g. Ananya Shetty" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Mobile / WhatsApp *</label>
+              <input type="tel" id="admPhone" required class="auth-input" placeholder="+91 98765 43210" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Email Address *</label>
+            <input type="email" id="admEmail" required class="auth-input" placeholder="ananya@example.com" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Program of Interest *</label>
+              <select id="admProg" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="B.E. Computer Science (CSE)">B.E. Computer Science (CSE)</option>
+                <option value="B.E. AI &amp; Data Science">B.E. Artificial Intelligence &amp; DS</option>
+                <option value="B.E. Electronics &amp; Comm">B.E. Electronics &amp; Comm (ECE)</option>
+                <option value="B.E. Mechanical Engg">B.E. Mechanical Engineering</option>
+                <option value="B.E. Civil Engg">B.E. Civil Engineering</option>
+                <option value="M.Tech / MBA">M.Tech / MBA Programs</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Admission Mode *</label>
+              <select id="admMode" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="KCET Quota">KCET Karnataka Quota</option>
+                <option value="COMEDK Quota">COMEDK All-India Quota</option>
+                <option value="Management / NRI">Management / Institutional Quota</option>
+                <option value="Lateral Entry">Lateral Entry (Diploma to 3rd Sem)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:12px;">
+            <i data-lucide="download" class="icon-sm"></i> Submit &amp; Download 2026 Prospectus
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ALUMNI NETWORK ENROLLMENT MODAL -->
+  <div class="kit-modal-backdrop" id="alumniModalBackdrop" onclick="if(event.target===this)closeAlumniModal()">
+    <div class="kit-modal-container" style="max-width:580px;">
+      <div class="kit-modal-header">
+        <h3><i data-lucide="users"></i> KIT Global Alumni Association</h3>
+        <button class="kit-modal-close-btn" onclick="closeAlumniModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <p style="font-size:13.5px; color:#475569; margin-bottom:16px;">
+          Reconnect with Karavali Institution of Technology. Register your current professional designation to receive invitations to global alumni chapters, reunion galas, and guest lecture mentorship.
+        </p>
+        <form onsubmit="handleAlumniSubmit(event)">
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Full Name *</label>
+            <input type="text" id="alName" required class="auth-input" placeholder="Your name" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Passing Batch Year *</label>
+              <input type="number" id="alBatch" min="1996" max="2026" required class="auth-input" placeholder="e.g. 2018" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Graduating Degree *</label>
+              <select id="alDegree" required class="auth-input" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="B.E. CSE">B.E. Computer Science</option>
+                <option value="B.E. ECE">B.E. Electronics &amp; Comm</option>
+                <option value="B.E. MECH">B.E. Mechanical</option>
+                <option value="B.E. CIVIL">B.E. Civil</option>
+                <option value="B.E. ISE">B.E. Information Science</option>
+                <option value="M.Tech / MBA">M.Tech / MBA</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Current Organization *</label>
+              <input type="text" id="alCompany" required class="auth-input" placeholder="e.g. Microsoft / Tesla" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Current Role *</label>
+              <input type="text" id="alRole" required class="auth-input" placeholder="e.g. Lead Engineer" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Email Address *</label>
+            <input type="email" id="alEmail" required class="auth-input" placeholder="you@work.com" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:10px;">
+            <i data-lucide="check" class="icon-sm"></i> Enroll in Alumni Chapter
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. LIGHTBOX MODAL -->
+  <div class="kit-modal-backdrop" id="lightboxBackdrop" onclick="closeLightbox()">
+    <div style="position:relative; max-width:900px; text-align:center; padding:20px;" onclick="event.stopPropagation()">
+      <button class="kit-modal-close-btn" onclick="closeLightbox()" style="position:absolute; top:-12px; right:-12px; background:#fff; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.3);"><i data-lucide="x"></i></button>
+      <img id="lightboxImg" class="kit-lightbox-img" src="" alt="Campus View">
+      <div style="background:rgba(15,23,42,0.9); color:#fff; padding:16px 20px; border-radius:12px; margin-top:14px; text-align:left;">
+        <h4 id="lightboxTitle" style="font-size:16px; margin:0 0 4px 0; color:#5eead4;"></h4>
+        <p id="lightboxDesc" style="font-size:13px; margin:0; color:#cbd5e1;"></p>
+      </div>
+    </div>
+  </div>
+
+</div>

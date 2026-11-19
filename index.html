@@ -74,6 +74,8 @@
           window.currentUserRole = snap.exists() ? (snap.data().role || 'student') : 'student';
         } catch (e) { window.currentUserRole = 'student'; }
 
+        const lp = document.getElementById('landingPage');
+        if (lp) lp.style.display = 'none';
         document.getElementById('authOverlay').style.display = 'none';
         document.getElementById('appShell').style.display = 'block';
         updateHeaderUser(user);
@@ -102,8 +104,10 @@
       } else {
         window.currentUser = null;
         window.currentUserRole = null;
-        document.getElementById('authOverlay').style.display = 'flex';
+        document.getElementById('authOverlay').style.display = 'none';
         document.getElementById('appShell').style.display = 'none';
+        const lp = document.getElementById('landingPage');
+        if (lp) lp.style.display = 'block';
       }
     });
   </script>
@@ -2891,7 +2895,1533 @@
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 12px;
     }
-  </style>
+  
+
+/* ════════ KIT LANDING PAGE STYLES ════════ */
+/* ═══════════════════════════════════════════════════════════════
+   KARAVALI INSTITUTION OF TECHNOLOGY (KIT) — LANDING PAGE STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+#landingPage {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utilities */
+.kit-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.kit-section {
+  padding: 96px 0;
+  position: relative;
+}
+
+.kit-section-alt {
+  background-color: #f8fafc;
+}
+
+.kit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.kit-badge-primary {
+  background: rgba(13, 148, 136, 0.1);
+  color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
+.kit-badge-gold {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.kit-section-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 64px auto;
+}
+
+.kit-section-title {
+  font-size: 38px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 16px 0 14px 0;
+  line-height: 1.25;
+}
+
+.kit-section-subtitle {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.65;
+}
+
+/* ════════ TOP ANNOUNCEMENT BAR ════════ */
+.kit-top-bar {
+  background: #091326;
+  color: #94a3b8;
+  font-size: 12.5px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kit-top-bar .kit-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kit-top-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.kit-top-info span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kit-ticker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f1f5f9;
+}
+
+.kit-ticker-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.kit-top-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.kit-top-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kit-top-links a:hover {
+  color: #38bdf8;
+}
+
+/* ════════ MAIN NAVBAR ════════ */
+.kit-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.kit-navbar.scrolled {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.kit-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 78px;
+}
+
+.kit-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.kit-brand-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: #f8fafc;
+  padding: 2px;
+  border: 1px solid #e2e8f0;
+}
+
+.kit-brand-text h1 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.kit-brand-text span {
+  font-size: 11.5px;
+  color: #0d9488;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+}
+
+.kit-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kit-nav-link {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 6px 0;
+}
+
+.kit-nav-link:hover, .kit-nav-link.active {
+  color: #0d9488;
+}
+
+.kit-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #0d9488;
+  transition: width 0.2s ease;
+  border-radius: 2px;
+}
+
+.kit-nav-link:hover::after, .kit-nav-link.active::after {
+  width: 100%;
+}
+
+.kit-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.kit-btn-sm {
+  padding: 8px 16px;
+  font-size: 13.5px;
+  border-radius: 8px;
+}
+
+.kit-btn-lg {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.kit-btn-primary {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+}
+
+.kit-btn-primary:hover {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45);
+}
+
+.kit-btn-portal {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+
+.kit-btn-portal:hover {
+  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.35);
+}
+
+.kit-btn-secondary {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+.kit-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.kit-btn-outline-white {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.kit-btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+}
+
+.kit-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #1e293b;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* ════════ HERO SECTION ════════ */
+.kit-hero {
+  position: relative;
+  background: linear-gradient(135deg, #020617 0%, #0a192f 45%, #0f172a 100%);
+  color: #ffffff;
+  padding: 90px 0 120px 0;
+  overflow: hidden;
+}
+
+.kit-hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.25) 0%, rgba(13, 148, 136, 0) 70%);
+  top: -100px;
+  right: -50px;
+  pointer-events: none;
+}
+
+.kit-hero-glow-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, rgba(99, 102, 241, 0) 70%);
+  bottom: -150px;
+  left: -100px;
+  pointer-events: none;
+}
+
+.kit-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 56px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.kit-hero-left .kit-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #5eead4;
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  margin-bottom: 24px;
+}
+
+.kit-hero-title {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin-bottom: 22px;
+  color: #ffffff;
+}
+
+.kit-hero-title .gradient-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 50%, #facc15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kit-hero-desc {
+  font-size: 18px;
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin-bottom: 36px;
+  max-width: 620px;
+}
+
+.kit-hero-ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.kit-hero-trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.kit-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #94a3b8;
+}
+
+.kit-trust-item i {
+  color: #2dd4bf;
+}
+
+/* Hero Right Interactive Showcase Card */
+.kit-hero-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 30px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.kit-hero-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kit-card-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kit-card-avatar {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #0d9488 0%, #0369a1 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.kit-card-user-info h4 {
+  font-size: 15px;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+}
+
+.kit-card-user-info span {
+  font-size: 12px;
+  color: #2dd4bf;
+}
+
+.kit-hero-stat-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kit-stat-subcard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.kit-stat-subcard:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.kit-stat-subcard .val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kit-stat-subcard .lbl {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.kit-hero-notice {
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.2) 0%, rgba(2, 132, 199, 0.15) 100%);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kit-hero-notice i {
+  color: #5eead4;
+  flex-shrink: 0;
+}
+
+.kit-hero-notice p {
+  margin: 0;
+  font-size: 13px;
+  color: #e2e8f0;
+  line-height: 1.45;
+}
+
+/* ════════ HERO METRICS BAR ════════ */
+.kit-metrics-section {
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+.kit-metrics-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.kit-metric-item {
+  text-align: center;
+  position: relative;
+}
+
+.kit-metric-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background-color: #e2e8f0;
+}
+
+.kit-metric-number {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, #0f172a 0%, #0d9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kit-metric-label {
+  font-size: 12.5px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ════════ TIED-UP COMPANIES & RECRUITERS ════════ */
+.kit-companies-marquee-wrap {
+  overflow: hidden;
+  position: relative;
+  margin: 40px 0;
+  padding: 16px 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.kit-companies-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: scrollTrack 32s linear infinite;
+}
+
+.kit-companies-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollTrack {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.kit-company-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  padding: 14px 28px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.kit-company-pill:hover {
+  border-color: #0d9488;
+  box-shadow: 0 8px 24px rgba(13, 148, 136, 0.12);
+  transform: translateY(-2px);
+}
+
+.kit-company-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+/* MOU CoE Highlights Grid */
+.kit-coe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.kit-coe-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kit-coe-card:hover {
+  border-color: #0d9488;
+  box-shadow: 0 16px 36px rgba(13, 148, 136, 0.12);
+  transform: translateY(-4px);
+}
+
+.kit-coe-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.kit-coe-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.kit-coe-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.kit-coe-card p {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.kit-coe-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12.5px;
+  color: #334155;
+}
+
+.kit-coe-features li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.kit-coe-features li i {
+  color: #10b981;
+  font-size: 14px;
+}
+
+/* ════════ FACULTY SECTION ════════ */
+.kit-filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.kit-tab-btn {
+  padding: 9px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kit-tab-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.kit-tab-btn.active {
+  background: #0d9488;
+  color: #ffffff;
+  border-color: #0d9488;
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.25);
+}
+
+.kit-faculty-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.kit-faculty-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.kit-faculty-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  border-color: #cbd5e1;
+}
+
+.kit-faculty-img-wrap {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #e2e8f0;
+}
+
+.kit-faculty-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.kit-faculty-card:hover .kit-faculty-img {
+  transform: scale(1.05);
+}
+
+.kit-faculty-dept-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  backdrop-filter: blur(6px);
+  text-transform: uppercase;
+}
+
+.kit-faculty-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.kit-faculty-body h3 {
+  font-size: 17.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.kit-faculty-qual {
+  font-size: 12.5px;
+  color: #0d9488;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.kit-faculty-designation {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.kit-faculty-research {
+  font-size: 12.5px;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: 10px;
+  border-left: 3px solid #0d9488;
+}
+
+.kit-faculty-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.kit-faculty-footer a {
+  color: #0d9488;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ════════ EVENTS SECTION ════════ */
+.kit-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.kit-event-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.kit-event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+  border-color: #cbd5e1;
+}
+
+.kit-event-img-wrap {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kit-event-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.kit-event-card:hover .kit-event-img {
+  transform: scale(1.06);
+}
+
+.kit-event-date-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 8px 14px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.kit-event-date-badge .day {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+  display: block;
+}
+
+.kit-event-date-badge .mon {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0d9488;
+  text-transform: uppercase;
+}
+
+.kit-event-category {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.kit-event-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.kit-event-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12.5px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.kit-event-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.kit-event-body h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.kit-event-body p {
+  font-size: 13.5px;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.kit-event-footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ════════ ALUMNI SECTION ════════ */
+.kit-alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.kit-alumni-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.kit-alumni-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  border-color: #cbd5e1;
+}
+
+.kit-alumni-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.kit-alumni-photo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0d9488;
+}
+
+.kit-alumni-info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.kit-alumni-batch {
+  font-size: 12.5px;
+  color: #0d9488;
+  font-weight: 600;
+}
+
+.kit-alumni-role {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #334155;
+  margin-top: 2px;
+}
+
+.kit-alumni-company-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+.kit-alumni-quote {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.65;
+  font-style: italic;
+  position: relative;
+  margin-top: auto;
+  padding-left: 18px;
+  border-left: 3px solid #0d9488;
+}
+
+.kit-alumni-hub-box {
+  background: linear-gradient(135deg, #0a192f 0%, #0f172a 100%);
+  border-radius: 24px;
+  padding: 44px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.kit-alumni-hub-text h3 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.kit-alumni-hub-text p {
+  color: #cbd5e1;
+  font-size: 15px;
+  max-width: 620px;
+}
+
+/* ════════ GALLERY SECTION ════════ */
+.kit-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kit-gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 240px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.kit-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.kit-gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.kit-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.2) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.kit-gallery-item:hover .kit-gallery-overlay {
+  opacity: 1;
+}
+
+.kit-gallery-overlay h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.kit-gallery-overlay span {
+  font-size: 12px;
+  color: #5eead4;
+}
+
+/* ════════ LEGAL POLICIES & FOOTER ════════ */
+.kit-footer {
+  background: #020617;
+  color: #cbd5e1;
+  padding: 80px 0 0 0;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kit-footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+.kit-footer-col h3 {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.kit-footer-col h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background-color: #0d9488;
+}
+
+.kit-footer-about p {
+  color: #94a3b8;
+  font-size: 13.5px;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.kit-accred-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kit-accred-pill {
+  font-size: 11.5px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: #38bdf8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kit-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kit-footer-links li {
+  margin-bottom: 11px;
+}
+
+.kit-footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kit-footer-links a:hover {
+  color: #5eead4;
+  transform: translateX(3px);
+}
+
+.kit-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13.5px;
+  color: #94a3b8;
+}
+
+.kit-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.kit-contact-list li i {
+  color: #0d9488;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* Dedicated Legal Policies Grid in Footer */
+.kit-legal-policies-section {
+  background: rgba(15, 23, 42, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 44px 0;
+}
+
+.kit-legal-policies-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kit-legal-policies-header h4 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kit-legal-policies-header span {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.kit-legal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kit-legal-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.kit-legal-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #0d9488;
+  transform: translateY(-2px);
+}
+
+.kit-legal-card-icon {
+  font-size: 20px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.kit-legal-card-title {
+  color: #f1f5f9;
+  font-weight: 700;
+  font-size: 13.5px;
+  margin-bottom: 4px;
+}
+
+.kit-legal-card-desc {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.kit-footer-bottom {
+  padding: 24px 0;
+  font-size: 12.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.kit-social-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.kit-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.kit-social-btn:hover {
+  background: #0d9488;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ════════ INTERACTIVE MODALS (LEGAL, ADMISSION, EVENT, LIGHTBOX) ════════ */
+.kit-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.kit-modal-container {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 820px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+  animation: modalScaleUp 0.25s ease;
+}
+
+@keyframes modalScaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.kit-modal-header {
+  padding: 22px 28px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+}
+
+.kit-modal-header h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kit-modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kit-modal-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.kit-modal-body {
+  padding: 28px;
+  overflow-y: auto;
+  font-size: 14.5px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.kit-modal-footer {
+  padding: 18px 28px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+}
+
+/* Lightbox Specific */
+.kit-lightbox-img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Auth Modal Enhancement */
+.auth-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.08);
+  border: none;
+  color: #475569;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.auth-modal-close:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .kit-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .kit-metrics-card { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .kit-coe-grid { grid-template-columns: repeat(2, 1fr); }
+  .kit-faculty-grid { grid-template-columns: repeat(2, 1fr); }
+  .kit-events-grid { grid-template-columns: repeat(2, 1fr); }
+  .kit-alumni-grid { grid-template-columns: 1fr; }
+  .kit-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .kit-legal-grid { grid-template-columns: repeat(2, 1fr); }
+  .kit-footer-top { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+}
+
+@media (max-width: 768px) {
+  .kit-top-bar { display: none; }
+  .kit-nav-menu { display: none; }
+  .kit-mobile-toggle { display: block; }
+  .kit-hero-title { font-size: 36px; }
+  .kit-metrics-card { grid-template-columns: repeat(2, 1fr); padding: 24px 20px; }
+  .kit-metric-item::after { display: none !important; }
+  .kit-coe-grid { grid-template-columns: 1fr; }
+  .kit-faculty-grid { grid-template-columns: 1fr; }
+  .kit-events-grid { grid-template-columns: 1fr; }
+  .kit-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .kit-legal-grid { grid-template-columns: 1fr; }
+  .kit-footer-top { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 
 <body>
@@ -2899,8 +4429,1338 @@
   <!-- ════════════════════════════════════════
      AUTH OVERLAY — shown before login
 ════════════════════════════════════════ -->
-  <div id="authOverlay" style="display: none;">
-    <div class="auth-card">
+  
+<!-- ═══════════════════════════════════════════════════════════════
+     KARAVALI INSTITUTION OF TECHNOLOGY (KIT) — OFFICIAL LANDING PAGE
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="landingPage" style="display: block;">
+
+  <!-- 1. Top Institutional Ribbon -->
+  <div class="kit-top-bar">
+    <div class="kit-container">
+      <div class="kit-top-info">
+        <span><i data-lucide="award" class="icon-sm" style="color:#38bdf8;"></i> AICTE Approved | Affiliated to VTU Belagavi | NAAC 'A+' Accredited</span>
+        <span style="color:#64748b;">|</span>
+        <span><i data-lucide="hash" class="icon-sm" style="color:#facc15;"></i> VTU College Code: <strong>4KT</strong></span>
+      </div>
+
+      <div class="kit-ticker-wrap">
+        <div class="kit-ticker-dot"></div>
+        <span style="font-size:12.5px; font-weight:500;">
+          <strong>ADMISSIONS 2026-27 OPEN:</strong> B.E. (CSE, AI &amp; DS, ECE, ME, CV) &amp; M.Tech | TECHNOVA Hackathon Registrations Live!
+        </span>
+      </div>
+
+      <div class="kit-top-links">
+        <a href="tel:+918242223785"><i data-lucide="phone" class="icon-sm"></i> +91 824 2223785</a>
+        <a href="mailto:info@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> info@karavali.edu.in</a>
+        <a href="https://results.vtu.ac.in" target="_blank" rel="noopener"><i data-lucide="external-link" class="icon-sm"></i> VTU Results</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Main Sticky Navbar -->
+  <nav class="kit-navbar" id="kitNavbar">
+    <div class="kit-container kit-nav-inner">
+      <a href="#landingPage" class="kit-brand">
+        <img class="kit-brand-logo" src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT Logo" onerror="this.src='https://images.unsplash.com/photo-1592280771190-3e2e4d571952?w=100&q=80'">
+        <div class="kit-brand-text">
+          <h1>KARAVALI INSTITUTION OF TECHNOLOGY</h1>
+          <span>Autonomous Smart Campus • Estd. 1996 • Mangalore</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="kit-nav-menu">
+        <li><a href="#hero" class="kit-nav-link active">Home</a></li>
+        <li><a href="#companies" class="kit-nav-link">Recruiters &amp; MoUs</a></li>
+        <li><a href="#faculty" class="kit-nav-link">Faculty</a></li>
+        <li><a href="#events" class="kit-nav-link">Campus Events</a></li>
+        <li><a href="#alumni" class="kit-nav-link">Alumni</a></li>
+        <li><a href="#gallery" class="kit-nav-link">Gallery</a></li>
+        <li><a href="#policies" class="kit-nav-link">Legal Policies</a></li>
+      </ul>
+
+      <!-- Action Buttons -->
+      <div class="kit-nav-actions">
+        <button class="kit-btn kit-btn-sm kit-badge-gold" onclick="openAdmissionsModal()" style="cursor:pointer; border:1px solid rgba(245,158,11,0.4); text-transform:none;">
+          <i data-lucide="sparkles" class="icon-sm"></i> Admissions 2026
+        </button>
+
+        <button class="kit-btn kit-btn-sm kit-btn-portal" onclick="openAuthModal()" id="btnPortalNav" title="Access Student &amp; Faculty Attendance Portal">
+          <i data-lucide="log-in" class="icon-sm" style="color:#38bdf8;"></i> KIT SMART Portal
+        </button>
+
+        <button class="kit-mobile-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="kitMobileDrawer" style="display:none; background:#ffffff; border-top:1px solid #e2e8f0; padding:20px 24px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <a href="#hero" class="kit-nav-link" onclick="toggleMobileNav()">Home</a>
+        <a href="#companies" class="kit-nav-link" onclick="toggleMobileNav()">Tied-up Companies &amp; MoUs</a>
+        <a href="#faculty" class="kit-nav-link" onclick="toggleMobileNav()">Distinguished Faculty</a>
+        <a href="#events" class="kit-nav-link" onclick="toggleMobileNav()">Campus Events &amp; Hackathons</a>
+        <a href="#alumni" class="kit-nav-link" onclick="toggleMobileNav()">Global Alumni</a>
+        <a href="#gallery" class="kit-nav-link" onclick="toggleMobileNav()">Campus Gallery</a>
+        <a href="#policies" class="kit-nav-link" onclick="toggleMobileNav()">Legal Policies &amp; Governance</a>
+        <hr style="border:none; border-top:1px solid #f1f5f9; margin:4px 0;">
+        <button class="kit-btn kit-btn-primary" onclick="openAuthModal(); toggleMobileNav();" style="width:100%;">
+          <i data-lucide="log-in" class="icon-sm"></i> Access KIT SMART Portal
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO SECTION -->
+  <header class="kit-hero" id="hero">
+    <div class="kit-hero-glow"></div>
+    <div class="kit-hero-glow-2"></div>
+
+    <div class="kit-container">
+      <div class="kit-hero-grid">
+        <!-- Hero Left Content -->
+        <div class="kit-hero-left">
+          <div class="kit-badge">
+            <i data-lucide="shield-check" class="icon-sm"></i> NAAC 'A+' Accredited • VTU Affiliated • AICTE Approved
+          </div>
+
+          <h2 class="kit-hero-title">
+            Empowering Future <br>
+            <span class="gradient-text">Technologists &amp; Innovators</span>
+          </h2>
+
+          <p class="kit-hero-desc">
+            Karavali Institution of Technology (KIT), Mangalore is a premier engineering college dedicated to academic rigor, cutting-edge AI and robotics laboratories, interdisciplinary research, and proven industry placements since 1996.
+          </p>
+
+          <div class="kit-hero-ctas">
+            <button class="kit-btn kit-btn-lg kit-btn-primary" onclick="openAuthModal()">
+              <i data-lucide="arrow-right-circle" class="icon-md"></i> Enter KIT SMART Portal
+            </button>
+            <button class="kit-btn kit-btn-lg kit-btn-outline-white" onclick="openAdmissionsModal()">
+              <i data-lucide="file-text" class="icon-md"></i> Admissions Enquiry 2026
+            </button>
+            <button class="kit-btn kit-btn-lg kit-btn-outline-white" onclick="openVirtualTourModal()">
+              <i data-lucide="play-circle" class="icon-md"></i> Campus Tour
+            </button>
+          </div>
+
+          <div class="kit-hero-trust">
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>VTU Belagavi Affiliated</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>AICTE New Delhi Approved</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>ISO 9001:2015 Certified</span>
+            </div>
+            <div class="kit-trust-item">
+              <i data-lucide="check-circle-2"></i>
+              <span>180+ Recruiter MoUs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Interactive Card -->
+        <div class="kit-hero-right">
+          <div class="kit-hero-card">
+            <div class="kit-hero-card-header">
+              <div class="kit-card-user">
+                <div class="kit-card-avatar">KIT</div>
+                <div class="kit-card-user-info">
+                  <h4>KIT SMART CAMPUS</h4>
+                  <span>Next-Gen Academic Cloud</span>
+                </div>
+              </div>
+              <span class="kit-badge kit-badge-primary" style="font-size:11px; padding:3px 8px;">
+                <span class="kit-ticker-dot" style="width:6px; height:6px;"></span> Active Portal
+              </span>
+            </div>
+
+            <div class="kit-hero-stat-box">
+              <div class="kit-stat-subcard">
+                <div class="val">₹44.5 <span style="font-size:15px; font-weight:600; color:#2dd4bf;">LPA</span></div>
+                <div class="lbl">Highest Global CTC Package</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">98.4%</div>
+                <div class="lbl">Campus Placement Rate</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">1,250+</div>
+                <div class="lbl">Placement Offers (2025-26)</div>
+              </div>
+              <div class="kit-stat-subcard">
+                <div class="val">12 <span style="font-size:15px; font-weight:600; color:#facc15;">CoEs</span></div>
+                <div class="lbl">Corporate Sponsored Labs</div>
+              </div>
+            </div>
+
+            <div class="kit-hero-notice">
+              <i data-lucide="cpu" class="icon-md"></i>
+              <p>
+                <strong>Industry 4.0 Labs:</strong> Partnered with Bosch Automotive, Cisco Academy, and Intel Embedded Computing to offer certified micro-degrees.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4. KEY METRICS BAR -->
+  <section class="kit-metrics-section">
+    <div class="kit-container">
+      <div class="kit-metrics-card">
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">28+</div>
+          <div class="kit-metric-label">Years of Excellence</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">15,000+</div>
+          <div class="kit-metric-label">Global Alumni</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">98.4%</div>
+          <div class="kit-metric-label">Placement Record</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">₹44.5 L</div>
+          <div class="kit-metric-label">Highest Package</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">180+</div>
+          <div class="kit-metric-label">Corporate MoUs</div>
+        </div>
+        <div class="kit-metric-item">
+          <div class="kit-metric-number">45+</div>
+          <div class="kit-metric-label">Patents &amp; Research</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TIED-UP COMPANIES & RECRUITERS SECTION -->
+  <section class="kit-section" id="companies">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="briefcase" class="icon-sm"></i> Industry Partnerships &amp; Placements</span>
+        <h2 class="kit-section-title">Corporate Tie-ups, MoUs &amp; Top Recruiters</h2>
+        <p class="kit-section-subtitle">
+          Our specialized Centers of Excellence (CoE) and curriculum alignment with Fortune 500 multinationals give KIT graduates a definitive competitive edge in technical campus recruitments.
+        </p>
+      </div>
+
+      <!-- Strategic MoUs & Centers of Excellence -->
+      <div class="kit-coe-grid">
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Embedded &amp; Automotive</span>
+            <i data-lucide="cpu" style="color:#0d9488;"></i>
+          </div>
+          <h3>Bosch Automotive IoT Center of Excellence</h3>
+          <p>Jointly established with Robert Bosch to provide direct hands-on training on CAN bus architectures, ADAS hardware, and embedded microcontrollers.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> Certified Industrial Testbenches</li>
+            <li><i data-lucide="check"></i> Pre-placement Internship Fast-track</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Cloud &amp; Networking</span>
+            <i data-lucide="network" style="color:#0284c7;"></i>
+          </div>
+          <h3>Cisco Networking &amp; Cyber Security Academy</h3>
+          <p>Official Cisco certified academy offering student credentials in CCNA, CyberOps, Cloud Infrastructure, and Enterprise Routing architectures.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> 100% Subsidized Global Certifications</li>
+            <li><i data-lucide="check"></i> Dedicated Routing &amp; Switching Lab</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Semiconductor &amp; AI</span>
+            <i data-lucide="microchip" style="color:#6366f1;"></i>
+          </div>
+          <h3>Intel FPGA &amp; Edge Intelligence Lab</h3>
+          <p>Equipped with Intel FPGA Quartus Prime toolchains, RISC-V development boards, and edge computing vision processing units for hardware research.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> Edge AI Prototype Incubation</li>
+            <li><i data-lucide="check"></i> VLSI &amp; ASIC System Design</li>
+          </ul>
+        </div>
+
+        <div class="kit-coe-card">
+          <div class="kit-coe-top">
+            <span class="kit-coe-badge">Enterprise Cloud</span>
+            <i data-lucide="cloud" style="color:#f59e0b;"></i>
+          </div>
+          <h3>AWS Academy &amp; Oracle WDP</h3>
+          <p>Direct institutional tie-up providing free AWS Cloud credits, hands-on DevOps pipelines, serverless architecture training, and database mastery.</p>
+          <ul class="kit-coe-features">
+            <li><i data-lucide="check"></i> AWS Certified Cloud Practitioner</li>
+            <li><i data-lucide="check"></i> Oracle Database Administrator Track</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Infinite Logo Marquee of Top Tied-up Recruiters -->
+      <div style="margin-top:60px; text-align:center;">
+        <h4 style="font-size:15px; color:#64748b; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:20px;">
+          Trusted by 180+ Global Technology Giants &amp; Core Employers
+        </h4>
+      </div>
+
+      <div class="kit-companies-marquee-wrap">
+        <div class="kit-companies-track">
+          <!-- Company Pills (Set 1) -->
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea4335; color:#fff;">G</span> Google Cloud</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00a4ef; color:#fff;">M</span> Microsoft</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ff9900; color:#fff;">A</span> Amazon AWS</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#007cc3; color:#fff;">I</span> Infosys</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#003366; color:#fff;">T</span> Tata Consultancy (TCS)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea1d25; color:#fff;">B</span> Robert Bosch</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00539b; color:#fff;">L</span> Larsen &amp; Toubro (L&amp;T)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#0071c5; color:#fff;">I</span> Intel Corporation</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#049fd9; color:#fff;">C</span> Cisco Systems</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#133370; color:#fff;">W</span> Wipro Technologies</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#153d8a; color:#fff;">C</span> Cognizant</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#e41b13; color:#fff;">T</span> Tech Mahindra</div>
+
+          <!-- Company Pills (Duplicate for Seamless Loop) -->
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea4335; color:#fff;">G</span> Google Cloud</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00a4ef; color:#fff;">M</span> Microsoft</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ff9900; color:#fff;">A</span> Amazon AWS</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#007cc3; color:#fff;">I</span> Infosys</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#003366; color:#fff;">T</span> Tata Consultancy (TCS)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#ea1d25; color:#fff;">B</span> Robert Bosch</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#00539b; color:#fff;">L</span> Larsen &amp; Toubro (L&amp;T)</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#0071c5; color:#fff;">I</span> Intel Corporation</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#049fd9; color:#fff;">C</span> Cisco Systems</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#133370; color:#fff;">W</span> Wipro Technologies</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#153d8a; color:#fff;">C</span> Cognizant</div>
+          <div class="kit-company-pill"><span class="kit-company-icon" style="background:#e41b13; color:#fff;">T</span> Tech Mahindra</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FACULTY SECTION -->
+  <section class="kit-section kit-section-alt" id="faculty">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="graduation-cap" class="icon-sm"></i> Academic Leadership &amp; Research</span>
+        <h2 class="kit-section-title">Distinguished Faculty &amp; Mentors</h2>
+        <p class="kit-section-subtitle">
+          Learn from eminent doctorates and researchers from premier institutions like IITs, IISc, NITs, and VTU with over 150+ published papers, patents, and government funded grants.
+        </p>
+      </div>
+
+      <!-- Department Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterFaculty('all', this)">All Departments</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('leadership', this)">Leadership &amp; Deans</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('cse', this)">Computer Science (CSE)</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('aids', this)">AI &amp; Data Science</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('ece', this)">Electronics &amp; Comm (ECE)</button>
+        <button class="kit-tab-btn" onclick="filterFaculty('mech', this)">Mechanical &amp; Civil</button>
+      </div>
+
+      <!-- Faculty Grid -->
+      <div class="kit-faculty-grid" id="facultyGrid">
+
+        <!-- Faculty 1 -->
+        <div class="kit-faculty-card" data-dept="leadership">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80" alt="Dr. B. R. Hegde">
+            <span class="kit-faculty-dept-badge">Principal &amp; Director</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. B. R. Hegde</h3>
+            <div class="kit-faculty-qual">Ph.D. (IIT Madras), M.Tech (NITK)</div>
+            <div class="kit-faculty-designation">Principal &amp; Professor of Computer Science</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Wireless Ad-hoc Networks, High Performance Distributed Computing &amp; Green Routing Protocols.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 48 Papers • 4 Patents</span>
+              <a href="mailto:principal@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 2 -->
+        <div class="kit-faculty-card" data-dept="cse">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Dr. Shailesh Kumar">
+            <span class="kit-faculty-dept-badge">HOD - Computer Science</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Shailesh Kumar</h3>
+            <div class="kit-faculty-qual">Ph.D. (NITK Surathkal), M.Tech (VTU)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of CSE</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Deep Neural Networks, Scalable Microservices, Cloud Security &amp; Distributed Ledger Systems.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 34 Papers • 2 Books</span>
+              <a href="mailto:hod.cse@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 3 -->
+        <div class="kit-faculty-card" data-dept="leadership">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80" alt="Dr. Priya Shenoy">
+            <span class="kit-faculty-dept-badge">Dean (R&amp;D)</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Priya Shenoy</h3>
+            <div class="kit-faculty-qual">Ph.D. (IISc Bangalore), Post-Doc (NUS)</div>
+            <div class="kit-faculty-designation">Professor &amp; Dean (Research &amp; Consultancy)</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Computer Vision, Medical Diagnostic Imaging, Edge AI &amp; Autonomous Robotic Navigation.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="award" class="icon-sm"></i> VTU Best Researcher 2024</span>
+              <a href="mailto:dean.rnd@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 4 -->
+        <div class="kit-faculty-card" data-dept="ece">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80" alt="Dr. Anand V. Shetty">
+            <span class="kit-faculty-dept-badge">HOD - Electronics</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Anand V. Shetty</h3>
+            <div class="kit-faculty-qual">Ph.D. (VTU), M.Tech (Manipal)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of ECE</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Low-Power VLSI Architecture, FPGA Accelerators, Embedded IoT &amp; Optical Fiber Networks.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 29 Papers • 3 Patents</span>
+              <a href="mailto:hod.ece@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 5 -->
+        <div class="kit-faculty-card" data-dept="aids">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80" alt="Dr. Meenakshi Rao">
+            <span class="kit-faculty-dept-badge">AI &amp; Data Science</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Meenakshi Rao</h3>
+            <div class="kit-faculty-qual">Ph.D. (MAHE), M.Tech (NITK)</div>
+            <div class="kit-faculty-designation">Associate Professor, AI &amp; DS Dept.</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Natural Language Processing, Transformer LLMs, Predictive Health Analytics &amp; Algorithmic Ethics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 21 Scopus Papers</span>
+              <a href="mailto:meenakshi.ai@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 6 -->
+        <div class="kit-faculty-card" data-dept="mech">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&q=80" alt="Dr. Raghavendra Kamath">
+            <span class="kit-faculty-dept-badge">HOD - Mechanical</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Raghavendra Kamath</h3>
+            <div class="kit-faculty-qual">Ph.D. (IIT Bombay), M.Tech (IIT Madras)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of Mechanical</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Additive Manufacturing (3D Printing), Smart Biomaterials, Thermal CFD &amp; Industrial Robotics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 32 Papers • 3 Patents</span>
+              <a href="mailto:hod.mech@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 7 -->
+        <div class="kit-faculty-card" data-dept="mech">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=80" alt="Dr. Vinod Acharya">
+            <span class="kit-faculty-dept-badge">HOD - Civil</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Dr. Vinod Acharya</h3>
+            <div class="kit-faculty-qual">Ph.D. (NITK Surathkal)</div>
+            <div class="kit-faculty-designation">Professor &amp; Head, Dept. of Civil Engineering</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Earthquake-Resistant Structural Design, Sustainable Green Concrete &amp; Smart Geo-informatics.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="book-open" class="icon-sm"></i> 26 Papers • Govt Consultant</span>
+              <a href="mailto:hod.civil@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty 8 -->
+        <div class="kit-faculty-card" data-dept="cse">
+          <div class="kit-faculty-img-wrap">
+            <img class="kit-faculty-img" src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=500&q=80" alt="Prof. Radhika Pai">
+            <span class="kit-faculty-dept-badge">Innovation Hub Lead</span>
+          </div>
+          <div class="kit-faculty-body">
+            <h3>Prof. Radhika Pai</h3>
+            <div class="kit-faculty-qual">M.Tech (Gold Medalist), (Ph.D.)</div>
+            <div class="kit-faculty-designation">Assistant Professor, CSE &amp; IIC Convener</div>
+            <div class="kit-faculty-research">
+              <strong>Research:</strong> Cloud Native Cyber Defense, Blockchain Consensus Protocols &amp; Full Stack System Architectures.
+            </div>
+            <div class="kit-faculty-footer">
+              <span><i data-lucide="trophy" class="icon-sm"></i> Hackathon Mentor (8 Wins)</span>
+              <a href="mailto:radhika.pai@karavali.edu.in"><i data-lucide="mail" class="icon-sm"></i> Contact</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CAMPUS EVENTS SECTION -->
+  <section class="kit-section" id="events">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-gold"><i data-lucide="calendar" class="icon-sm"></i> Campus Life &amp; Hackathons</span>
+        <h2 class="kit-section-title">Events, Symposiums &amp; Cultural Fests</h2>
+        <p class="kit-section-subtitle">
+          From 36-hour national hackathons to IEEE international conferences and coastal cultural extravaganzas, our campus buzzes with year-round energy.
+        </p>
+      </div>
+
+      <!-- Events Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterEvents('all', this)">All Events</button>
+        <button class="kit-tab-btn" onclick="filterEvents('tech', this)">Technical &amp; Hackathons</button>
+        <button class="kit-tab-btn" onclick="filterEvents('conf', this)">Conferences &amp; Seminars</button>
+        <button class="kit-tab-btn" onclick="filterEvents('cultural', this)">Cultural &amp; Sports</button>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="kit-events-grid" id="eventsGrid">
+
+        <!-- Event 1: TECHNOVA 2026 -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="TECHNOVA 2026">
+            <div class="kit-event-date-badge">
+              <span class="day">12</span>
+              <span class="mon">DEC</span>
+            </div>
+            <span class="kit-event-category">National Hackathon</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 36 Hours</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Innovation Arena</span>
+            </div>
+            <h3>TECHNOVA 2026: National Level 36-Hour Hackathon</h3>
+            <p>India's premier student innovation marathon with over 400 competing teams across AI for Healthcare, Clean Energy, and Rural FinTech. Total cash prize pool of ₹2,50,000 + Angel Incubation.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0d9488;">Prize Pool: ₹2.5 Lakhs</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('TECHNOVA 2026', '36-Hour National Hackathon', 'December 12-14, 2026', 'KIT Innovation Arena', '₹2,50,000')">
+                Register Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2: IEEE Conference -->
+        <div class="kit-event-card" data-cat="conf">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="ICASC-2027">
+            <div class="kit-event-date-badge">
+              <span class="day">22</span>
+              <span class="mon">JAN</span>
+            </div>
+            <span class="kit-event-category">IEEE Conference</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 2 Days</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Central Auditorium</span>
+            </div>
+            <h3>International Conference on AI &amp; Sustainable Computing</h3>
+            <p>Indexed in IEEE Xplore. Keynote addresses by world-renowned researchers from IISc Bangalore and MIT. 120+ peer-reviewed papers on Edge AI, Quantum Computing, and Smart Grids.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0284c7;">IEEE Xplore Indexed</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('ICASC-2027 IEEE Conference', 'International Technical Conference', 'January 22-23, 2027', 'Central Auditorium', 'Best Paper Award ₹50,000')">
+                View &amp; Register
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3: Bosch Masterclass -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" alt="Bosch Workshop">
+            <div class="kit-event-date-badge">
+              <span class="day">05</span>
+              <span class="mon">DEC</span>
+            </div>
+            <span class="kit-event-category">Industry Workshop</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> Hands-on Lab</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Bosch CoE Lab</span>
+            </div>
+            <h3>Bosch Electric Mobility &amp; AUTOSAR Workshop</h3>
+            <p>Intensive certification masterclass conducted by Senior Lead Architects from Robert Bosch on CAN/LIN bus vehicle diagnostic networks, Battery Management Systems, and Motor Controllers.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#f59e0b;">Bosch Certificate</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('Bosch Electric Mobility Masterclass', 'Automotive Hands-on Workshop', 'December 05, 2026', 'Bosch CoE Lab', 'Certificate of Completion')">
+                Enroll Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 4: KARAVALI UTSAV -->
+        <div class="kit-event-card" data-cat="cultural">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Karavali Utsav">
+            <div class="kit-event-date-badge">
+              <span class="day">18</span>
+              <span class="mon">FEB</span>
+            </div>
+            <span class="kit-event-category">Annual Cultural Fest</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 3 Days &amp; Nights</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Open Amphitheater</span>
+            </div>
+            <h3>KARAVALI UTSAV 2027: Cultural &amp; Youth Extravaganza</h3>
+            <p>Our grand coastal cultural fest celebrating Yakshagana, classical Carnatic concerts, battle of the rock bands, fashion pageants, food carnivals, and high-octane Bollywood celebrity pro-nite.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#e11d48;">Celebrity Pro-Nite</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('KARAVALI UTSAV 2027', 'Annual Inter-Collegiate Cultural Fest', 'February 18-20, 2027', 'Open Air Amphitheater', 'Fest Passes Available')">
+                Event Pass
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 5: VTU Cricket Tournament -->
+        <div class="kit-event-card" data-cat="cultural">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&q=80" alt="Sports Meet">
+            <div class="kit-event-date-badge">
+              <span class="day">28</span>
+              <span class="mon">NOV</span>
+            </div>
+            <span class="kit-event-category">VTU Sports Tournament</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 5 Days</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> KIT Sports Complex</span>
+            </div>
+            <h3>VTU Inter-Collegiate Cricket &amp; Badminton Cup</h3>
+            <p>Hosting 32 premier engineering colleges across Karnataka for the prestigious VTU zonal athletic championship at our floodlit cricket oval, turf badminton courts, and basketball arena.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#10b981;">Zonal Championship</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('VTU Inter-Collegiate Sports Cup', 'Zonal Athletic &amp; Cricket Tournament', 'Nov 28 - Dec 02, 2026', 'KIT Sports Arena', 'Championship Trophy')">
+                View Fixtures
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 6: Job Fair 2027 -->
+        <div class="kit-event-card" data-cat="tech">
+          <div class="kit-event-img-wrap">
+            <img class="kit-event-img" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Mega Job Fair">
+            <div class="kit-event-date-badge">
+              <span class="day">10</span>
+              <span class="mon">JAN</span>
+            </div>
+            <span class="kit-event-category">Campus Placement Drive</span>
+          </div>
+          <div class="kit-event-body">
+            <div class="kit-event-meta">
+              <span><i data-lucide="clock" class="icon-sm"></i> 1 Full Day</span>
+              <span><i data-lucide="map-pin" class="icon-sm"></i> Academic Block 3</span>
+            </div>
+            <h3>Mega Career Expo &amp; On-Spot Hiring Fair 2027</h3>
+            <p>Over 60+ tier-1 IT, core engineering, and startup recruiters conducting face-to-face interviews, coding assessments, and offering immediate letter-of-intents for final year students.</p>
+            <div class="kit-event-footer">
+              <span style="font-weight:700; color:#0284c7;">60+ Recruiters</span>
+              <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="openEventModal('Annual Mega Job Fair 2027', 'Campus Placement Drive &amp; Career Expo', 'January 10, 2027', 'Academic Block 3 &amp; Placement Cell', 'Spot Offer Letters')">
+                Student Slot
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ALUMNI SECTION -->
+  <section class="kit-section kit-section-alt" id="alumni">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="users" class="icon-sm"></i> Global Legacy &amp; Impact</span>
+        <h2 class="kit-section-title">Our Illustrious Alumni</h2>
+        <p class="kit-section-subtitle">
+          Over 15,000+ graduates across 30+ countries are driving breakthroughs at top tech multinationals, authoring groundbreaking research, and establishing venture-backed unicorns.
+        </p>
+      </div>
+
+      <!-- Alumni Cards Grid -->
+      <div class="kit-alumni-grid">
+
+        <!-- Alumni 1 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Rohan Mendonca">
+            <div class="kit-alumni-info">
+              <h3>Rohan Mendonca</h3>
+              <div class="kit-alumni-batch">Class of 2015 • B.E. Computer Science</div>
+              <div class="kit-alumni-role">Senior Staff Software Engineer</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="building-2" class="icon-sm" style="color:#4285f4;"></i> Google Cloud, Mountain View, CA
+          </div>
+          <p class="kit-alumni-quote">
+            "The rigorous data structures labs, algorithms mentoring, and late-night hackathons at KIT gave me the engineering resilience that powers my daily work on planetary-scale Google Cloud infrastructure."
+          </p>
+        </div>
+
+        <!-- Alumni 2 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt="Sneha K. Rao">
+            <div class="kit-alumni-info">
+              <h3>Sneha K. Rao</h3>
+              <div class="kit-alumni-batch">Class of 2017 • B.E. Electronics &amp; Comm</div>
+              <div class="kit-alumni-role">Principal Hardware Systems Architect</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="cpu" class="icon-sm" style="color:#0071c5;"></i> Intel Labs, Bangalore
+          </div>
+          <p class="kit-alumni-quote">
+            "Hands-on exposure to VLSI design suites and FPGA emulation boards in our ECE department was ahead of its time. It formed the bedrock of my career in next-generation silicon chip architecture."
+          </p>
+        </div>
+
+        <!-- Alumni 3 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Karthik Poojary">
+            <div class="kit-alumni-info">
+              <h3>Karthik Poojary</h3>
+              <div class="kit-alumni-batch">Class of 2018 • B.E. Mechanical Engineering</div>
+              <div class="kit-alumni-role">Autonomous Systems Perception Lead</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="car" class="icon-sm" style="color:#e82127;"></i> Tesla, Austin, Texas
+          </div>
+          <p class="kit-alumni-quote">
+            "Building our student SAE formula racing vehicle from scratch in the KIT mechanical workshops taught me how to bridge mechanical thermodynamics with modern autonomous perception software."
+          </p>
+        </div>
+
+        <!-- Alumni 4 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Ananya Bhat">
+            <div class="kit-alumni-info">
+              <h3>Ananya Bhat</h3>
+              <div class="kit-alumni-batch">Class of 2019 • B.E. Information Science</div>
+              <div class="kit-alumni-role">Founder &amp; CEO (Forbes 30 Under 30)</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="zap" class="icon-sm" style="color:#f59e0b;"></i> FinEdge AI, Singapore &amp; Bengaluru
+          </div>
+          <p class="kit-alumni-quote">
+            "The incubation cell at KIT granted us seed mentoring and legal incorporation support when we were just 6th-semester undergrads. That faculty belief transformed our prototype into a $40M enterprise."
+          </p>
+        </div>
+
+        <!-- Alumni 5 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt="Vikramaditya Hegde">
+            <div class="kit-alumni-info">
+              <h3>Vikramaditya Hegde</h3>
+              <div class="kit-alumni-batch">Class of 2016 • B.E. Civil Engineering</div>
+              <div class="kit-alumni-role">Deputy Project Director (Mega Works)</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="hard-hat" class="icon-sm" style="color:#00539b;"></i> Larsen &amp; Toubro (L&amp;T)
+          </div>
+          <p class="kit-alumni-quote">
+            "Managing multi-thousand crore coastal expressway and metro projects requires uncompromised structural precision and ethical standards — qualities deeply rooted during my engineering days at KIT."
+          </p>
+        </div>
+
+        <!-- Alumni 6 -->
+        <div class="kit-alumni-card">
+          <div class="kit-alumni-header">
+            <img class="kit-alumni-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Dr. Divya Kamath">
+            <div class="kit-alumni-info">
+              <h3>Dr. Divya Kamath</h3>
+              <div class="kit-alumni-batch">Class of 2014 • B.E. Computer Science</div>
+              <div class="kit-alumni-role">Research Scientist, Deep Learning</div>
+            </div>
+          </div>
+          <div class="kit-alumni-company-tag">
+            <i data-lucide="dna" class="icon-sm" style="color:#10b981;"></i> European Molecular Biology Lab (EMBL)
+          </div>
+          <p class="kit-alumni-quote">
+            "KIT taught us how to formulate bold scientific hypotheses and validate them computationally. That spirit propelled my doctoral research and postdoctoral computational biology work in Heidelberg."
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Alumni Global Association Banner -->
+      <div class="kit-alumni-hub-box">
+        <div class="kit-alumni-hub-text">
+          <h3>Join the KIT Global Alumni Association</h3>
+          <p>Reconnect with your batchmates, mentor current engineering students, offer corporate internships, and participate in our worldwide alumni chapters in US, UK, Singapore, Dubai, and Bengaluru.</p>
+        </div>
+        <button class="kit-btn kit-btn-lg kit-btn-primary" onclick="openAlumniModal()">
+          <i data-lucide="user-plus" class="icon-md"></i> Join Alumni Network
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CAMPUS GALLERY SECTION -->
+  <section class="kit-section" id="gallery">
+    <div class="kit-container">
+      <div class="kit-section-header">
+        <span class="kit-badge kit-badge-primary"><i data-lucide="camera" class="icon-sm"></i> Campus Infrastructure &amp; Life</span>
+        <h2 class="kit-section-title">Life @ KIT — Campus Gallery</h2>
+        <p class="kit-section-subtitle">
+          Explore our lush 35-acre Wi-Fi enabled campus in Mangalore featuring high-tech computing labs, smart amphitheaters, modern sports complexes, and vibrant green lawns.
+        </p>
+      </div>
+
+      <!-- Gallery Filter Tabs -->
+      <div class="kit-filter-tabs">
+        <button class="kit-tab-btn active" onclick="filterGallery('all', this)">All Highlights</button>
+        <button class="kit-tab-btn" onclick="filterGallery('labs', this)">Advanced Labs &amp; CoEs</button>
+        <button class="kit-tab-btn" onclick="filterGallery('campus', this)">Campus &amp; Greenery</button>
+        <button class="kit-tab-btn" onclick="filterGallery('academics', this)">Smart Classrooms &amp; Library</button>
+        <button class="kit-tab-btn" onclick="filterGallery('sports', this)">Sports &amp; Recreation</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="kit-gallery-grid" id="galleryGrid">
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=1200&q=80', 'Advanced Robotics &amp; AI Research Hub', 'Students programming industrial multi-axis robotic arms and edge computing controllers.')">
+          <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=600&q=80" alt="Robotics Lab">
+          <div class="kit-gallery-overlay">
+            <h4>Robotics &amp; AI Research Hub</h4>
+            <span>Advanced Research Lab</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1200&q=80', 'Central Digital Library', 'Over 50,000+ volumes, 100+ IEEE journals, and 24/7 digital research terminals.')">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&q=80" alt="Central Library">
+          <div class="kit-gallery-overlay">
+            <h4>Central Digital Library</h4>
+            <span>50,000+ Academic Volumes</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1562774053-701939374585?w=1200&q=80', 'Main Administrative &amp; Academic Block', 'Iconic red brick architecture amidst lush coastal Mangaluru flora.')">
+          <img src="https://images.unsplash.com/photo-1562774053-701939374585?w=600&q=80" alt="Main Building">
+          <div class="kit-gallery-overlay">
+            <h4>Main Academic Block</h4>
+            <span>Lush 35-Acre Campus</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80', 'High-Performance Cloud Computing Cluster', 'Equipped with dual Xeon workstations, GPU accelerators, and 10Gbps campus fiber.')">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80" alt="Cloud Lab">
+          <div class="kit-gallery-overlay">
+            <h4>High-Performance Computing Lab</h4>
+            <span>GPU Accelerated Clusters</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1577495508048-b635879837f1?w=1200&q=80', 'Sir M. Visvesvaraya Central Auditorium', '800-seater air-conditioned acoustic hall for international conventions.')">
+          <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?w=600&q=80" alt="Auditorium">
+          <div class="kit-gallery-overlay">
+            <h4>Sir M.V. Central Auditorium</h4>
+            <span>800-Seater Acoustic Hall</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="sports" onclick="openLightbox('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80', 'Indoor Gymnasium &amp; Fitness Complex', 'State-of-the-art cardiovascular and strength training equipment for athletes.')">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80" alt="Gymnasium">
+          <div class="kit-gallery-overlay">
+            <h4>Indoor Fitness Complex</h4>
+            <span>Modern Sports Facilities</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=80', 'Bosch Automotive Electronics CoE', 'Industrial CAN bus testbenches, ECU diagnostics, and electronic mobility stations.')">
+          <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80" alt="Bosch Lab">
+          <div class="kit-gallery-overlay">
+            <h4>Bosch Automotive Center</h4>
+            <span>CoE Industrial Testbenches</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="academics" onclick="openLightbox('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&q=80', 'Smart Interactive Amphitheater Classrooms', 'Equipped with dual 4K touch displays, lecture capture systems, and ergonomic seating.')">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80" alt="Smart Classroom">
+          <div class="kit-gallery-overlay">
+            <h4>Smart Lecture Theaters</h4>
+            <span>Lecture Capture Enabled</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="sports" onclick="openLightbox('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1200&q=80', 'Floodlit Athletic Oval &amp; Cricket Stadium', 'Hosting VTU regional tournaments, athletics meets, and evening sports leagues.')">
+          <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&q=80" alt="Sports Oval">
+          <div class="kit-gallery-overlay">
+            <h4>Floodlit Sports Oval</h4>
+            <span>VTU Zonal Tournament Host</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80', 'Student Innovation &amp; Cafeteria Plaza', 'Vibrant open-air quadrangle for student club meetings and coastal cuisine.')">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=80" alt="Student Plaza">
+          <div class="kit-gallery-overlay">
+            <h4>Innovation &amp; Food Plaza</h4>
+            <span>Vibrant Student Life</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="labs" onclick="openLightbox('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80', 'TECHNOVA 36-Hour Hackathon Arena', 'Students hacking continuous solutions through the night with mentors.')">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=80" alt="Hackathon Arena">
+          <div class="kit-gallery-overlay">
+            <h4>Hackathon Innovation Arena</h4>
+            <span>TECHNOVA 2026 Venue</span>
+          </div>
+        </div>
+
+        <div class="kit-gallery-item" data-cat="campus" onclick="openLightbox('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&q=80', 'Annual Karavali Cultural Night', 'Electrifying student performances and coastal Yakshagana traditions under the stars.')">
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Cultural Fest">
+          <div class="kit-gallery-overlay">
+            <h4>Karavali Cultural Utsav</h4>
+            <span>Annual Fest &amp; Pro-Nite</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. COMPREHENSIVE FOOTER WITH FULLY LEGAL POLICIES -->
+  <footer class="kit-footer" id="policies">
+    <div class="kit-container">
+
+      <!-- Footer Top Columns -->
+      <div class="kit-footer-top">
+
+        <!-- Col 1: About Institution -->
+        <div class="kit-footer-col kit-footer-about">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <img src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT" style="width:40px; height:40px; border-radius:8px; background:#fff; padding:2px;" onerror="this.style.display='none'">
+            <div>
+              <h3 style="margin:0; font-size:16px; padding:0; border:none;">KARAVALI INSTITUTION OF TECHNOLOGY</h3>
+              <span style="font-size:11px; color:#38bdf8; font-weight:600; text-transform:uppercase;">Mangalore, Karnataka</span>
+            </div>
+          </div>
+          <p>
+            An autonomous center of technical excellence approved by AICTE, New Delhi, affiliated to Visvesvaraya Technological University (VTU), Belagavi, and accredited with NAAC 'A+' Grade. Committed to value-based engineering education since 1996.
+          </p>
+          <div class="kit-accred-badges">
+            <span class="kit-accred-pill">AICTE Approved</span>
+            <span class="kit-accred-pill">VTU Affiliated (4KT)</span>
+            <span class="kit-accred-pill">NAAC 'A+' Grade</span>
+            <span class="kit-accred-pill">ISO 9001:2015</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Academic Programs -->
+        <div class="kit-footer-col">
+          <h3>Academic Programs</h3>
+          <ul class="kit-footer-links">
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Computer Science (CSE)</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Artificial Intelligence &amp; DS</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Electronics &amp; Comm (ECE)</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Mechanical Engineering</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> B.E. Civil Engineering</a></li>
+            <li><a href="#hero" onclick="openAdmissionsModal()"><i data-lucide="chevron-right" class="icon-sm"></i> M.Tech &amp; Ph.D. Research Centers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Campus & Student Services -->
+        <div class="kit-footer-col">
+          <h3>Student &amp; Campus Services</h3>
+          <ul class="kit-footer-links">
+            <li><a href="#hero" onclick="openAuthModal()"><i data-lucide="chevron-right" class="icon-sm"></i> KIT SMART Attendance Portal</a></li>
+            <li><a href="https://results.vtu.ac.in" target="_blank" rel="noopener"><i data-lucide="external-link" class="icon-sm"></i> VTU Semester Results &amp; SGPA</a></li>
+            <li><a href="#companies"><i data-lucide="chevron-right" class="icon-sm"></i> Training &amp; Placement Cell</a></li>
+            <li><a href="#events"><i data-lucide="chevron-right" class="icon-sm"></i> TECHNOVA Hackathon Portal</a></li>
+            <li><a href="#alumni"><i data-lucide="chevron-right" class="icon-sm"></i> Global Alumni Association</a></li>
+            <li><a href="#gallery"><i data-lucide="chevron-right" class="icon-sm"></i> Central Digital Library OPAC</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Campus Contact & Helplines -->
+        <div class="kit-footer-col">
+          <h3>Contact Campus</h3>
+          <ul class="kit-contact-list">
+            <li>
+              <i data-lucide="map-pin"></i>
+              <span>Karavali Institution of Technology Campus, NH-66, Mangalore - 575028, Karnataka, India</span>
+            </li>
+            <li>
+              <i data-lucide="phone"></i>
+              <span>Admissions Desk: +91 824 2223785 / +91 94481 23456</span>
+            </li>
+            <li>
+              <i data-lucide="mail"></i>
+              <span>General: info@karavali.edu.in | Principal: principal@karavali.edu.in</span>
+            </li>
+            <li>
+              <i data-lucide="clock"></i>
+              <span>Mon - Sat: 9:00 AM - 5:00 PM IST (Campus &amp; Office)</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DEDICATED FULLY COMPLIANT LEGAL POLICIES SECTION -->
+    <div class="kit-legal-policies-section">
+      <div class="kit-container">
+        <div class="kit-legal-policies-header">
+          <h4>
+            <i data-lucide="scale" style="color:#facc15;"></i>
+            Institutional Governance, Statutory Policies &amp; Legal Disclosures
+          </h4>
+          <span>Fully compliant with UGC Regulations, AICTE Norms, VTU Statutes &amp; DPDP Act 2023</span>
+        </div>
+
+        <!-- 8 Full-Featured Legal Policy Cards -->
+        <div class="kit-legal-grid">
+
+          <!-- 1. Privacy Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('privacy')">
+            <span class="kit-legal-card-icon">🛡️</span>
+            <div class="kit-legal-card-title">Privacy &amp; Data Protection Policy</div>
+            <div class="kit-legal-card-desc">Indian DPDP Act 2023 &amp; IT Act 2000 compliant. Explains how student USN, biometric records, and academic data are encrypted and safeguarded.</div>
+          </div>
+
+          <!-- 2. Terms of Service -->
+          <div class="kit-legal-card" onclick="openPolicyModal('terms')">
+            <span class="kit-legal-card-icon">⚖️</span>
+            <div class="kit-legal-card-title">Terms of Service &amp; IT Usage</div>
+            <div class="kit-legal-card-desc">Acceptable use policy for KIT SMART attendance portal, campus Wi-Fi, anti-scraping mandates, and credential accountability.</div>
+          </div>
+
+          <!-- 3. Anti-Ragging Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('antiragging')">
+            <span class="kit-legal-card-icon">🛑</span>
+            <div class="kit-legal-card-title">Anti-Ragging Policy (Zero Tolerance)</div>
+            <div class="kit-legal-card-desc">UGC Regulations 2009 statutory mandate. Strict zero-tolerance rules, squad rosters, and 24x7 National Helpline (1800-180-5522).</div>
+          </div>
+
+          <!-- 4. Code of Conduct -->
+          <div class="kit-legal-card" onclick="openPolicyModal('conduct')">
+            <span class="kit-legal-card-icon">📜</span>
+            <div class="kit-legal-card-title">Code of Conduct &amp; Academic Integrity</div>
+            <div class="kit-legal-card-desc">Mandatory VTU 75% attendance rule, anti-malpractice committee rules, exam ethics, and plagiarism thresholds (&lt; 15%).</div>
+          </div>
+
+          <!-- 5. POSH / ICC -->
+          <div class="kit-legal-card" onclick="openPolicyModal('posh')">
+            <span class="kit-legal-card-icon">🌸</span>
+            <div class="kit-legal-card-title">Internal Complaints Committee (ICC / POSH)</div>
+            <div class="kit-legal-card-desc">Sexual Harassment of Women at Workplace (Prevention) Act 2013 compliance. Confidential redressal, committee members &amp; guidelines.</div>
+          </div>
+
+          <!-- 6. Grievance Redressal -->
+          <div class="kit-legal-card" onclick="openPolicyModal('grievance')">
+            <span class="kit-legal-card-icon">📋</span>
+            <div class="kit-legal-card-title">Student Grievance Redressal Mechanism</div>
+            <div class="kit-legal-card-desc">UGC (Redressal of Grievances of Students) Regulations 2023. Multi-tier resolution process, student ombudsperson &amp; appeal procedures.</div>
+          </div>
+
+          <!-- 7. Fee Refund Policy -->
+          <div class="kit-legal-card" onclick="openPolicyModal('refund')">
+            <span class="kit-legal-card-icon">💰</span>
+            <div class="kit-legal-card-title">Fee Refund &amp; Cancellation Policy</div>
+            <div class="kit-legal-card-desc">AICTE and Karnataka Higher Education Department prescribed fee refund timelines and deduction matrices upon admission withdrawal.</div>
+          </div>
+
+          <!-- 8. Mandatory Disclosures -->
+          <div class="kit-legal-card" onclick="openPolicyModal('disclosures')">
+            <span class="kit-legal-card-icon">📊</span>
+            <div class="kit-legal-card-title">Mandatory Disclosures &amp; NIRF Data</div>
+            <div class="kit-legal-card-desc">Public statutory reports: AICTE EOA orders, VTU Affiliation records, faculty cadre ratios, and audited balance sheets.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Social Links -->
+    <div class="kit-container">
+      <div class="kit-footer-bottom">
+        <div>
+          © 2026 <strong>Karavali Institution of Technology (KIT)</strong>. All Rights Reserved. Affiliated to VTU Belagavi &amp; Approved by AICTE, New Delhi.
+        </div>
+        <div class="kit-social-links">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="LinkedIn"><i data-lucide="linkedin" class="icon-sm"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="YouTube"><i data-lucide="youtube" class="icon-sm"></i></a>
+          <a href="https://x.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Twitter"><i data-lucide="twitter" class="icon-sm"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Instagram"><i data-lucide="instagram" class="icon-sm"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="kit-social-btn" aria-label="Facebook"><i data-lucide="facebook" class="icon-sm"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       INTERACTIVE MODALS (LEGAL, ADMISSION, EVENT, LIGHTBOX)
+       ═══════════════════════════════════════════════════════════════ -->
+
+  <!-- 1. FULL LEGAL POLICY VIEWER MODAL -->
+  <div class="kit-modal-backdrop" id="policyModalBackdrop" onclick="if(event.target===this)closePolicyModal()">
+    <div class="kit-modal-container">
+      <div class="kit-modal-header">
+        <h3 id="policyModalTitle"><i data-lucide="scale"></i> Institutional Legal Policy</h3>
+        <button class="kit-modal-close-btn" onclick="closePolicyModal()" aria-label="Close"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body" id="policyModalBody">
+        <!-- Injected dynamically based on policy key -->
+      </div>
+      <div class="kit-modal-footer">
+        <span style="font-size:12px; color:#64748b;" id="policyModalCitation">KIT Statutory Governance Doc • Ref: KIT/LEGAL/2026</span>
+        <div style="display:flex; gap:10px;">
+          <button class="kit-btn kit-btn-sm kit-btn-secondary" onclick="window.print()"><i data-lucide="printer" class="icon-sm"></i> Print Policy</button>
+          <button class="kit-btn kit-btn-sm kit-btn-primary" onclick="closePolicyModal()">I Understand &amp; Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EVENT REGISTRATION MODAL -->
+  <div class="kit-modal-backdrop" id="eventModalBackdrop" onclick="if(event.target===this)closeEventModal()">
+    <div class="kit-modal-container" style="max-width:580px;">
+      <div class="kit-modal-header">
+        <h3 id="eventRegTitle"><i data-lucide="calendar"></i> Event Registration</h3>
+        <button class="kit-modal-close-btn" onclick="closeEventModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <div id="eventRegDetails" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:20px;">
+          <!-- Injected info -->
+        </div>
+
+        <form id="eventRegForm" onsubmit="handleEventRegSubmit(event)">
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Full Name *</label>
+            <input type="text" id="evRegName" required class="auth-input" placeholder="e.g. Rahul Sharma" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">College USN / Roll No *</label>
+              <input type="text" id="evRegUsn" required class="auth-input" placeholder="e.g. 4KT22CS045" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Department / Semester *</label>
+              <select id="evRegDept" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="CSE">Computer Science (CSE)</option>
+                <option value="AIDS">AI &amp; Data Science (AI &amp; DS)</option>
+                <option value="ECE">Electronics &amp; Comm (ECE)</option>
+                <option value="MECH">Mechanical Engineering</option>
+                <option value="CIVIL">Civil Engineering</option>
+                <option value="OTHER">External College Participant</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Email Address *</label>
+              <input type="email" id="evRegEmail" required class="auth-input" placeholder="rahul@example.com" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">WhatsApp Phone *</label>
+              <input type="tel" id="evRegPhone" required class="auth-input" placeholder="+91 98765 43210" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:12px;">
+            <i data-lucide="check-circle" class="icon-sm"></i> Confirm My Registration
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ADMISSIONS ENQUIRY 2026 MODAL -->
+  <div class="kit-modal-backdrop" id="admissionsModalBackdrop" onclick="if(event.target===this)closeAdmissionsModal()">
+    <div class="kit-modal-container" style="max-width:620px;">
+      <div class="kit-modal-header" style="background:linear-gradient(135deg, #0f172a 0%, #0d9488 100%); color:#fff;">
+        <h3 style="color:#fff;"><i data-lucide="sparkles" style="color:#facc15;"></i> Admissions Enquiry 2026-27</h3>
+        <button class="kit-modal-close-btn" onclick="closeAdmissionsModal()" style="color:#fff;"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <p style="font-size:14px; color:#475569; margin-bottom:18px;">
+          Join Karnataka's leading technology campus in Mangalore. Fill out your details below to receive the official 2026-27 Information Brochure, Fee Structure, and KCET/COMEDK seat cutoff counseling.
+        </p>
+
+        <form id="admForm" onsubmit="handleAdmissionsSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Student Full Name *</label>
+              <input type="text" id="admName" required class="auth-input" placeholder="e.g. Ananya Shetty" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Mobile / WhatsApp *</label>
+              <input type="tel" id="admPhone" required class="auth-input" placeholder="+91 98765 43210" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Email Address *</label>
+            <input type="email" id="admEmail" required class="auth-input" placeholder="ananya@example.com" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Program of Interest *</label>
+              <select id="admProg" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="B.E. Computer Science (CSE)">B.E. Computer Science (CSE)</option>
+                <option value="B.E. AI &amp; Data Science">B.E. Artificial Intelligence &amp; DS</option>
+                <option value="B.E. Electronics &amp; Comm">B.E. Electronics &amp; Comm (ECE)</option>
+                <option value="B.E. Mechanical Engg">B.E. Mechanical Engineering</option>
+                <option value="B.E. Civil Engg">B.E. Civil Engineering</option>
+                <option value="M.Tech / MBA">M.Tech / MBA Programs</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#334155; margin-bottom:6px;">Admission Mode *</label>
+              <select id="admMode" required class="auth-input" style="width:100%; padding:10px 14px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="KCET Quota">KCET Karnataka Quota</option>
+                <option value="COMEDK Quota">COMEDK All-India Quota</option>
+                <option value="Management / NRI">Management / Institutional Quota</option>
+                <option value="Lateral Entry">Lateral Entry (Diploma to 3rd Sem)</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:12px;">
+            <i data-lucide="download" class="icon-sm"></i> Submit &amp; Download 2026 Prospectus
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ALUMNI NETWORK ENROLLMENT MODAL -->
+  <div class="kit-modal-backdrop" id="alumniModalBackdrop" onclick="if(event.target===this)closeAlumniModal()">
+    <div class="kit-modal-container" style="max-width:580px;">
+      <div class="kit-modal-header">
+        <h3><i data-lucide="users"></i> KIT Global Alumni Association</h3>
+        <button class="kit-modal-close-btn" onclick="closeAlumniModal()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="kit-modal-body">
+        <p style="font-size:13.5px; color:#475569; margin-bottom:16px;">
+          Reconnect with Karavali Institution of Technology. Register your current professional designation to receive invitations to global alumni chapters, reunion galas, and guest lecture mentorship.
+        </p>
+        <form onsubmit="handleAlumniSubmit(event)">
+          <div style="margin-bottom:12px;">
+            <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Full Name *</label>
+            <input type="text" id="alName" required class="auth-input" placeholder="Your name" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Passing Batch Year *</label>
+              <input type="number" id="alBatch" min="1996" max="2026" required class="auth-input" placeholder="e.g. 2018" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Graduating Degree *</label>
+              <select id="alDegree" required class="auth-input" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+                <option value="B.E. CSE">B.E. Computer Science</option>
+                <option value="B.E. ECE">B.E. Electronics &amp; Comm</option>
+                <option value="B.E. MECH">B.E. Mechanical</option>
+                <option value="B.E. CIVIL">B.E. Civil</option>
+                <option value="B.E. ISE">B.E. Information Science</option>
+                <option value="M.Tech / MBA">M.Tech / MBA</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Current Organization *</label>
+              <input type="text" id="alCompany" required class="auth-input" placeholder="e.g. Microsoft / Tesla" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Current Role *</label>
+              <input type="text" id="alRole" required class="auth-input" placeholder="e.g. Lead Engineer" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+            </div>
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Email Address *</label>
+            <input type="email" id="alEmail" required class="auth-input" placeholder="you@work.com" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <button type="submit" class="kit-btn kit-btn-primary" style="width:100%; padding:10px;">
+            <i data-lucide="check" class="icon-sm"></i> Enroll in Alumni Chapter
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. LIGHTBOX MODAL -->
+  <div class="kit-modal-backdrop" id="lightboxBackdrop" onclick="closeLightbox()">
+    <div style="position:relative; max-width:900px; text-align:center; padding:20px;" onclick="event.stopPropagation()">
+      <button class="kit-modal-close-btn" onclick="closeLightbox()" style="position:absolute; top:-12px; right:-12px; background:#fff; border-radius:50%; box-shadow:0 4px 12px rgba(0,0,0,0.3);"><i data-lucide="x"></i></button>
+      <img id="lightboxImg" class="kit-lightbox-img" src="" alt="Campus View">
+      <div style="background:rgba(15,23,42,0.9); color:#fff; padding:16px 20px; border-radius:12px; margin-top:14px; text-align:left;">
+        <h4 id="lightboxTitle" style="font-size:16px; margin:0 0 4px 0; color:#5eead4;"></h4>
+        <p id="lightboxDesc" style="font-size:13px; margin:0; color:#cbd5e1;"></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div id="authOverlay" style="display: none;" onclick="if(event.target===this)closeAuthModal()">
+    <div class="auth-card" style="position:relative;">
+      <button class="auth-modal-close" onclick="closeAuthModal()" title="Back to College Website"><i data-lucide="x" class="icon-sm"></i></button>
       <div class="auth-card-header">
         <img class="auth-logo"
           src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT"
@@ -3088,6 +5948,9 @@
         <img class="header-logo"
           src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png"
           alt="KIT Logo" onerror="this.style.display='none'">
+        <button class="btn btn-secondary" onclick="viewLandingPageFromApp()" style="margin-left: 12px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; border-radius: 8px; cursor: pointer; border: 1px solid var(--border); background: var(--white); color: var(--ink);">
+          <i data-lucide="globe" class="icon-sm" style="color:var(--accent);"></i> Campus Website
+        </button>
         <div>
           <div class="header-title">KIT SMART</div>
           <div class="header-sub">Karavali Institution of Technology</div>
@@ -5260,7 +8123,11 @@
       if (!fb) return;
       await fb.signOut(fb.auth);
       closeUserDropdown();
-      showToast('Signed out. See you soon!', 'log-out');
+      showToast('Signed out. Welcome back to Karavali Institution of Technology!', 'log-out');
+      if (document.getElementById('landingPage')) document.getElementById('landingPage').style.display = 'block';
+      if (document.getElementById('appShell')) document.getElementById('appShell').style.display = 'none';
+      if (document.getElementById('authOverlay')) document.getElementById('authOverlay').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // ══════════ HEADER USER UPDATE ══════════
@@ -6943,7 +9810,454 @@
   </div>
 
 
-  <script> /* KIT SMART patch. Paste inside a <script> tag just before </body> (after your main script). */
+  <script> /* KIT SMART patch. Paste inside a <script> tag just before 
+
+<!-- ════════ KIT LANDING PAGE SCRIPTS ════════ -->
+<script>
+// ═══════════════════════════════════════════════════════════════
+// KARAVALI INSTITUTION OF TECHNOLOGY (KIT) — LANDING PAGE SCRIPT
+// ═══════════════════════════════════════════════════════════════
+
+(function () {
+  // Institutional Legal Policies Knowledgebase
+  const LEGAL_POLICIES = {
+    privacy: {
+      title: "🛡️ Privacy & Data Protection Policy (DPDP Act 2023 Compliant)",
+      citation: "Compliance: Indian Digital Personal Data Protection Act 2023 & IT Act 2000 (Sec 43A) • Ref: KIT/DPO/POL-01",
+      body: `
+        <h4>1. Preamble & Scope</h4>
+        <p>Karavali Institution of Technology (KIT), Mangalore is committed to protecting the privacy, confidentiality, and security of all personal identifiable information (PII) collected from students, faculty, staff, parents, and alumni. This policy governs the processing of data across the KIT SMART Attendance & Academic Portal, campus biometric access systems, RFID smart gates, and official administrative records.</p>
+
+        <h4>2. Information Collected & Lawful Purpose</h4>
+        <p>The institution collects only such information as is strictly necessary for academic administration, state university regulatory compliance with Visvesvaraya Technological University (VTU), and student welfare:</p>
+        <ul>
+          <li><strong>Student Identity Data:</strong> Full legal name, University Seat Number (USN), date of birth, blood group, government ID (Aadhaar/PAN), and photograph.</li>
+          <li><strong>Academic & Attendance Telemetry:</strong> Course registration, semester timetable, real-time subject attendance percentages, internal assessment (IA) marks, and VTU examination SGPA/CGPA history.</li>
+          <li><strong>Contact & Parent Details:</strong> Official institutional email, personal mobile number, permanent address, and emergency guardian contact.</li>
+        </ul>
+
+        <h4>3. Data Security & Storage Architecture</h4>
+        <p>All sensitive academic records, authentication credentials, and user profiles are encrypted in transit using Transport Layer Security (TLS 1.3) and encrypted at rest using 256-bit Advanced Encryption Standard (AES-256) on enterprise Google Firebase Cloud servers. Password hashes utilize salted cryptographic key-derivation algorithms. Biometric scans and live attendance timestamps are immutably logged to prevent unauthorized modification.</p>
+
+        <h4>4. Zero Commercial Sharing</h4>
+        <p>KIT enforces a strict zero-tolerance prohibition against selling, renting, or commercializing student or faculty data to third-party advertisers, financial telemarketers, or commercial ed-tech providers. Data is shared exclusively with statutory regulatory bodies (VTU Belagavi, AICTE New Delhi, and Karnataka Examination Authority) pursuant to legal compliance mandates.</p>
+
+        <h4>5. Rights of Data Principals & Grievances</h4>
+        <p>Students and faculty possess the legal right to inspect their personal records, request factual rectification, and review access logs. For privacy inquiries or grievance redressal, contact our designated Data Protection Officer (DPO):</p>
+        <p><strong>Data Protection Officer:</strong> Dr. Priya Shenoy, Dean (R&D)<br>
+        <strong>Email:</strong> dpo@karavali.edu.in | <strong>Office:</strong> Administrative Block, KIT Campus, Mangalore</p>
+      `
+    },
+    terms: {
+      title: "⚖️ Terms of Service & Campus IT Acceptable Use Policy",
+      citation: "Statutory Bylaws: Visvesvaraya Technological University & KIT Ordinance • Ref: KIT/IT/TOS-2026",
+      body: `
+        <h4>1. Acceptance of Terms</h4>
+        <p>By accessing or utilizing the KIT SMART Attendance Portal, campus Wi-Fi infrastructure (KIT-SECURE-CAMPUS), laboratory compute servers, or digital library OPAC, all students, faculty members, and authorized visitors agree to be bound by these institutional terms and conditions.</p>
+
+        <h4>2. User Account Security & USN Integrity</h4>
+        <p>Every student is issued a unique University Seat Number (USN) account (e.g. 4KT22CS001). Users are strictly accountable for maintaining the confidentiality of their portal passwords. Permitting another student to access an account, sharing session tokens, or attempting to register proxy attendance via automated tools, spoofed geolocation, or cloned QR codes constitutes a severe violation of institutional ethics.</p>
+
+        <h4>3. Prohibited Activities</h4>
+        <p>Users must not engage in any of the following activities on college servers or networks:</p>
+        <ul>
+          <li>Unauthorized vulnerability scanning, penetration testing, or denial-of-service attempts on college infrastructure.</li>
+          <li>Automated web scraping, data harvesting, or reverse-engineering of student records, faculty rosters, or attendance algorithms.</li>
+          <li>Transmission of malicious software, phishing emails, or pirated copyright material over campus bandwidth.</li>
+          <li>Falsification of academic records, VTU grade cards, internal assessment rubrics, or digital certificates.</li>
+        </ul>
+
+        <h4>4. Disciplinary Penalties</h4>
+        <p>Violations will be adjudicated by the College Disciplinary Committee and Cyber Security Cell. Penalties may include immediate revocation of campus IT privileges, academic suspension, referral to the VTU Malpractice Committee, and formal reporting to law enforcement under the Information Technology Act 2000.</p>
+      `
+    },
+    antiragging: {
+      title: "🛑 Anti-Ragging Policy (Zero Tolerance Statutory Mandate)",
+      citation: "Statutory Law: UGC Regulations on Curbing Ragging 2009 & Karnataka Education Act 1983 (Sec 116) • Ref: KIT/ARC/2026",
+      body: `
+        <h4>1. Zero Tolerance Mandate</h4>
+        <p>Karavali Institution of Technology enforces an absolute <strong>ZERO TOLERANCE POLICY</strong> against ragging in any form. Ragging is a cognizable criminal offense punishable by rigorous imprisonment, permanent expulsion, and disqualification from seeking admission to any educational institution across India.</p>
+
+        <h4>2. Statutory Definition of Ragging</h4>
+        <p>Under UGC Regulations 2009, ragging includes any conduct by words spoken or written, or by an act which has the effect of teasing, treating or handling with rudeness a fresher or any other student; indulging in rowdy or undisciplined activities; asking any student to do any act which causes shame, torment, embarrassment, or physical/psychological harm.</p>
+
+        <h4>3. Institutional Anti-Ragging Committee & Squad</h4>
+        <p>The college maintains an active Anti-Ragging Committee headed by the Principal, comprising senior faculty, representatives of civil administration, local police officers (Surathkal/Kavoor Police Station), local media, parents, and student representatives. Dedicated flying squads carry out unannounced 24/7 inspections across hostels, canteens, sports arenas, and college buses.</p>
+
+        <h4>4. 24x7 Emergency Helplines</h4>
+        <p>Any student subjected to or witnessing ragging is urged to report immediately through any of the following confidential channels:</p>
+        <ul>
+          <li><strong>National Anti-Ragging Toll-Free Helpline:</strong> <a href="tel:18001805522" style="color:#0d9488; font-weight:700;">1800-180-5522</a> (24x7 Free)</li>
+          <li><strong>National Anti-Ragging Portal:</strong> <a href="https://www.antiragging.in" target="_blank" style="color:#0d9488;">www.antiragging.in</a> | <strong>Email:</strong> helpline@antiragging.in</li>
+          <li><strong>KIT Anti-Ragging Squad Mobile:</strong> <a href="tel:+919448123456" style="color:#0d9488; font-weight:700;">+91 94481 23456</a> / +91 824 2223785</li>
+          <li><strong>Campus Email:</strong> antiragging@karavali.edu.in</li>
+        </ul>
+
+        <h4>5. Mandatory Penal Actions</h4>
+        <p>Upon verification of any ragging complaint, the institution will immediately suspend the accused student, lodge an FIR with the local police station within 24 hours under non-bailable provisions, and enforce permanent expulsion with rustication.</p>
+      `
+    },
+    conduct: {
+      title: "📜 Code of Conduct & Academic Integrity Policy",
+      citation: "Regulations: VTU Belagavi Academic Ordinances & Examination Ethics Guidelines • Ref: KIT/ACAD/2026",
+      body: `
+        <h4>1. Attendance Mandate (VTU 75% Rule)</h4>
+        <p>In accordance with Visvesvaraya Technological University (VTU) academic regulations, every student must maintain a <strong>minimum of 75% physical attendance</strong> in each registered theory subject and laboratory course to be eligible to appear for semester-end university examinations. Students whose attendance falls between 60% and 74% due to verified medical emergencies may apply for condonation with authentic medical documentation, subject to university approval. Students below 60% will be detained.</p>
+
+        <h4>2. Examination Conduct & Anti-Malpractice Rules</h4>
+        <p>Academic honesty is the cornerstone of engineering education. The following are classified as severe examination malpractices:</p>
+        <ul>
+          <li>Possession of mobile phones, smartwatches, programmable calculators, or unauthorized study material in examination halls.</li>
+          <li>Copying, seeking assistance, impersonation, or communication with peers during university or internal exams.</li>
+          <li>Tampering with barcoded answer scripts, question papers, or digital grade rosters.</li>
+        </ul>
+        <p>All malpractice cases are forwarded directly to the VTU Examination Malpractice Committee, resulting in cancellation of results for the entire semester and potential debasement from writing university exams for up to three consecutive years.</p>
+
+        <h4>3. Plagiarism & Project Intellectual Property</h4>
+        <p>All final-year B.E. and M.Tech project theses, technical seminar reports, and research papers must undergo mandatory anti-plagiarism screening using Turnitin / DrillBit software. The maximum permissible similarity index is strictly <strong>15% (excluding bibliography)</strong>. Projects exceeding this threshold will be rejected for submission.</p>
+
+        <h4>4. Campus Decorum & Substance-Free Campus</h4>
+        <p>Karavali Institution of Technology is a strictly declared <strong>Substance-Free, Smoke-Free, and Alcohol-Free Zone</strong>. Possession, consumption, or distribution of narcotic substances or alcohol will lead to immediate criminal referral, police prosecution, and permanent rustication.</p>
+      `
+    },
+    posh: {
+      title: "🌸 Internal Complaints Committee (ICC) & POSH Compliance",
+      citation: "Statutory Law: Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 • Ref: KIT/ICC/2026",
+      body: `
+        <h4>1. Objective & Legal Obligation</h4>
+        <p>Pursuant to the provisions of the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act 2013 and UGC (Prevention, Prohibition and Redressal of Sexual Harassment in Higher Educational Institutions) Regulations 2015, Karavali Institution of Technology is deeply committed to providing an environment free from gender discrimination, sexual harassment, and intimidation.</p>
+
+        <h4>2. Composition of the Committee (ICC)</h4>
+        <p>The Internal Complaints Committee is a statutory body constituted with a majority of female members:</p>
+        <ul>
+          <li><strong>Presiding Officer:</strong> Dr. Priya Shenoy, Professor & Dean (R&D)</li>
+          <li><strong>Faculty Representatives:</strong> Dr. Meenakshi Rao (Associate Prof, AI&DS) & Prof. Radhika Pai (Assistant Prof, CSE)</li>
+          <li><strong>Non-Teaching Staff Member:</strong> Smt. Rekha Rai, Senior Administrative Superintendent</li>
+          <li><strong>External Independent Member:</strong> Adv. Sujata Rao, Senior Legal Counsel & NGO Representative</li>
+          <li><strong>Student Nominees:</strong> 2 Meritorious Postgraduate/Undergraduate Student Representatives</li>
+        </ul>
+
+        <h4>3. Redressal & Investigation Mechanism</h4>
+        <p>Any aggrieved female student, employee, or visitor may submit a confidential complaint in writing or via email within 90 days of an incident. The committee guarantees absolute confidentiality, protects the complainant against retaliation, conducts fair time-bound inquiries completed within 90 days, and submits conclusive findings to the Principal and Governing Council for prompt disciplinary action.</p>
+
+        <p><strong>Confidential Email:</strong> icc@karavali.edu.in | <strong>Helpline:</strong> +91 824 2223785 (Extn 104)</p>
+      `
+    },
+    grievance: {
+      title: "📋 Student Grievance Redressal Mechanism",
+      citation: "Compliance: UGC (Redressal of Grievances of Students) Regulations 2023 • Ref: KIT/SGRC/2026",
+      body: `
+        <h4>1. Preamble & Framework</h4>
+        <p>In accordance with UGC Regulations 2023, Karavali Institution of Technology has instituted a transparent, equitable, and multi-tiered Student Grievance Redressal Committee (SGRC) to address student grievances relating to admissions, examinations, faculty evaluation, library resources, hostel welfare, and fee payments.</p>
+
+        <h4>2. Three-Tier Escalation Hierarchy</h4>
+        <ul>
+          <li><strong>Level 1 (Departmental Mentorship):</strong> The student discusses grievances with their designated Class Advisor or Head of Department (HOD) for immediate resolution within 3 working days.</li>
+          <li><strong>Level 2 (Institutional SGRC):</strong> If unresolved, the grievance is formally logged with the Student Grievance Redressal Committee chaired by the Principal, with hearing and redressal within 15 working days.</li>
+          <li><strong>Level 3 (University Ombudsperson):</strong> If the student remains unsatisfied with the SGRC decision, an appeal may be preferred to the designated independent Ombudsperson appointed by VTU Belagavi.</li>
+        </ul>
+
+        <p><strong>Online Grievance Submission:</strong> grievances@karavali.edu.in | <strong>Contact:</strong> Dean (Student Welfare), KIT Campus</p>
+      `
+    },
+    refund: {
+      title: "💰 Fee Refund & Cancellation Policy",
+      citation: "Norms: All India Council for Technical Education (AICTE) & Karnataka Examination Authority (KEA) Guidelines • Ref: KIT/FEE/2026",
+      body: `
+        <h4>1. Admission Cancellation & Refund Guidelines</h4>
+        <p>The fee refund policy of Karavali Institution of Technology strictly complies with the statutory guidelines issued annually by the All India Council for Technical Education (AICTE), UGC, and the Department of Higher Education, Government of Karnataka.</p>
+
+        <h4>2. Refund Deduction Matrix (Prior to Formal Course Commencement)</h4>
+        <table style="width:100%; border-collapse:collapse; margin:16px 0; font-size:13px; text-align:left;">
+          <thead>
+            <tr style="background:#f1f5f9; border-bottom:2px solid #cbd5e1;">
+              <th style="padding:10px; border:1px solid #e2e8f0;">Timeline of Withdrawal Application</th>
+              <th style="padding:10px; border:1px solid #e2e8f0;">Percentage of Refund</th>
+              <th style="padding:10px; border:1px solid #e2e8f0;">Deduction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">15 days or more before the formally announced last date of admission</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0; font-weight:700; color:#10b981;">100% Refund</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">Max ₹1,000 Processing Fee</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">Less than 15 days before the formally announced last date</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0; font-weight:700; color:#0284c7;">90% Refund</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">10% Aggregate Fee Deduction</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">Less than 15 days after the formally announced last date</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0; font-weight:700; color:#f59e0b;">80% Refund</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">20% Aggregate Fee Deduction</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">Between 16 and 30 days after the formally announced last date</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0; font-weight:700; color:#ea580c;">50% Refund</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">50% Aggregate Fee Deduction</td>
+            </tr>
+            <tr>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">More than 30 days after the formally announced last date</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0; font-weight:700; color:#ef4444;">0% (No Refund)</td>
+              <td style="padding:8px 10px; border:1px solid #e2e8f0;">Only Caution Deposit Refunded</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>3. Processing & Disbursement</h4>
+        <p>Refund requests must be formally submitted through the Admissions Accounts Cell with original payment receipts and valid bank account credentials. Approved refunds will be transferred directly via NEFT/RTGS within 14 working days.</p>
+      `
+    },
+    disclosures: {
+      title: "📊 Mandatory Disclosures, Accreditations & NIRF Reports",
+      citation: "Statutory Transparency Mandate: AICTE Section 10(1) & VTU Statutes • Ref: KIT/MANDATORY/2026",
+      body: `
+        <h4>1. Institutional Governance & Approvals</h4>
+        <p>Karavali Institution of Technology (KIT) operates in strict compliance with the statutory norms prescribed by the Ministry of Education, All India Council for Technical Education (AICTE), New Delhi, and Visvesvaraya Technological University (VTU), Belagavi.</p>
+        <ul>
+          <li><strong>AICTE Permanent Institute ID:</strong> 1-303131703 (Current EOA valid for Academic Year 2026-27).</li>
+          <li><strong>VTU Affiliation Order:</strong> Permanent affiliation for Core B.E. programs; annual extension for Emerging Tech programs (AI & DS).</li>
+          <li><strong>NAAC Accreditation:</strong> Accredited with 'A+' Grade by National Assessment and Accreditation Council (NAAC).</li>
+          <li><strong>Cadre Ratio Compliance:</strong> Maintaining faculty-to-student cadre ratio of 1:15 in accordance with AICTE model staffing norms.</li>
+        </ul>
+
+        <h4>2. Audited Balance Sheets & Annual Reports</h4>
+        <p>Statutory audited financial statements, faculty qualifications registers, library accession registers, and physical infrastructure reports are publicly accessible in the administrative office during official working hours.</p>
+
+        <p><strong>Office of the Registrar:</strong> Karavali Institution of Technology, NH-66, Mangalore - 575028, Karnataka | <strong>Email:</strong> registrar@karavali.edu.in</p>
+      `
+    }
+  };
+
+  // ════════ MODAL HANDLERS ════════
+  window.openPolicyModal = function (policyKey) {
+    const policy = LEGAL_POLICIES[policyKey] || LEGAL_POLICIES['privacy'];
+    document.getElementById('policyModalTitle').innerHTML = policy.title;
+    document.getElementById('policyModalBody').innerHTML = policy.body;
+    document.getElementById('policyModalCitation').textContent = policy.citation;
+    const modal = document.getElementById('policyModalBackdrop');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closePolicyModal = function () {
+    const modal = document.getElementById('policyModalBackdrop');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.openEventModal = function (title, category, date, venue, prize) {
+    document.getElementById('eventRegTitle').innerHTML = `<i data-lucide="calendar"></i> Register: ${title}`;
+    document.getElementById('eventRegDetails').innerHTML = `
+      <div style="font-weight:700; color:#0f172a; font-size:15px; margin-bottom:4px;">${title}</div>
+      <div style="font-size:12.5px; color:#0d9488; font-weight:600; margin-bottom:8px;">Category: ${category}</div>
+      <div style="font-size:13px; color:#64748b; line-height:1.5;">
+        📅 <strong>Date:</strong> ${date} | 📍 <strong>Venue:</strong> ${venue}<br>
+        🏆 <strong>Prizes & Certification:</strong> ${prize}
+      </div>
+    `;
+    const modal = document.getElementById('eventModalBackdrop');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closeEventModal = function () {
+    const modal = document.getElementById('eventModalBackdrop');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.handleEventRegSubmit = function (e) {
+    e.preventDefault();
+    const name = document.getElementById('evRegName').value;
+    const usn = document.getElementById('evRegUsn').value;
+    alert(`🎉 Registration Successful, ${name}!\n\nYour slot has been reserved for the event with USN/ID: ${usn}. Confirmation email and WhatsApp entry pass have been dispatched.`);
+    closeEventModal();
+  };
+
+  window.openAdmissionsModal = function () {
+    const modal = document.getElementById('admissionsModalBackdrop');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closeAdmissionsModal = function () {
+    const modal = document.getElementById('admissionsModalBackdrop');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.handleAdmissionsSubmit = function (e) {
+    e.preventDefault();
+    const name = document.getElementById('admName').value;
+    const prog = document.getElementById('admProg').value;
+    alert(`🎓 Thank you, ${name}!\n\nYour admissions enquiry for ${prog} has been received. The 2026-27 Information Prospectus and seat allotment matrix will be sent to your WhatsApp and email shortly.`);
+    closeAdmissionsModal();
+  };
+
+  window.openAlumniModal = function () {
+    const modal = document.getElementById('alumniModalBackdrop');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closeAlumniModal = function () {
+    const modal = document.getElementById('alumniModalBackdrop');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.handleAlumniSubmit = function (e) {
+    e.preventDefault();
+    const name = document.getElementById('alName').value;
+    alert(`🤝 Welcome to the KIT Global Alumni Network, ${name}!\n\nYour profile has been enrolled in our alumni directory. You will receive invitations to upcoming regional chapter gatherings.`);
+    closeAlumniModal();
+  };
+
+  window.openVirtualTourModal = function () {
+    openLightbox('https://images.unsplash.com/photo-1562774053-701939374585?w=1200&q=80', 'KIT Campus 360° Virtual Experience', '35-acre sprawling campus in Mangalore featuring high-tech engineering blocks, sports complex, research centers, and scenic coastal greenery.');
+  };
+
+  window.openLightbox = function (src, title, desc) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxTitle').textContent = title;
+    document.getElementById('lightboxDesc').textContent = desc;
+    const modal = document.getElementById('lightboxBackdrop');
+    if (modal) {
+      modal.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closeLightbox = function () {
+    const modal = document.getElementById('lightboxBackdrop');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.toggleMobileNav = function () {
+    const drawer = document.getElementById('kitMobileDrawer');
+    if (drawer) {
+      drawer.style.display = drawer.style.display === 'none' || drawer.style.display === '' ? 'block' : 'none';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  // ════════ FILTERING HANDLERS ════════
+  window.filterFaculty = function (dept, btn) {
+    const cards = document.querySelectorAll('#facultyGrid .kit-faculty-card');
+    cards.forEach(card => {
+      const cardDept = card.getAttribute('data-dept');
+      if (dept === 'all' || cardDept === dept) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (btn) {
+      btn.parentElement.querySelectorAll('.kit-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  };
+
+  window.filterEvents = function (cat, btn) {
+    const cards = document.querySelectorAll('#eventsGrid .kit-event-card');
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-cat');
+      if (cat === 'all' || cardCat === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+    if (btn) {
+      btn.parentElement.querySelectorAll('.kit-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  };
+
+  window.filterGallery = function (cat, btn) {
+    const items = document.querySelectorAll('#galleryGrid .kit-gallery-item');
+    items.forEach(item => {
+      const itemCat = item.getAttribute('data-cat');
+      if (cat === 'all' || itemCat === cat) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    if (btn) {
+      btn.parentElement.querySelectorAll('.kit-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  };
+
+  // ════════ PORTAL & AUTH OVERLAY INTEGRATION ════════
+  window.openAuthModal = function () {
+    const authOverlay = document.getElementById('authOverlay');
+    if (authOverlay) {
+      authOverlay.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  };
+
+  window.closeAuthModal = function () {
+    const authOverlay = document.getElementById('authOverlay');
+    if (authOverlay) {
+      authOverlay.style.display = 'none';
+    }
+  };
+
+  window.viewLandingPageFromApp = function () {
+    const lp = document.getElementById('landingPage');
+    const appShell = document.getElementById('appShell');
+    if (lp) lp.style.display = 'block';
+    if (appShell) appShell.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.returnToAppShellFromLanding = function () {
+    const lp = document.getElementById('landingPage');
+    const appShell = document.getElementById('appShell');
+    if (lp) lp.style.display = 'none';
+    if (appShell) appShell.style.display = 'block';
+  };
+
+  // Window scroll navbar shadow
+  window.addEventListener('scroll', function () {
+    const navbar = document.getElementById('kitNavbar');
+    if (navbar) {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+  });
+
+  // Global escape key listener to close modals
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      closePolicyModal();
+      closeEventModal();
+      closeAdmissionsModal();
+      closeAlumniModal();
+      closeLightbox();
+      closeAuthModal();
+    }
+  });
+
+  // Re-run lucide icons initialization on page ready
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+})();
+</script>
+</body> (after your main script). */
     (function () {
       const $ = id => document.getElementById(id);
       const val = id => ($(id) || {}).value || '';
@@ -6958,7 +10272,7 @@
 
       /* ---------- 1. Startup fixes ---------- */
       if (typeof checkDirectTeacherAccessFromUrl === "function") checkDirectTeacherAccessFromUrl();
-      if (!window.currentUser) { $('authOverlay').style.display = 'flex'; $('appShell').style.display = 'none'; }
+      if (!window.currentUser) { if ($('landingPage')) $('landingPage').style.display = 'block'; $('authOverlay').style.display = 'none'; $('appShell').style.display = 'none'; }
       const pm = $('profileModalBg'); if (pm) document.body.appendChild(pm);   // was nested inside another modal
       const lm = $('vtuLinkModalBg'); if (lm) lm.remove();                      // fake "scraper" removed
       const ig = $('installGuide'); if (ig) ig.remove();                        // stray always-visible install popup
@@ -6996,7 +10310,7 @@
         let d = {}; try { const s = await fb.getDoc(fb.doc(fb.db, 'users', user.uid)); d = s.exists() ? s.data() : {}; } catch (e) { }
         window.currentUserDoc = d; window.currentUserRole = d.role || 'student';
         const r = role();
-        $('authOverlay').style.display = 'none'; $('appShell').style.display = 'block';
+        if ($('landingPage')) $('landingPage').style.display = 'none'; $('authOverlay').style.display = 'none'; $('appShell').style.display = 'block';
         updateHeaderUser(user); paintAvatar();
         $('studentOnlyBtns').style.display = r === 'student' ? 'flex' : 'none';
         $('teacherNav').style.display = r === 'teacher' ? 'flex' : 'none';
