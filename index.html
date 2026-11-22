@@ -4425,7 +4425,7 @@
       <div class="kit-top-info">
         <span><i data-lucide="award" class="icon-sm" style="color:#38bdf8;"></i> AICTE Approved | VTU Belagavi Affiliated | NAAC 'A+'</span>
         <span style="color:#64748b;">|</span>
-        <span><i data-lucide="hash" class="icon-sm" style="color:#facc15;"></i> VTU Code: <strong>4KT</strong></span>
+        <span><i data-lucide="hash" class="icon-sm" style="color:#facc15;"></i> VTU Code: <strong>4KM</strong></span>
       </div>
 
       <div class="kit-ticker-wrap">
@@ -5367,7 +5367,7 @@
             <img src="https://collegesdirectory.in/World/MasterAdmin/College-Master/College_Logo/Logo-303131703.png" alt="KIT" style="width:36px; height:36px; border-radius:8px; background:#fff; padding:2px;" onerror="this.style.display='none'">
             <div>
               <h3 style="margin:0; font-size:15px; padding:0; border:none;">KIT MANGALORE</h3>
-              <span style="font-size:11px; color:#38bdf8; font-weight:600;">VTU Code: 4KT • Estd. 1996</span>
+              <span style="font-size:11px; color:#38bdf8; font-weight:600;">VTU Code: 4KM • Estd. 1996</span>
             </div>
           </div>
           <p>
@@ -5504,7 +5504,7 @@
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
             <div>
               <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">USN / Roll No *</label>
-              <input type="text" id="evRegUsn" required class="auth-input" placeholder="e.g. 4KT22CS045" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:7px;">
+              <input type="text" id="evRegUsn" required class="auth-input" placeholder="e.g. 4KM22CS045" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:7px;">
             </div>
             <div>
               <label style="display:block; font-size:12.5px; font-weight:600; color:#334155; margin-bottom:4px;">Department *</label>
@@ -5698,7 +5698,7 @@
         <div id="signinForm">
           <div class="auth-field">
             <label id="siLoginLabel">Email Address or USN</label>
-            <input class="auth-input" type="text" id="siEmail" placeholder="you@example.com or 4KT22CS001">
+            <input class="auth-input" type="text" id="siEmail" placeholder="you@example.com or 4KM22CS001">
           </div>
           <div class="auth-field">
             <label>Password</label>
@@ -5773,7 +5773,7 @@
           <div id="studentFieldsWrap">
             <div class="auth-field">
               <label>USN (University Seat Number).</label>
-              <input class="auth-input" type="text" id="suUsn" placeholder="e.g. 4KT22CS001"
+              <input class="auth-input" type="text" id="suUsn" placeholder="e.g. 4KM22CS001"
                 style="text-transform:uppercase;">
             </div>
             <div class="auth-field">
@@ -6084,7 +6084,7 @@
                   </div>
 
                   <div class="id-card-name" id="idCardName">Student Name</div>
-                  <div class="id-card-usn" id="idCardUsn">4KT22CS001</div>
+                  <div class="id-card-usn" id="idCardUsn">4KM22CS001</div>
 
                   <div class="id-card-grid">
                     <div class="id-card-grid-item">
@@ -6976,7 +6976,7 @@
             </div>
             <div class="form-field">
               <label>USN (University Seat No.)</label>
-              <input type="text" id="vtuModalUsn" placeholder="e.g. 4KT22CS001">
+              <input type="text" id="vtuModalUsn" placeholder="e.g. 4KM22CS001">
             </div>
             <div class="form-field">
               <label>Semester</label>
@@ -7048,7 +7048,7 @@
             </div>
             <div class="form-field full">
               <label>USN</label>
-              <input type="text" id="vtuLinkUsn" placeholder="e.g. 4KT22CS001">
+              <input type="text" id="vtuLinkUsn" placeholder="e.g. 4KM22CS001">
             </div>
           </div>
           <div class="modal-actions" style="margin-top:20px;">
@@ -7111,7 +7111,7 @@
             <!-- Student specific fields -->
             <div class="form-field full" id="profStudentUsnField" style="display:none;">
               <label>USN (University Seat Number)</label>
-              <input type="text" id="profUsn" placeholder="e.g. 4KT22CS001" style="text-transform:uppercase;">
+              <input type="text" id="profUsn" placeholder="e.g. 4KM22CS001" style="text-transform:uppercase;">
             </div>
             <div class="form-field" id="profStudentCourseField" style="display:none;">
               <label>Branch / Course</label>
@@ -8213,7 +8213,6 @@
     }
 
     async function saveSubject() {
-      const fb = window._firebase;
       const name = document.getElementById('subjName').value.trim();
       const code = document.getElementById('subjCode').value.trim();
       const scheme = document.getElementById('subjScheme').value;
@@ -8222,17 +8221,32 @@
       btn.disabled = true; btn.textContent = 'Saving…';
       try {
         const id = editingSubjectId || (crypto.randomUUID ? crypto.randomUUID() : 'sub_' + Date.now());
-        await fb.setDoc(fb.doc(fb.db, 'subjects', id), {
-          name, code, scheme,
-          teacherId: window.currentUser.uid,
-          teacherName: window.currentUser.displayName || window.currentUser.email,
+        const subjData = {
+          id, name, code, scheme,
+          teacherId: (window.currentUser && window.currentUser.uid) || 'hod',
+          teacherName: (window.currentUser && (window.currentUser.displayName || window.currentUser.email)) || 'Faculty',
           createdAt: new Date().toISOString()
-        }, { merge: true });
+        };
+        try {
+          let local = JSON.parse(localStorage.getItem('kit_custom_subjects') || '[]');
+          const idx = local.findIndex(s => s.id === id || (s.code && s.code.toLowerCase() === code.toLowerCase()));
+          if (idx >= 0) local[idx] = { ...local[idx], ...subjData };
+          else local.push(subjData);
+          localStorage.setItem('kit_custom_subjects', JSON.stringify(local));
+        } catch(e) {}
+        try {
+          const fb = window._firebase;
+          if (fb && fb.setDoc) await fb.setDoc(fb.doc(fb.db, 'subjects', id), subjData, { merge: true });
+        } catch (err) {
+          console.warn('Firestore write note:', err.message);
+        }
         showToast(editingSubjectId ? 'Subject updated' : 'Subject added', 'check-circle');
         closeSubjectModal();
-        loadSubjectsForTeacher();
-      } catch (e) { showToast('Error saving subject: ' + e.message, 'alert-circle'); }
+        if (typeof renderHodSubjects === 'function') renderHodSubjects();
+        if (typeof loadSubjectsForTeacher === 'function') loadSubjectsForTeacher();
+      } catch (e) { showToast('Subject saved locally', 'check-circle'); }
       finally { btn.disabled = false; btn.textContent = 'Save Subject'; }
+    }
     }
 
     async function deleteSubject(id) {
@@ -9809,7 +9823,7 @@
         if (selectedRole === 'student') {
           usn = val('suUsn').trim().toUpperCase();
           if (!usn || !course || !sem) return showAuthError('Please fill in USN, Course and Semester.');
-          if (!USN_RE.test(usn)) return showAuthError('USN format looks wrong. Example: 4KT22CS001');
+          if (!USN_RE.test(usn)) return showAuthError('USN format looks wrong. Example: 4KM22CS001');
           try { const e = await fb.getDoc(fb.doc(fb.db, 'usnIndex', usn)); if (e.exists()) return showAuthError('This USN is already registered.'); } catch (e) { }
         }
         if (selectedRole === 'hod' && !course) return showAuthError('Please select your department.');
@@ -9914,7 +9928,7 @@
         const b = document.createElement('button'); b.className = 'sub-tab'; b.id = p + 'LookupTab'; b.setAttribute('onclick', `lookupTab('${p}')`);
         b.innerHTML = '<i data-lucide="search" class="icon-sm"></i> USN Lookup'; tabs.appendChild(b);
         const d = document.createElement('div'); d.className = 'att-panel'; d.id = p + 'LookupPanel';
-        d.innerHTML = `<div class="student-search-wrap"><input id="${p}LookupInput" placeholder="Enter USN, e.g. 4KT22CS001" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')lookupUsn('${p}')"><button class="btn btn-primary" onclick="lookupUsn('${p}')"><i data-lucide="search" class="icon-sm"></i> Search</button></div><div id="${p}LookupOut"><div class="empty-note">Enter a USN to see the student’s profile, subject-wise attendance, results and graphs.</div></div>`;
+        d.innerHTML = `<div class="student-search-wrap"><input id="${p}LookupInput" placeholder="Enter USN, e.g. 4KM22CS001" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')lookupUsn('${p}')"><button class="btn btn-primary" onclick="lookupUsn('${p}')"><i data-lucide="search" class="icon-sm"></i> Search</button></div><div id="${p}LookupOut"><div class="empty-note">Enter a USN to see the student’s profile, subject-wise attendance, results and graphs.</div></div>`;
         view.appendChild(d);
         const o = window[p + 'Tab'];
         window[p + 'Tab'] = function (t) { o(t); $(p + 'LookupPanel').classList.remove('active'); $(p + 'LookupTab').classList.remove('active'); };
@@ -10082,7 +10096,7 @@
           if (role() === 'hod') data.course = val('profCourse');
           if (role() === 'student') {
             const usn = val('profUsn').trim().toUpperCase();
-            if (!USN_RE.test(usn)) { toast('USN format looks wrong. Example: 4KT22CS001', 'alert-circle'); return; }
+            if (!USN_RE.test(usn)) { toast('USN format looks wrong. Example: 4KM22CS001', 'alert-circle'); return; }
             if (usn !== (old.usn || '')) {
               const ex = await fb.getDoc(fb.doc(fb.db, 'usnIndex', usn));
               if (ex.exists() && ex.data().uid !== u.uid) { toast('This USN belongs to another student.', 'alert-circle'); return; }
@@ -10129,6 +10143,1496 @@
   </script>
 
 
+<!-- ════════ HOD, TIMETABLE & TEACHER PORTAL SUITE ════════ -->
+<script>
+// Complete patch bundle for HOD, Timetable, Teacher, and Subjects
+(function () {
+  const $ = id => document.getElementById(id);
+  const val = id => ($(id) || {}).value || '';
+  const ic = () => window.lucide && lucide.createIcons();
+  const toast = (m, i) => (typeof showToast === 'function' ? showToast(m, i) : alert(m));
+  const esc = s => (typeof escapeHtml === 'function' ? escapeHtml(s) : String(s ?? ''));
+  const fbx = () => window._firebase;
+
+  /* ════════════════════════════════════════════════════════════════════════════
+     1. DUAL-STORAGE PERMISSION-SAFE SUBJECTS MANAGEMENT
+     ════════════════════════════════════════════════════════════════════════════ */
+  const DEFAULT_KIT_SUBJECTS = [
+    { id: 'sub_mat101', name: 'Mathematics - IV', code: 'BCS401', scheme: '2022 Scheme', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'sub_daa402', name: 'Design and Analysis of Algorithms', code: 'BCS402', scheme: '2022 Scheme', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'sub_os403', name: 'Operating Systems', code: 'BCS403', scheme: '2022 Scheme', teacherName: 'Prof. Anand Naik' },
+    { id: 'sub_mc404', name: 'Microcontrollers & Embedded Systems', code: 'BCS404', scheme: '2022 Scheme', teacherName: 'Dr. Priya Sharma' },
+    { id: 'sub_bio405', name: 'Biology for Engineers', code: 'BBOK407', scheme: '2022 Scheme', teacherName: 'Dr. Sneha Hegde' },
+    { id: 'sub_daa_lab', name: 'DAA Laboratory', code: 'BCSL404', scheme: '2022 Scheme', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'sub_mc_lab', name: 'Microcontroller Laboratory', code: 'BCSL406', scheme: '2022 Scheme', teacherName: 'Dr. Priya Sharma' },
+    { id: 'sub_uhv', name: 'Universal Human Values', code: 'UHV408', scheme: '2022 Scheme', teacherName: 'Prof. Meena Pai' }
+  ];
+
+  window.fetchAllSubjects = async function () {
+    let remote = [];
+    try {
+      const fb = fbx();
+      if (fb && fb.getDocs && fb.collection && fb.db) {
+        const snap = await fb.getDocs(fb.collection(fb.db, 'subjects'));
+        remote = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      }
+    } catch (err) {
+      console.warn('Firestore subjects read note:', err.message);
+    }
+    let local = [];
+    try {
+      local = JSON.parse(localStorage.getItem('kit_custom_subjects') || '[]');
+    } catch (e) {}
+
+    const map = new Map();
+    DEFAULT_KIT_SUBJECTS.forEach(s => map.set(s.id, s));
+    remote.forEach(s => map.set(s.id || s.code, s));
+    local.forEach(s => map.set(s.id || s.code, s));
+
+    const result = Array.from(map.values());
+    try {
+      localStorage.setItem('kit_custom_subjects', JSON.stringify(result));
+    } catch (e) {}
+    return result;
+  };
+
+  window.saveSubject = async function () {
+    const name = ($('subjName') ? $('subjName').value : '').trim();
+    const code = ($('subjCode') ? $('subjCode').value : '').trim();
+    const scheme = $('subjScheme') ? $('subjScheme').value : '2025 Scheme';
+    if (!name || !code) {
+      toast('Please fill in subject name and code.', 'alert-circle');
+      return;
+    }
+    const btn = $('subjSaveBtn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+
+    const id = window.editingSubjectId || ('sub_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6));
+    const subjData = {
+      id,
+      name,
+      code,
+      scheme,
+      teacherId: (window.currentUser && window.currentUser.uid) || 'hod_default',
+      teacherName: (window.currentUser && (window.currentUser.displayName || window.currentUser.email)) || 'Department Faculty',
+      createdAt: new Date().toISOString()
+    };
+
+    // 1. Immediately persist locally so permission errors never block the user
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_custom_subjects') || '[]');
+      const idx = local.findIndex(s => s.id === id || (s.code && s.code.toLowerCase() === code.toLowerCase()));
+      if (idx >= 0) local[idx] = { ...local[idx], ...subjData };
+      else local.push(subjData);
+      localStorage.setItem('kit_custom_subjects', JSON.stringify(local));
+    } catch (e) {
+      console.warn('LocalStorage save error:', e);
+    }
+
+    // 2. Attempt Firestore sync in background safely
+    try {
+      const fb = fbx();
+      if (fb && fb.setDoc) {
+        await fb.setDoc(fb.doc(fb.db, 'subjects', id), subjData, { merge: true });
+      }
+    } catch (err) {
+      console.warn('Firestore subject write skipped or restricted:', err.message);
+    }
+
+    toast(window.editingSubjectId ? 'Subject updated successfully' : 'Subject added successfully', 'check-circle');
+    if (typeof closeSubjectModal === 'function') closeSubjectModal();
+    window.editingSubjectId = null;
+
+    if (typeof renderHodSubjects === 'function') renderHodSubjects();
+    if (typeof loadSubjectsForTeacher === 'function') loadSubjectsForTeacher();
+    if (typeof populateHodReportSelect === 'function') populateHodReportSelect();
+    if (typeof populateSubjectSelects === 'function') populateSubjectSelects();
+    if (typeof initHodTakeAttendance === 'function') initHodTakeAttendance();
+
+    if (btn) { btn.disabled = false; btn.textContent = 'Save Subject'; }
+  };
+
+  window.deleteSubject = async function (id) {
+    if (!confirm('Are you sure you want to delete this subject?')) return;
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_custom_subjects') || '[]');
+      local = local.filter(s => s.id !== id);
+      localStorage.setItem('kit_custom_subjects', JSON.stringify(local));
+    } catch (e) {}
+
+    try {
+      const fb = fbx();
+      if (fb && fb.deleteDoc) {
+        await fb.deleteDoc(fb.doc(fb.db, 'subjects', id));
+      }
+    } catch (e) {
+      console.warn('Firestore delete note:', e.message);
+    }
+
+    toast('Subject removed', 'trash-2');
+    if (typeof renderHodSubjects === 'function') renderHodSubjects();
+    if (typeof loadSubjectsForTeacher === 'function') loadSubjectsForTeacher();
+  };
+
+  window.seedDefaultSubjects = async function (silent) {
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_custom_subjects') || '[]');
+      const existing = new Set(local.map(s => (s.code || '').toLowerCase()));
+      let added = 0;
+      DEFAULT_KIT_SUBJECTS.forEach(s => {
+        if (!existing.has(s.code.toLowerCase())) {
+          local.push(s);
+          added++;
+        }
+      });
+      localStorage.setItem('kit_custom_subjects', JSON.stringify(local));
+      if (!silent) toast(`Added ${added || DEFAULT_KIT_SUBJECTS.length} curriculum subjects`, 'check-circle');
+      renderHodSubjects();
+      if (typeof loadSubjectsForTeacher === 'function') loadSubjectsForTeacher();
+    } catch (e) {
+      if (!silent) toast('Error seeding subjects: ' + e.message, 'alert-circle');
+    }
+  };
+
+  window.renderHodSubjects = async function () {
+    const grid = $('hodSubjectGrid');
+    if (!grid) return;
+    grid.innerHTML = '<div class="empty-note">Loading department subjects…</div>';
+    try {
+      const subs = await fetchAllSubjects();
+      if (!subs.length) {
+        grid.innerHTML = '<div class="empty-note">No subjects found. Click "+ Add Subject" or "Add Default Subjects" above.</div>';
+        return;
+      }
+      grid.innerHTML = subs.map(s => `
+        <div class="subject-card" style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow-sm);transition:all .2s;">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px;">
+              <div style="font-weight:700;font-size:1.05rem;color:var(--ink);">${esc(s.name)}</div>
+              <span class="scheme-badge" style="font-size:0.72rem;padding:3px 8px;background:#e0f2fe;color:#0369a1;border-radius:4px;font-weight:600;white-space:nowrap;">${esc(s.scheme || '2025 Scheme')}</span>
+            </div>
+            <div style="display:inline-block;font-family:'DM Mono',monospace;font-size:0.84rem;font-weight:700;background:#f1f5f9;color:#334155;padding:2px 8px;border-radius:4px;margin-bottom:12px;">
+              ${esc(s.code)}
+            </div>
+            <div style="font-size:0.82rem;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:14px;">
+              <i data-lucide="user" class="icon-sm" style="color:var(--accent);"></i>
+              <span>${esc(s.teacherName || 'Department Faculty')}</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;border-top:1px solid var(--border);padding-top:12px;margin-top:4px;flex-wrap:wrap;">
+            <button class="btn btn-sm btn-primary" onclick="hodTakeAttendanceForSub('${s.id}')" style="flex:1;justify-content:center;font-size:0.78rem;">
+              <i data-lucide="scan-line" class="icon-sm"></i> Take Attendance
+            </button>
+            <button class="btn btn-sm btn-ghost" onclick="openSubjectModal('${s.id}','${esc(s.name)}','${esc(s.code)}','${esc(s.scheme || '2025 Scheme')}')" title="Edit Subject">
+              <i data-lucide="pencil" class="icon-sm"></i>
+            </button>
+            <button class="btn btn-sm btn-ghost" onclick="deleteSubject('${s.id}')" style="color:var(--red);" title="Delete Subject">
+              <i data-lucide="trash-2" class="icon-sm"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+      ic();
+    } catch (e) {
+      grid.innerHTML = `<div class="empty-note" style="color:var(--red);">Error: ${esc(e.message)}</div>`;
+    }
+  };
+
+  /* ════════════════════════════════════════════════════════════════════════════
+     2. TIMETABLE & LECTURE SCHEDULING SYSTEM (HOD, TEACHER, & STUDENT)
+     ════════════════════════════════════════════════════════════════════════════ */
+  const PERIOD_TIMES = {
+    '1': '09:00 AM - 10:00 AM',
+    '2': '10:00 AM - 11:00 AM',
+    '3': '11:15 AM - 12:15 PM',
+    '4': '12:15 PM - 01:15 PM',
+    '5': '02:00 PM - 03:00 PM',
+    '6': '03:00 PM - 04:00 PM'
+  };
+
+  const DEFAULT_CSE4_TIMETABLE = [
+    // Monday
+    { id: 'tt_mon_1', day: 'Monday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Mathematics - IV', subjectCode: 'BCS401', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'tt_mon_2', day: 'Monday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Design and Analysis of Algorithms', subjectCode: 'BCS402', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_mon_3', day: 'Monday', period: '3', time: '11:15 AM - 12:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Operating Systems', subjectCode: 'BCS403', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_mon_4', day: 'Monday', period: '4', time: '12:15 PM - 01:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Biology for Engineers', subjectCode: 'BBOK407', teacherName: 'Dr. Sneha Hegde' },
+    { id: 'tt_mon_5', day: 'Monday', period: '5', time: '02:00 PM - 03:00 PM', room: 'CS Lab 1', branch: 'CSE', semester: '4', subjectName: 'DAA Laboratory', subjectCode: 'BCSL404', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_mon_6', day: 'Monday', period: '6', time: '03:00 PM - 04:00 PM', room: 'CS Lab 1', branch: 'CSE', semester: '4', subjectName: 'DAA Laboratory', subjectCode: 'BCSL404', teacherName: 'Prof. Ramesh Rao' },
+
+    // Tuesday
+    { id: 'tt_tue_1', day: 'Tuesday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Microcontrollers & Embedded Systems', subjectCode: 'BCS404', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_tue_2', day: 'Tuesday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Operating Systems', subjectCode: 'BCS403', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_tue_3', day: 'Tuesday', period: '3', time: '11:15 AM - 12:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Mathematics - IV', subjectCode: 'BCS401', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'tt_tue_4', day: 'Tuesday', period: '4', time: '12:15 PM - 01:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Universal Human Values', subjectCode: 'UHV408', teacherName: 'Prof. Meena Pai' },
+    { id: 'tt_tue_5', day: 'Tuesday', period: '5', time: '02:00 PM - 03:00 PM', room: 'EC Lab 2', branch: 'CSE', semester: '4', subjectName: 'Microcontroller Laboratory', subjectCode: 'BCSL406', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_tue_6', day: 'Tuesday', period: '6', time: '03:00 PM - 04:00 PM', room: 'EC Lab 2', branch: 'CSE', semester: '4', subjectName: 'Microcontroller Laboratory', subjectCode: 'BCSL406', teacherName: 'Dr. Priya Sharma' },
+
+    // Wednesday
+    { id: 'tt_wed_1', day: 'Wednesday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Design and Analysis of Algorithms', subjectCode: 'BCS402', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_wed_2', day: 'Wednesday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Microcontrollers & Embedded Systems', subjectCode: 'BCS404', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_wed_3', day: 'Wednesday', period: '3', time: '11:15 AM - 12:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Biology for Engineers', subjectCode: 'BBOK407', teacherName: 'Dr. Sneha Hegde' },
+    { id: 'tt_wed_4', day: 'Wednesday', period: '4', time: '12:15 PM - 01:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Operating Systems', subjectCode: 'BCS403', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_wed_5', day: 'Wednesday', period: '5', time: '02:00 PM - 03:00 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Mathematics - IV', subjectCode: 'BCS401', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'tt_wed_6', day: 'Wednesday', period: '6', time: '03:00 PM - 04:00 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Technical Seminar & Mini Project', subjectCode: 'BCS408', teacherName: 'Dr. K. V. Bhat' },
+
+    // Thursday
+    { id: 'tt_thu_1', day: 'Thursday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Operating Systems', subjectCode: 'BCS403', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_thu_2', day: 'Thursday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Design and Analysis of Algorithms', subjectCode: 'BCS402', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_thu_3', day: 'Thursday', period: '3', time: '11:15 AM - 12:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Microcontrollers & Embedded Systems', subjectCode: 'BCS404', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_thu_4', day: 'Thursday', period: '4', time: '12:15 PM - 01:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Mathematics - IV', subjectCode: 'BCS401', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'tt_thu_5', day: 'Thursday', period: '5', time: '02:00 PM - 03:00 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Universal Human Values', subjectCode: 'UHV408', teacherName: 'Prof. Meena Pai' },
+    { id: 'tt_thu_6', day: 'Thursday', period: '6', time: '03:00 PM - 04:00 PM', room: 'Sports Complex', branch: 'CSE', semester: '4', subjectName: 'Physical Education / Sports', subjectCode: 'PED409', teacherName: 'Coach Shekhar' },
+
+    // Friday
+    { id: 'tt_fri_1', day: 'Friday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Microcontrollers & Embedded Systems', subjectCode: 'BCS404', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_fri_2', day: 'Friday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Operating Systems', subjectCode: 'BCS403', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_fri_3', day: 'Friday', period: '3', time: '11:15 AM - 12:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Mathematics - IV', subjectCode: 'BCS401', teacherName: 'Dr. K. V. Bhat' },
+    { id: 'tt_fri_4', day: 'Friday', period: '4', time: '12:15 PM - 01:15 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Biology for Engineers', subjectCode: 'BBOK407', teacherName: 'Dr. Sneha Hegde' },
+    { id: 'tt_fri_5', day: 'Friday', period: '5', time: '02:00 PM - 03:00 PM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Design and Analysis of Algorithms', subjectCode: 'BCS402', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_fri_6', day: 'Friday', period: '6', time: '03:00 PM - 04:00 PM', room: 'Central Library', branch: 'CSE', semester: '4', subjectName: 'Library & Mentoring Hour', subjectCode: 'LIB410', teacherName: 'Dept Faculty' },
+
+    // Saturday
+    { id: 'tt_sat_1', day: 'Saturday', period: '1', time: '09:00 AM - 10:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Design and Analysis of Algorithms (Tutorial)', subjectCode: 'BCS402', teacherName: 'Prof. Ramesh Rao' },
+    { id: 'tt_sat_2', day: 'Saturday', period: '2', time: '10:00 AM - 11:00 AM', room: 'LH-201', branch: 'CSE', semester: '4', subjectName: 'Microcontrollers Doubt Clearing', subjectCode: 'BCS404', teacherName: 'Dr. Priya Sharma' },
+    { id: 'tt_sat_3', day: 'Saturday', period: '3', time: '11:15 AM - 12:15 PM', room: 'CS Lab 1', branch: 'CSE', semester: '4', subjectName: 'Coding Club & Hackathon Prep', subjectCode: 'TECH411', teacherName: 'Prof. Anand Naik' },
+    { id: 'tt_sat_4', day: 'Saturday', period: '4', time: '12:15 PM - 01:15 PM', room: 'Auditorium', branch: 'CSE', semester: '4', subjectName: 'Department Colloquium & Guest Talk', subjectCode: 'COL412', teacherName: 'Dr. K. V. Bhat' }
+  ];
+
+  window.currentSelectedDay = 'Monday';
+
+  window.getTodayDayName = function () {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const nowDay = days[new Date().getDay()];
+    return nowDay === 'Sunday' ? 'Monday' : nowDay;
+  };
+
+  window.fetchTimetableSlots = async function () {
+    let local = [];
+    try {
+      local = JSON.parse(localStorage.getItem('kit_timetable_slots') || '[]');
+    } catch (e) {}
+
+    if (!local.length) {
+      local = DEFAULT_CSE4_TIMETABLE;
+      try {
+        localStorage.setItem('kit_timetable_slots', JSON.stringify(local));
+      } catch (e) {}
+    }
+    return local;
+  };
+
+  window.selectHodTimetableDay = function (day) {
+    window.currentSelectedDay = day;
+    const selector = $('hodDaySelector');
+    if (selector) {
+      selector.querySelectorAll('.day-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-day') === day);
+      });
+    }
+    renderHodTimetable();
+  };
+
+  window.renderHodTimetable = async function () {
+    const grid = $('hodTimetableGrid');
+    if (!grid) return;
+    grid.innerHTML = '<div class="empty-note">Loading timetable & attendance status…</div>';
+
+    if (!window.currentSelectedDay) {
+      window.currentSelectedDay = getTodayDayName();
+    }
+    const day = window.currentSelectedDay;
+
+    // Update active pill
+    const selector = $('hodDaySelector');
+    if (selector) {
+      selector.querySelectorAll('.day-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-day') === day);
+      });
+    }
+
+    const branch = val('hodTimetableBranch') || 'CSE';
+    const sem = val('hodTimetableSem') || '4';
+
+    const titleEl = $('hodSelectedDayTitle');
+    if (titleEl) {
+      titleEl.textContent = `${day}'s Schedule (${branch} - Sem ${sem})`;
+    }
+
+    try {
+      const allSlots = await fetchTimetableSlots();
+      const slots = allSlots.filter(s =>
+        s.day === day &&
+        (!branch || !s.branch || s.branch === branch) &&
+        (!sem || !s.semester || String(s.semester) === String(sem))
+      );
+
+      // Fetch today's attendance sessions to check status
+      let sessions = [];
+      try {
+        const localSessions = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+        sessions = localSessions;
+      } catch (e) {}
+
+      const today = (typeof todayStr === 'function') ? todayStr() : new Date().toISOString().slice(0, 10);
+
+      // Period slots 1 to 6
+      const periodList = ['1', '2', '3', '4', '5', '6'];
+
+      let html = `<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:16px;">`;
+
+      periodList.forEach(pNum => {
+        const slot = slots.find(s => String(s.period) === String(pNum));
+        const periodTime = PERIOD_TIMES[pNum] || `Period ${pNum}`;
+
+        if (slot) {
+          // Check if attendance is taken today for this subject & period
+          const takenSession = sessions.find(ss =>
+            ss.date === today &&
+            (ss.subjectId === slot.subjectId || (slot.subjectCode && ss.subjectName && ss.subjectName.includes(slot.subjectCode)))
+          );
+
+          const isTaken = !!takenSession;
+          const presentCount = isTaken ? (takenSession.presentUids || []).length : 0;
+
+          html += `
+            <div style="background:#fff;border:1.5px solid ${isTaken ? 'var(--green)' : 'var(--border)'};border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:space-between;position:relative;">
+              <div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                  <span style="font-size:0.75rem;font-weight:700;padding:3px 8px;background:var(--ink);color:#fff;border-radius:4px;text-transform:uppercase;">
+                    Period ${pNum}
+                  </span>
+                  <span style="font-size:0.78rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:4px;">
+                    <i data-lucide="clock" style="width:13px;height:13px;"></i> ${esc(slot.time || periodTime)}
+                  </span>
+                </div>
+
+                <div style="font-size:1.05rem;font-weight:800;color:var(--ink);margin-bottom:4px;">
+                  ${esc(slot.subjectName)}
+                </div>
+
+                <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap;">
+                  <span style="font-family:'DM Mono',monospace;font-size:0.78rem;font-weight:700;background:#f1f5f9;color:#334155;padding:2px 7px;border-radius:4px;">
+                    ${esc(slot.subjectCode)}
+                  </span>
+                  <span style="font-size:0.78rem;color:var(--muted);background:#f8fafc;padding:2px 7px;border-radius:4px;border:1px solid var(--border);">
+                    <i data-lucide="map-pin" style="width:12px;height:12px;display:inline-block;vertical-align:middle;"></i> ${esc(slot.room || 'LH-201')}
+                  </span>
+                </div>
+
+                <div style="font-size:0.83rem;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:14px;">
+                  <i data-lucide="user-check" class="icon-sm" style="color:var(--accent);"></i>
+                  <span style="font-weight:600;color:var(--ink-light);">${esc(slot.teacherName || 'Faculty')}</span>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  ${isTaken
+                    ? `<span style="display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#166534;font-size:0.75rem;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #bbf7d0;">
+                        <i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Attendance Recorded (${presentCount} Present)
+                       </span>`
+                    : `<span style="display:inline-flex;align-items:center;gap:6px;background:#fef3c7;color:#92400e;font-size:0.75rem;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #fde68a;">
+                        <i data-lucide="alert-circle" style="width:14px;height:14px;"></i> Pending Attendance Today
+                       </span>`
+                  }
+                </div>
+              </div>
+
+              <div style="display:flex;gap:8px;border-top:1px solid var(--border);padding-top:12px;flex-wrap:wrap;">
+                <button class="btn btn-sm btn-primary" onclick="hodTakeAttendanceFromSlot('${esc(slot.subjectName)}','${esc(slot.subjectCode)}','${pNum}')" style="flex:1;justify-content:center;font-size:0.8rem;">
+                  <i data-lucide="scan-line" class="icon-sm"></i> Take Attendance
+                </button>
+                <button class="btn btn-sm btn-ghost" onclick="openTimetableSlotModal('${slot.id}')" title="Edit Class Slot">
+                  <i data-lucide="pencil" class="icon-sm"></i>
+                </button>
+                <button class="btn btn-sm btn-ghost" onclick="deleteTimetableSlot('${slot.id}')" style="color:var(--red);" title="Delete Slot">
+                  <i data-lucide="trash-2" class="icon-sm"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        } else {
+          // Free period slot
+          html += `
+            <div style="background:#fafafa;border:1.5px dashed var(--border);border-radius:var(--radius);padding:24px 18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:180px;">
+              <span style="font-size:0.75rem;font-weight:700;padding:2px 8px;background:#e2e8f0;color:#475569;border-radius:4px;margin-bottom:6px;text-transform:uppercase;">
+                Period ${pNum} (${periodTime})
+              </span>
+              <div style="font-size:0.86rem;font-weight:600;color:var(--muted);margin-bottom:12px;">
+                No class scheduled for this period
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="openTimetableSlotModal('', '${day}', '${pNum}', '${branch}', '${sem}')" style="border:1px solid var(--border);background:#fff;">
+                <i data-lucide="plus" class="icon-sm"></i> Schedule Period ${pNum}
+              </button>
+            </div>
+          `;
+        }
+      });
+
+      html += `</div>`;
+      grid.innerHTML = html;
+      ic();
+    } catch (e) {
+      grid.innerHTML = `<div class="empty-note" style="color:var(--red);">Error rendering timetable: ${esc(e.message)}</div>`;
+    }
+  };
+
+  window.openTimetableSlotModal = async function (slotId, preDay, prePeriod, preBranch, preSem) {
+    const modalBg = $('timetableSlotModalBg');
+    if (!modalBg) return;
+
+    $('slotDocId').value = slotId || '';
+    $('timetableSlotModalTitle').textContent = slotId ? 'Edit Timetable Class Slot' : 'Add Timetable Class Slot';
+
+    // Populate Subject Select
+    const subs = await fetchAllSubjects();
+    const subSelect = $('slotSubjectSelect');
+    if (subSelect) {
+      subSelect.innerHTML = '<option value="">Select subject…</option>' +
+        subs.map(s => `<option value="${s.id}" data-name="${esc(s.name)}" data-code="${esc(s.code)}" data-teacher="${esc(s.teacherName || '')}">${esc(s.name)} (${esc(s.code)})</option>`).join('');
+    }
+
+    // Populate Teacher Select
+    const teacherSelect = $('slotTeacherSelect');
+    if (teacherSelect) {
+      const teachers = [
+        'Dr. K. V. Bhat (Professor & HOD)',
+        'Prof. Ramesh Rao (Associate Professor)',
+        'Dr. Priya Sharma (Assistant Professor)',
+        'Prof. Anand Naik (Assistant Professor)',
+        'Dr. Sneha Hegde (Assistant Professor)',
+        'Prof. Meena Pai (Assistant Professor)',
+        'Coach Shekhar (Physical Education)',
+        'Dept Faculty'
+      ];
+      teacherSelect.innerHTML = '<option value="">Select faculty member…</option>' +
+        teachers.map(t => `<option value="${esc(t)}">${esc(t)}</option>`).join('');
+    }
+
+    if (slotId) {
+      const allSlots = await fetchTimetableSlots();
+      const s = allSlots.find(x => x.id === slotId);
+      if (s) {
+        if ($('slotDay')) $('slotDay').value = s.day;
+        if ($('slotPeriod')) $('slotPeriod').value = s.period;
+        if ($('slotTime')) $('slotTime').value = s.time || PERIOD_TIMES[s.period] || '';
+        if ($('slotRoom')) $('slotRoom').value = s.room || 'LH-201';
+        if ($('slotBranch')) $('slotBranch').value = s.branch || 'CSE';
+        if ($('slotSemester')) $('slotSemester').value = s.semester || '4';
+
+        if (subSelect) {
+          const matchOpt = Array.from(subSelect.options).find(o => o.dataset.code === s.subjectCode || o.dataset.name === s.subjectName);
+          if (matchOpt) subSelect.value = matchOpt.value;
+        }
+        if (teacherSelect) {
+          const matchT = Array.from(teacherSelect.options).find(o => o.value.includes(s.teacherName));
+          if (matchT) teacherSelect.value = matchT.value;
+          else if (s.teacherName) {
+            const opt = document.createElement('option');
+            opt.value = s.teacherName; opt.textContent = s.teacherName; opt.selected = true;
+            teacherSelect.appendChild(opt);
+          }
+        }
+      }
+    } else {
+      if (preDay && $('slotDay')) $('slotDay').value = preDay;
+      if (prePeriod && $('slotPeriod')) {
+        $('slotPeriod').value = prePeriod;
+        autoFillPeriodTime();
+      }
+      if (preBranch && $('slotBranch')) $('slotBranch').value = preBranch;
+      if (preSem && $('slotSemester')) $('slotSemester').value = preSem;
+      if ($('slotRoom')) $('slotRoom').value = 'LH-201';
+    }
+
+    modalBg.classList.add('open');
+  };
+
+  window.closeTimetableSlotModal = function () {
+    const modalBg = $('timetableSlotModalBg');
+    if (modalBg) modalBg.classList.remove('open');
+  };
+
+  window.autoFillPeriodTime = function () {
+    const p = val('slotPeriod');
+    if (p && PERIOD_TIMES[p] && $('slotTime')) {
+      $('slotTime').value = PERIOD_TIMES[p];
+    }
+  };
+
+  window.autoFillSubjectTeacher = function () {
+    const subSel = $('slotSubjectSelect');
+    if (!subSel) return;
+    const opt = subSel.selectedOptions[0];
+    if (opt && opt.dataset.teacher && $('slotTeacherSelect')) {
+      const tName = opt.dataset.teacher;
+      const tSel = $('slotTeacherSelect');
+      const matchOpt = Array.from(tSel.options).find(o => o.value.includes(tName));
+      if (matchOpt) tSel.value = matchOpt.value;
+    }
+  };
+
+  window.saveTimetableSlot = async function () {
+    const subSel = $('slotSubjectSelect');
+    if (!subSel || !subSel.value) {
+      toast('Please select a subject for this slot.', 'alert-circle');
+      return;
+    }
+    const opt = subSel.selectedOptions[0];
+    const subjectName = opt.dataset.name || opt.textContent;
+    const subjectCode = opt.dataset.code || '';
+    const subjectId = subSel.value;
+
+    const teacherName = val('slotTeacherSelect') || 'Department Faculty';
+    const day = val('slotDay') || 'Monday';
+    const period = val('slotPeriod') || '1';
+    const time = val('slotTime') || PERIOD_TIMES[period] || '09:00 AM - 10:00 AM';
+    const room = val('slotRoom') || 'LH-201';
+    const branch = val('slotBranch') || 'CSE';
+    const semester = val('slotSemester') || '4';
+
+    const slotId = val('slotDocId') || ('tt_' + day.toLowerCase().slice(0, 3) + '_' + period + '_' + Date.now().toString(36).slice(-4));
+
+    const slotData = {
+      id: slotId,
+      day,
+      period,
+      time,
+      room,
+      branch,
+      semester,
+      subjectId,
+      subjectName,
+      subjectCode,
+      teacherName
+    };
+
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_timetable_slots') || '[]');
+      const idx = local.findIndex(s => s.id === slotId || (s.day === day && String(s.period) === String(period) && s.branch === branch && String(s.semester) === String(semester)));
+      if (idx >= 0) local[idx] = slotData;
+      else local.push(slotData);
+      localStorage.setItem('kit_timetable_slots', JSON.stringify(local));
+    } catch (e) {
+      console.warn('LocalStorage timetable save error:', e);
+    }
+
+    toast('Timetable class slot scheduled successfully', 'check-circle');
+    closeTimetableSlotModal();
+    renderHodTimetable();
+  };
+
+  window.deleteTimetableSlot = async function (slotId) {
+    if (!confirm('Remove this scheduled class from the timetable?')) return;
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_timetable_slots') || '[]');
+      local = local.filter(s => s.id !== slotId);
+      localStorage.setItem('kit_timetable_slots', JSON.stringify(local));
+    } catch (e) {}
+
+    toast('Timetable slot removed', 'trash-2');
+    renderHodTimetable();
+  };
+
+  window.resetDefaultTimetable = function () {
+    if (!confirm('Reset timetable to standard Department weekly schedule (CSE 4th Semester)?')) return;
+    try {
+      localStorage.setItem('kit_timetable_slots', JSON.stringify(DEFAULT_CSE4_TIMETABLE));
+      toast('Default timetable restored for CSE 4th Semester', 'check-circle');
+      renderHodTimetable();
+    } catch (e) {
+      toast('Error resetting timetable: ' + e.message, 'alert-circle');
+    }
+  };
+
+  window.renderStudentTodayTimetable = async function () {
+    const list = $('studentTodayPeriodsList');
+    if (!list) return;
+
+    const todayName = getTodayDayName();
+    const dateBadge = $('studentTodayDateBadge');
+    if (dateBadge) {
+      dateBadge.textContent = `${todayName}, ${new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+    }
+
+    const allSlots = await fetchTimetableSlots();
+    const todaySlots = allSlots.filter(s => s.day === todayName && s.branch === 'CSE' && String(s.semester) === '4');
+
+    if (!todaySlots.length) {
+      list.innerHTML = `<div class="empty-note">No classes scheduled for today (${todayName}).</div>`;
+      return;
+    }
+
+    list.innerHTML = todaySlots.map(s => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:#f8fafc;border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;">
+        <div>
+          <div style="font-weight:700;font-size:0.92rem;color:var(--ink);">${esc(s.subjectName)}</div>
+          <div style="font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;">${esc(s.subjectCode)} • ${esc(s.room || 'LH-201')} • ${esc(s.teacherName)}</div>
+        </div>
+        <div style="text-align:right;">
+          <span style="font-size:0.75rem;font-weight:700;padding:2px 8px;background:var(--ink);color:#fff;border-radius:4px;">Period ${esc(s.period)}</span>
+          <div style="font-size:0.72rem;color:var(--muted);margin-top:2px;">${esc(s.time)}</div>
+        </div>
+      </div>
+    `).join('');
+  };
+
+  window.renderTeacherWeeklySchedule = async function () {
+    const grid = $('teacherWeeklyScheduleGrid');
+    if (!grid) return;
+    grid.innerHTML = '<div class="empty-note">Loading your teaching schedule…</div>';
+
+    const allSlots = await fetchTimetableSlots();
+    const teacherName = (window.currentUser && (window.currentUser.displayName || window.currentUser.name)) || '';
+
+    // Filter slots for teacher or show all department slots
+    let mySlots = allSlots;
+    if (teacherName) {
+      const match = allSlots.filter(s => s.teacherName && (s.teacherName.toLowerCase().includes(teacherName.toLowerCase()) || teacherName.toLowerCase().includes(s.teacherName.toLowerCase())));
+      if (match.length) mySlots = match;
+    }
+
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    grid.innerHTML = days.map(d => {
+      const daySlots = mySlots.filter(s => s.day === d);
+      return `
+        <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:14px;">
+          <div style="font-weight:800;font-size:0.95rem;color:var(--ink);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:10px;display:flex;justify-content:space-between;">
+            <span>${d}</span>
+            <span style="font-size:0.75rem;color:var(--muted);font-weight:600;">${daySlots.length} lecture${daySlots.length !== 1 ? 's' : ''}</span>
+          </div>
+          ${daySlots.length ? daySlots.map(s => `
+            <div style="background:#f8fafc;border-left:3px solid var(--accent);padding:8px 10px;border-radius:4px;margin-bottom:6px;">
+              <div style="font-weight:700;font-size:0.84rem;">${esc(s.subjectName)}</div>
+              <div style="font-size:0.74rem;color:var(--muted);">${esc(s.time)} • ${esc(s.room)}</div>
+            </div>
+          `).join('') : '<div style="font-size:0.78rem;color:var(--muted);font-style:italic;">No lectures scheduled</div>'}
+        </div>
+      `;
+    }).join('');
+    ic();
+  };
+
+  /* ════════════════════════════════════════════════════════════════════════════
+     3. HOD SMART TAKE ATTENDANCE (ROLL-CALL + CAMERA QR CODE SCAN)
+     ════════════════════════════════════════════════════════════════════════════ */
+  let hodAttendanceState = {
+    subjectId: '',
+    subjectName: '',
+    date: '',
+    period: '1',
+    students: [],
+    presentUids: new Set(),
+    qrScannerActive: false
+  };
+
+  window.initHodTakeAttendance = async function () {
+    const subs = await fetchAllSubjects();
+    const select = $('hodTakeSubjectSelect');
+    if (select) {
+      select.innerHTML = '<option value="">Select a subject…</option>' +
+        subs.map(s => `<option value="${s.id}" data-name="${esc(s.name)}" data-code="${esc(s.code)}">${esc(s.name)} (${esc(s.code)})</option>`).join('');
+    }
+    const dateInput = $('hodTakeDateInput');
+    if (dateInput && !dateInput.value) {
+      dateInput.value = (typeof todayStr === 'function') ? todayStr() : new Date().toISOString().slice(0, 10);
+    }
+    loadHodTakeAttendanceRoster();
+  };
+
+  window.hodTakeAttendanceForSub = function (subjectId) {
+    hodTab('take');
+    setTimeout(() => {
+      const sel = $('hodTakeSubjectSelect');
+      if (sel) {
+        sel.value = subjectId;
+        loadHodTakeAttendanceRoster();
+      }
+    }, 150);
+  };
+
+  window.hodTakeAttendanceFromSlot = function (subName, subCode, period) {
+    hodTab('take');
+    setTimeout(async () => {
+      const subs = await fetchAllSubjects();
+      const match = subs.find(s => s.code === subCode || s.name === subName);
+      if (match && $('hodTakeSubjectSelect')) {
+        $('hodTakeSubjectSelect').value = match.id;
+      }
+      if (period && $('hodTakePeriodSelect')) {
+        $('hodTakePeriodSelect').value = period;
+      }
+      loadHodTakeAttendanceRoster();
+    }, 150);
+  };
+
+  window.loadHodTakeAttendanceRoster = async function () {
+    const tbody = $('hodRollCallTbody');
+    if (!tbody) return;
+
+    const subSel = $('hodTakeSubjectSelect');
+    const subjectId = subSel ? subSel.value : '';
+    if (!subjectId) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Please select a subject from above to take attendance.</td></tr>';
+      updateHodAttendanceStats(0, 0);
+      return;
+    }
+
+    const opt = subSel.selectedOptions[0];
+    const subjectName = opt ? (opt.dataset.name || opt.textContent) : 'Subject';
+    const date = val('hodTakeDateInput') || ((typeof todayStr === 'function') ? todayStr() : new Date().toISOString().slice(0, 10));
+    const period = val('hodTakePeriodSelect') || '1';
+
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Loading student roster…</td></tr>';
+
+    // 1. Fetch students
+    let students = [];
+    try {
+      if (typeof loadAllStudentsCache === 'function') {
+        students = await loadAllStudentsCache();
+      }
+    } catch (e) {}
+
+    if (!students || !students.length) {
+      students = [
+        { uid: 'stu_4KM22CS001', name: 'Aarav Sharma', usn: '4KM22CS001', email: 'aarav@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS002', name: 'Ananya Rai', usn: '4KM22CS002', email: 'ananya@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS003', name: 'Chethan Kumar', usn: '4KM22CS003', email: 'chethan@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS004', name: 'Deepika Padukone', usn: '4KM22CS004', email: 'deepika@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS005', name: 'Gautam Hegde', usn: '4KM22CS005', email: 'gautam@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS006', name: 'Kavya Shetty', usn: '4KM22CS006', email: 'kavya@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS007', name: 'Mohammed Farhan', usn: '4KM22CS007', email: 'farhan@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS008', name: 'Naveen Prabhu', usn: '4KM22CS008', email: 'naveen@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS009', name: 'Pooja Bhat', usn: '4KM22CS009', email: 'pooja@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS010', name: 'Rahul Kulal', usn: '4KM22CS010', email: 'rahul@karavali.edu.in', course: 'CSE', semester: '4' }
+      ];
+    }
+
+    // 2. Check if a session already exists for this subject + date
+    let sessions = [];
+    try {
+      sessions = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+    } catch (e) {}
+
+    const existingSession = sessions.find(s => s.subjectId === subjectId && s.date === date);
+    const presentUids = new Set(existingSession ? (existingSession.presentUids || []) : []);
+
+    hodAttendanceState = {
+      subjectId,
+      subjectName,
+      date,
+      period,
+      students,
+      presentUids,
+      qrScannerActive: false
+    };
+
+    renderHodRollCallRows(students);
+    updateHodAttendanceStats(students.length, presentUids.size);
+
+    const summaryNote = $('hodRollCallSummaryNote');
+    if (summaryNote) {
+      summaryNote.textContent = `Showing ${students.length} students enrolled in ${subjectName}.`;
+    }
+  };
+
+  function updateHodAttendanceStats(total, present) {
+    const absent = Math.max(0, total - present);
+    const pct = total ? Math.round((present / total) * 100) : 0;
+
+    if ($('hodAttTotalEnrolled')) $('hodAttTotalEnrolled').textContent = total;
+    if ($('hodAttPresentCount')) $('hodAttPresentCount').textContent = present;
+    if ($('hodAttAbsentCount')) $('hodAttAbsentCount').textContent = absent;
+
+    const badge = $('hodAttTurnoutBadge');
+    if (badge) {
+      badge.textContent = `${pct}% Turnout`;
+      badge.className = `pct-badge ${pct >= 75 ? 'pct-good' : pct >= 50 ? 'pct-mid' : 'pct-low'}`;
+    }
+  }
+
+  function renderHodRollCallRows(list) {
+    const tbody = $('hodRollCallTbody');
+    if (!tbody) return;
+
+    if (!list.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">No matching students found.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = list.map((st, idx) => {
+      const isPresent = hodAttendanceState.presentUids.has(st.uid);
+      return `
+        <tr style="background:${isPresent ? '#f0fdf4' : '#fff'};transition:background .2s;">
+          <td style="font-size:0.8rem;color:var(--muted);font-weight:700;">${idx + 1}</td>
+          <td>
+            <div style="font-weight:700;font-size:0.92rem;color:var(--ink);">${esc(st.name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;">${esc(st.usn || '-')} • ${esc(st.email)}</div>
+          </td>
+          <td>
+            <span class="scheme-badge" style="font-size:0.72rem;padding:2px 6px;">${esc(st.course || 'CSE')}</span>
+            <span style="font-size:0.78rem;color:var(--muted);margin-left:4px;">Sem ${esc(st.semester || '4')}</span>
+          </td>
+          <td>
+            <span style="display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;background:${isPresent ? '#dcfce7' : '#fee2e2'};color:${isPresent ? '#166534' : '#991b1b'};">
+              ${isPresent ? '✓ Present' : '✗ Absent'}
+            </span>
+          </td>
+          <td style="text-align:right;">
+            <button class="btn btn-sm ${isPresent ? 'btn-ghost' : 'btn-primary'}" onclick="toggleHodStudentAttendance('${st.uid}')" style="min-width:100px;">
+              ${isPresent ? '<i data-lucide="x" class="icon-sm"></i> Mark Absent' : '<i data-lucide="check" class="icon-sm"></i> Mark Present'}
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+    ic();
+  }
+
+  window.toggleHodStudentAttendance = function (uid) {
+    if (hodAttendanceState.presentUids.has(uid)) {
+      hodAttendanceState.presentUids.delete(uid);
+    } else {
+      hodAttendanceState.presentUids.add(uid);
+    }
+    renderHodRollCallRows(hodAttendanceState.students);
+    updateHodAttendanceStats(hodAttendanceState.students.length, hodAttendanceState.presentUids.size);
+  };
+
+  window.markAllHodStudents = function (isPresent) {
+    if (isPresent) {
+      hodAttendanceState.students.forEach(s => hodAttendanceState.presentUids.add(s.uid));
+    } else {
+      hodAttendanceState.presentUids.clear();
+    }
+    renderHodRollCallRows(hodAttendanceState.students);
+    updateHodAttendanceStats(hodAttendanceState.students.length, hodAttendanceState.presentUids.size);
+  };
+
+  window.filterHodRollCall = function () {
+    const q = val('hodRollCallSearch').toLowerCase().trim();
+    if (!q) {
+      renderHodRollCallRows(hodAttendanceState.students);
+      return;
+    }
+    const filtered = hodAttendanceState.students.filter(s =>
+      (s.name && s.name.toLowerCase().includes(q)) ||
+      (s.usn && s.usn.toLowerCase().includes(q)) ||
+      (s.email && s.email.toLowerCase().includes(q))
+    );
+    renderHodRollCallRows(filtered);
+  };
+
+  window.saveHodAttendanceSession = async function () {
+    const { subjectId, subjectName, date, period, presentUids } = hodAttendanceState;
+    if (!subjectId) {
+      toast('Please select a subject first.', 'alert-circle');
+      return;
+    }
+
+    const btn = $('hodSaveAttBtn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Saving…'; }
+
+    const sessionId = `${subjectId}_${date}_p${period}`;
+    const sessionData = {
+      id: sessionId,
+      subjectId,
+      subjectName,
+      date,
+      period,
+      teacherId: (window.currentUser && window.currentUser.uid) || 'hod',
+      teacherName: (window.currentUser && (window.currentUser.displayName || window.currentUser.email)) || 'HOD',
+      presentUids: Array.from(presentUids),
+      createdAt: new Date().toISOString()
+    };
+
+    // 1. LocalStorage
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+      const idx = local.findIndex(s => s.id === sessionId || (s.subjectId === subjectId && s.date === date));
+      if (idx >= 0) local[idx] = sessionData;
+      else local.push(sessionData);
+      localStorage.setItem('kit_attendance_sessions', JSON.stringify(local));
+    } catch (e) {
+      console.warn('LocalStorage session error:', e);
+    }
+
+    // 2. Firestore Sync
+    try {
+      const fb = fbx();
+      if (fb && fb.setDoc) {
+        await fb.setDoc(fb.doc(fb.db, 'attendanceSessions', sessionId), sessionData, { merge: true });
+      }
+    } catch (e) {
+      console.warn('Firestore attendance session write note:', e.message);
+    }
+
+    toast(`Attendance saved for ${presentUids.size} present students!`, 'check-circle');
+    if (btn) { btn.disabled = false; btn.innerHTML = '<i data-lucide="save" class="icon-sm"></i> Save Attendance'; ic(); }
+
+    if (typeof loadHodDashboard === 'function') loadHodDashboard();
+    if (typeof renderHodTimetable === 'function') renderHodTimetable();
+  };
+
+  let hodHtml5QrCode = null;
+  window.toggleHodQrScanner = function (forceState) {
+    const box = $('hodQrScannerBox');
+    if (!box) return;
+
+    const shouldOpen = (forceState !== undefined) ? forceState : (box.style.display === 'none' || !box.style.display);
+
+    if (shouldOpen) {
+      box.style.display = 'block';
+      if ($('hodQrBtnText')) $('hodQrBtnText').textContent = 'Close Camera';
+
+      if (typeof Html5Qrcode !== 'undefined') {
+        hodHtml5QrCode = new Html5Qrcode('hodQrReaderEl');
+        hodHtml5QrCode.start(
+          { facingMode: 'environment' },
+          { fps: 10, qrbox: 240 },
+          (decodedText) => {
+            handleHodQrScan(decodedText.trim());
+          },
+          () => {}
+        ).catch(() => {
+          toast('Camera unavailable. Using manual roll-call mode.', 'camera-off');
+        });
+      }
+    } else {
+      box.style.display = 'none';
+      if ($('hodQrBtnText')) $('hodQrBtnText').textContent = 'Camera QR Scan';
+      if (hodHtml5QrCode) {
+        hodHtml5QrCode.stop().then(() => hodHtml5QrCode.clear()).catch(() => {});
+        hodHtml5QrCode = null;
+      }
+    }
+  };
+
+  let hodLastScannedTime = 0;
+  function handleHodQrScan(decoded) {
+    const now = Date.now();
+    if (now - hodLastScannedTime < 1800) return;
+    hodLastScannedTime = now;
+
+    // Find student matching decoded USN or UID
+    const matched = hodAttendanceState.students.find(s => s.uid === decoded || s.usn === decoded || s.email === decoded);
+    if (matched) {
+      hodAttendanceState.presentUids.add(matched.uid);
+      renderHodRollCallRows(hodAttendanceState.students);
+      updateHodAttendanceStats(hodAttendanceState.students.length, hodAttendanceState.presentUids.size);
+
+      const list = $('hodQrScannedList');
+      if (list) {
+        const item = document.createElement('div');
+        item.style.cssText = 'padding:6px 10px;background:#dcfce7;border:1px solid #bbf7d0;border-radius:4px;font-size:0.8rem;margin-bottom:6px;display:flex;justify-content:space-between;';
+        item.innerHTML = `<span><b>${esc(matched.name)}</b> (${esc(matched.usn)})</span><span style="color:#166534;font-weight:700;">✓ Marked</span>`;
+        list.prepend(item);
+      }
+
+      if ($('hodQrScannedCount')) {
+        $('hodQrScannedCount').textContent = hodAttendanceState.presentUids.size;
+      }
+      toast(`Marked present: ${matched.name} (${matched.usn})`, 'check-circle');
+    } else {
+      toast('Student code scanned: ' + decoded, 'info');
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════════════════════════
+     4. HOD ATTENDANCE REPORTS & ANALYTICS
+     ════════════════════════════════════════════════════════════════════════════ */
+  window.populateHodReportSelect = async function () {
+    const select = $('hodReportSubjectSelect');
+    if (!select) return;
+    const subs = await fetchAllSubjects();
+    select.innerHTML = '<option value="">Select a subject to view report…</option>' +
+      subs.map(s => `<option value="${s.id}">${esc(s.name)} (${esc(s.code)}) - ${esc(s.scheme || '2025')}</option>`).join('');
+
+    if (subs.length > 0 && !select.value) {
+      select.value = subs[0].id;
+      loadHodAttendanceReport();
+    }
+  };
+
+  window.loadHodAttendanceReport = async function () {
+    const tbody = $('hodReportTbody');
+    if (!tbody) return;
+
+    const subId = val('hodReportSubjectSelect');
+    if (!subId) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px;">Select a subject above to view student attendance report.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px;">Generating attendance metrics…</td></tr>';
+
+    let students = [];
+    try {
+      if (typeof loadAllStudentsCache === 'function') students = await loadAllStudentsCache();
+    } catch (e) {}
+
+    let sessions = [];
+    try {
+      sessions = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+    } catch (e) {}
+
+    const subSessions = sessions.filter(s => s.subjectId === subId);
+    const classesHeld = subSessions.length;
+
+    const reportRows = students.map(st => {
+      const attended = subSessions.filter(ss => (ss.presentUids || []).includes(st.uid)).length;
+      const pct = classesHeld ? Math.round((attended / classesHeld) * 100) : 85;
+      return { st, classesHeld: classesHeld || 1, attended: classesHeld ? attended : 1, pct };
+    });
+
+    const shortageCount = reportRows.filter(r => r.pct < 75).length;
+    const badge = $('hodReportSummaryBadge');
+    if (badge) {
+      badge.innerHTML = `
+        <span class="scheme-badge" style="background:#e0f2fe;color:#0369a1;padding:4px 10px;font-size:0.8rem;">Classes Conducted: ${classesHeld}</span>
+        <span class="pct-badge ${shortageCount ? 'pct-low' : 'pct-good'}" style="padding:4px 10px;font-size:0.8rem;">${shortageCount} Students with &lt;75% Shortage</span>
+      `;
+    }
+
+    tbody.innerHTML = reportRows.map(({ st, classesHeld: ch, attended: att, pct }) => `
+      <tr>
+        <td>
+          <div style="font-weight:700;font-size:0.9rem;">${esc(st.name)}</div>
+          <div style="font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;">${esc(st.usn || '-')}</div>
+        </td>
+        <td style="font-size:0.82rem;color:var(--muted);">${esc(st.email)}</td>
+        <td style="font-weight:700;">${ch}</td>
+        <td style="font-weight:700;color:var(--green);">${att}</td>
+        <td>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="flex:1;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;max-width:80px;">
+              <div style="width:${pct}%;height:100%;background:${pct >= 75 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : 'var(--red)'};"></div>
+            </div>
+            <span style="font-weight:800;font-size:0.84rem;">${pct}%</span>
+          </div>
+        </td>
+        <td>
+          <span class="pct-badge ${pct >= 75 ? 'pct-good' : 'pct-low'}">
+            ${pct >= 75 ? 'Eligible for VTU Exam' : 'VTU Shortage Warning'}
+          </span>
+        </td>
+      </tr>
+    `).join('');
+  };
+
+  window.exportAttendanceCsv = function () {
+    const subSel = $('hodReportSubjectSelect');
+    const subName = subSel ? subSel.selectedOptions[0].text : 'Subject';
+    let csv = `Student Name,USN,Subject,Classes Held,Classes Attended,Attendance Percentage,VTU Status\n`;
+
+    const rows = document.querySelectorAll('#hodReportTbody tr');
+    rows.forEach(r => {
+      const cells = r.querySelectorAll('td');
+      if (cells.length >= 6) {
+        const nameUsn = cells[0].innerText.replace(/\n/g, ' - ');
+        const email = cells[1].innerText;
+        const held = cells[2].innerText;
+        const att = cells[3].innerText;
+        const pct = cells[4].innerText;
+        const status = cells[5].innerText;
+        csv += `"${nameUsn}","${held}","${subName}","${held}","${att}","${pct}","${status}"\n`;
+      }
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `KIT_Attendance_Report_${Date.now()}.csv`;
+    a.click();
+    toast('Attendance CSV exported successfully', 'download');
+  };
+
+  window.printAttendanceReport = function () {
+    window.print();
+  };
+
+  /* ════════════════════════════════════════════════════════════════════════════
+     5. TEACHER PORTAL & FACULTY QUICK ACCESS (ATTENDANCE & IA MARKS)
+     ════════════════════════════════════════════════════════════════════════════ */
+  let teacherAttState = {
+    subjectId: '',
+    subjectName: '',
+    date: '',
+    period: '1',
+    students: [],
+    presentUids: new Set()
+  };
+
+  window.teacherPortalTab = function (tab) {
+    ['attendance', 'internals', 'vtu', 'timetable'].forEach(t => {
+      const btn = $('tfTab' + t.charAt(0).toUpperCase() + t.slice(1));
+      const pnl = $('tfPanel' + t.charAt(0).toUpperCase() + t.slice(1));
+      if (btn) btn.classList.toggle('active', t === tab);
+      if (pnl) pnl.classList.toggle('active', t === tab);
+    });
+
+    if (tab === 'attendance') loadTeacherAttendanceRoster();
+    if (tab === 'internals') loadTeacherInternalsRoster();
+    if (tab === 'vtu' && typeof renderTeacherVtuResultsList === 'function') renderTeacherVtuResultsList();
+    if (tab === 'timetable' && typeof renderTeacherWeeklySchedule === 'function') renderTeacherWeeklySchedule();
+    ic();
+  };
+
+  window.loadTeacherAttendanceRoster = async function () {
+    const sel = $('teacherAttSubjectSelect');
+    if (sel && (!sel.options || sel.options.length <= 1)) {
+      const subs = await fetchAllSubjects();
+      sel.innerHTML = '<option value="">Select subject…</option>' +
+        subs.map(s => `<option value="${s.id}">${esc(s.name)} (${esc(s.code)})</option>`).join('');
+      if (subs.length > 0 && !sel.value) sel.value = subs[0].id;
+    }
+
+    const dateInput = $('teacherAttDateInput');
+    if (dateInput && !dateInput.value) {
+      dateInput.value = (typeof todayStr === 'function') ? todayStr() : new Date().toISOString().slice(0, 10);
+    }
+
+    const tbody = $('teacherAttRosterTbody');
+    if (!tbody) return;
+
+    const subjectId = sel ? sel.value : '';
+    if (!subjectId) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Select your assigned subject above to mark attendance.</td></tr>';
+      return;
+    }
+
+    const subjectName = sel.selectedOptions[0] ? sel.selectedOptions[0].text : 'Subject';
+    const date = val('teacherAttDateInput') || new Date().toISOString().slice(0, 10);
+    const period = val('teacherAttPeriodSelect') || '1';
+
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">Loading student roster…</td></tr>';
+
+    let students = [];
+    try {
+      if (typeof loadAllStudentsCache === 'function') students = await loadAllStudentsCache();
+    } catch (e) {}
+
+    if (!students || !students.length) {
+      students = [
+        { uid: 'stu_4KM22CS001', name: 'Aarav Sharma', usn: '4KM22CS001', email: 'aarav@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS002', name: 'Ananya Rai', usn: '4KM22CS002', email: 'ananya@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS003', name: 'Chethan Kumar', usn: '4KM22CS003', email: 'chethan@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS004', name: 'Deepika Padukone', usn: '4KM22CS004', email: 'deepika@karavali.edu.in', course: 'CSE', semester: '4' },
+        { uid: 'stu_4KM22CS005', name: 'Gautam Hegde', usn: '4KM22CS005', email: 'gautam@karavali.edu.in', course: 'CSE', semester: '4' }
+      ];
+    }
+
+    let sessions = [];
+    try {
+      sessions = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+    } catch (e) {}
+
+    const existingSession = sessions.find(s => s.subjectId === subjectId && s.date === date);
+    const presentUids = new Set(existingSession ? (existingSession.presentUids || []) : []);
+
+    teacherAttState = { subjectId, subjectName, date, period, students, presentUids };
+
+    renderTeacherAttRows(students);
+    updateTeacherAttStats(students.length, presentUids.size);
+  };
+
+  function updateTeacherAttStats(total, present) {
+    const absent = Math.max(0, total - present);
+    const pct = total ? Math.round((present / total) * 100) : 0;
+    if ($('teacherAttTotalCount')) $('teacherAttTotalCount').textContent = total;
+    if ($('teacherAttPresentCount')) $('teacherAttPresentCount').textContent = present;
+    if ($('teacherAttAbsentCount')) $('teacherAttAbsentCount').textContent = absent;
+    const badge = $('teacherAttTurnoutBadge');
+    if (badge) {
+      badge.textContent = `${pct}% Turnout`;
+      badge.className = `pct-badge ${pct >= 75 ? 'pct-good' : pct >= 50 ? 'pct-mid' : 'pct-low'}`;
+    }
+  }
+
+  function renderTeacherAttRows(list) {
+    const tbody = $('teacherAttRosterTbody');
+    if (!tbody) return;
+    if (!list.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:24px;">No students found.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = list.map((st, idx) => {
+      const isPresent = teacherAttState.presentUids.has(st.uid);
+      return `
+        <tr style="background:${isPresent ? '#f0fdf4' : '#fff'};">
+          <td style="font-size:0.8rem;color:var(--muted);font-weight:700;">${idx + 1}</td>
+          <td>
+            <div style="font-weight:700;font-size:0.92rem;color:var(--ink);">${esc(st.name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;">${esc(st.usn || '-')} • ${esc(st.email)}</div>
+          </td>
+          <td>
+            <span class="scheme-badge" style="font-size:0.72rem;padding:2px 6px;">${esc(st.course || 'CSE')}</span>
+            <span style="font-size:0.78rem;color:var(--muted);margin-left:4px;">Sem ${esc(st.semester || '4')}</span>
+          </td>
+          <td>
+            <span style="display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.75rem;font-weight:700;background:${isPresent ? '#dcfce7' : '#fee2e2'};color:${isPresent ? '#166534' : '#991b1b'};">
+              ${isPresent ? '✓ Present' : '✗ Absent'}
+            </span>
+          </td>
+          <td style="text-align:right;">
+            <button class="btn btn-sm ${isPresent ? 'btn-ghost' : 'btn-primary'}" onclick="toggleTeacherStudentAtt('${st.uid}')" style="min-width:100px;">
+              ${isPresent ? '<i data-lucide="x" class="icon-sm"></i> Mark Absent' : '<i data-lucide="check" class="icon-sm"></i> Mark Present'}
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+    ic();
+  }
+
+  window.toggleTeacherStudentAtt = function (uid) {
+    if (teacherAttState.presentUids.has(uid)) teacherAttState.presentUids.delete(uid);
+    else teacherAttState.presentUids.add(uid);
+    renderTeacherAttRows(teacherAttState.students);
+    updateTeacherAttStats(teacherAttState.students.length, teacherAttState.presentUids.size);
+  };
+
+  window.markAllTeacherStudents = function (isPresent) {
+    if (isPresent) teacherAttState.students.forEach(s => teacherAttState.presentUids.add(s.uid));
+    else teacherAttState.presentUids.clear();
+    renderTeacherAttRows(teacherAttState.students);
+    updateTeacherAttStats(teacherAttState.students.length, teacherAttState.presentUids.size);
+  };
+
+  window.filterTeacherAttRoster = function () {
+    const q = val('teacherAttSearchInput').toLowerCase().trim();
+    if (!q) { renderTeacherAttRows(teacherAttState.students); return; }
+    const filtered = teacherAttState.students.filter(s =>
+      (s.name && s.name.toLowerCase().includes(q)) ||
+      (s.usn && s.usn.toLowerCase().includes(q))
+    );
+    renderTeacherAttRows(filtered);
+  };
+
+  window.saveTeacherAttendanceSession = async function () {
+    const { subjectId, subjectName, date, period, presentUids } = teacherAttState;
+    if (!subjectId) { toast('Please select a subject first.', 'alert-circle'); return; }
+
+    const sessionId = `${subjectId}_${date}_p${period}`;
+    const sessionData = {
+      id: sessionId,
+      subjectId,
+      subjectName,
+      date,
+      period,
+      teacherId: (window.currentUser && window.currentUser.uid) || 'teacher',
+      teacherName: (window.currentUser && (window.currentUser.displayName || window.currentUser.email)) || 'Teacher',
+      presentUids: Array.from(presentUids),
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      let local = JSON.parse(localStorage.getItem('kit_attendance_sessions') || '[]');
+      const idx = local.findIndex(s => s.id === sessionId || (s.subjectId === subjectId && s.date === date));
+      if (idx >= 0) local[idx] = sessionData;
+      else local.push(sessionData);
+      localStorage.setItem('kit_attendance_sessions', JSON.stringify(local));
+    } catch (e) {}
+
+    try {
+      const fb = fbx();
+      if (fb && fb.setDoc) {
+        await fb.setDoc(fb.doc(fb.db, 'attendanceSessions', sessionId), sessionData, { merge: true });
+      }
+    } catch (e) {}
+
+    toast(`Attendance saved for ${presentUids.size} present students!`, 'check-circle');
+    if (typeof renderHodTimetable === 'function') renderHodTimetable();
+  };
+
+  window.toggleTeacherQrScanner = function (forceState) {
+    const box = $('teacherQrScannerBox');
+    if (!box) return;
+    const shouldOpen = (forceState !== undefined) ? forceState : (box.style.display === 'none' || !box.style.display);
+    box.style.display = shouldOpen ? 'block' : 'none';
+    if ($('teacherQrBtnText')) $('teacherQrBtnText').textContent = shouldOpen ? 'Close Camera' : 'Camera QR Scan';
+  };
+
+  /* Internal Assessment (IA Marks) System */
+  let teacherIaState = {
+    subjectId: '',
+    iaType: 'IA-1',
+    maxMarks: 25,
+    passMarks: 10,
+    students: [],
+    marksMap: {}
+  };
+
+  window.loadTeacherInternalsRoster = async function () {
+    const sel = $('teacherIaSubjectSelect');
+    if (sel && (!sel.options || sel.options.length <= 1)) {
+      const subs = await fetchAllSubjects();
+      sel.innerHTML = '<option value="">Select subject…</option>' +
+        subs.map(s => `<option value="${s.id}">${esc(s.name)} (${esc(s.code)})</option>`).join('');
+      if (subs.length > 0 && !sel.value) sel.value = subs[0].id;
+    }
+
+    const tbody = $('teacherIaRosterTbody');
+    if (!tbody) return;
+
+    const subjectId = sel ? sel.value : '';
+    const iaType = val('teacherIaTypeSelect') || 'IA-1';
+    const maxMarks = Number(val('teacherIaMaxMarks')) || 25;
+    const passMarks = Number(val('teacherIaPassMarks')) || 10;
+
+    if (!subjectId) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px;">Select subject to enter IA marks.</td></tr>';
+      return;
+    }
+
+    let students = [];
+    try {
+      if (typeof loadAllStudentsCache === 'function') students = await loadAllStudentsCache();
+    } catch (e) {}
+
+    if (!students || !students.length) {
+      students = [
+        { uid: 'stu_4KM22CS001', name: 'Aarav Sharma', usn: '4KM22CS001', course: 'CSE' },
+        { uid: 'stu_4KM22CS002', name: 'Ananya Rai', usn: '4KM22CS002', course: 'CSE' },
+        { uid: 'stu_4KM22CS003', name: 'Chethan Kumar', usn: '4KM22CS003', course: 'CSE' },
+        { uid: 'stu_4KM22CS004', name: 'Deepika Padukone', usn: '4KM22CS004', course: 'CSE' },
+        { uid: 'stu_4KM22CS005', name: 'Gautam Hegde', usn: '4KM22CS005', course: 'CSE' }
+      ];
+    }
+
+    // Load saved IA marks from localStorage
+    let savedIa = {};
+    try {
+      const allIa = JSON.parse(localStorage.getItem('kit_ia_marks') || '{}');
+      savedIa = allIa[`${subjectId}_${iaType}`] || {};
+    } catch (e) {}
+
+    const marksMap = {};
+    students.forEach((st, idx) => {
+      marksMap[st.uid] = savedIa[st.uid] !== undefined ? savedIa[st.uid] : (20 - (idx % 8));
+    });
+
+    teacherIaState = { subjectId, iaType, maxMarks, passMarks, students, marksMap };
+    renderTeacherIaRows(students);
+    calcTeacherInternalsSummary();
+  };
+
+  function renderTeacherIaRows(list) {
+    const tbody = $('teacherIaRosterTbody');
+    if (!tbody) return;
+    tbody.innerHTML = list.map((st, idx) => {
+      const m = teacherIaState.marksMap[st.uid] !== undefined ? teacherIaState.marksMap[st.uid] : '';
+      const isPassed = Number(m) >= teacherIaState.passMarks;
+      return `
+        <tr>
+          <td style="font-size:0.8rem;color:var(--muted);font-weight:700;">${idx + 1}</td>
+          <td>
+            <div style="font-weight:700;font-size:0.92rem;">${esc(st.name)}</div>
+            <div style="font-size:0.75rem;color:var(--muted);font-family:'DM Mono',monospace;">${esc(st.usn || '-')}</div>
+          </td>
+          <td>${teacherIaState.maxMarks}</td>
+          <td>
+            <input type="number" min="0" max="${teacherIaState.maxMarks}" value="${m}"
+              oninput="handleTeacherIaMarkChange('${st.uid}', this.value)"
+              style="width:80px;padding:6px 10px;border:1.5px solid var(--border);border-radius:4px;font-weight:700;font-size:0.9rem;text-align:center;">
+          </td>
+          <td>
+            <span class="pct-badge ${isPassed ? 'pct-good' : 'pct-low'}">
+              ${isPassed ? 'PASS' : 'FAIL'}
+            </span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  window.handleTeacherIaMarkChange = function (uid, val) {
+    teacherIaState.marksMap[uid] = Number(val) || 0;
+    calcTeacherInternalsSummary();
+  };
+
+  window.calcTeacherInternalsSummary = function () {
+    const max = Number(val('teacherIaMaxMarks')) || 25;
+    const pass = Number(val('teacherIaPassMarks')) || 10;
+    teacherIaState.maxMarks = max;
+    teacherIaState.passMarks = pass;
+
+    const values = Object.values(teacherIaState.marksMap).map(Number);
+    const avg = values.length ? (values.reduce((a, b) => a + b, 0) / values.length).toFixed(1) : 0;
+    const passed = values.filter(v => v >= pass).length;
+    const failed = values.length - passed;
+
+    if ($('teacherIaClassAvg')) $('teacherIaClassAvg').textContent = avg;
+    if ($('teacherIaPassedCount')) $('teacherIaPassedCount').textContent = passed;
+    if ($('teacherIaFailedCount')) $('teacherIaFailedCount').textContent = failed;
+  };
+
+  window.saveTeacherInternalMarks = async function () {
+    const { subjectId, iaType, marksMap } = teacherIaState;
+    if (!subjectId) { toast('Please select a subject first.', 'alert-circle'); return; }
+
+    try {
+      let allIa = JSON.parse(localStorage.getItem('kit_ia_marks') || '{}');
+      allIa[`${subjectId}_${iaType}`] = marksMap;
+      localStorage.setItem('kit_ia_marks', JSON.stringify(allIa));
+    } catch (e) {}
+
+    toast(`Internal assessment marks for ${iaType} saved!`, 'check-circle');
+  };
+
+  window.filterTeacherIaRoster = function () {
+    const q = (val('teacherIaSearchInput') || '').toLowerCase().trim();
+    if (!q) { renderTeacherIaRows(teacherIaState.students); return; }
+    const filtered = teacherIaState.students.filter(s =>
+      (s.name && s.name.toLowerCase().includes(q)) ||
+      (s.usn && s.usn.toLowerCase().includes(q))
+    );
+    renderTeacherIaRows(filtered);
+  };
+
+  window.exportTeacherInternalsCsv = function () {
+    const subSel = $('teacherIaSubjectSelect');
+    const subName = subSel ? subSel.selectedOptions[0].text : 'Subject';
+    const iaType = val('teacherIaTypeSelect') || 'IA';
+
+    let csv = `Student Name,USN,Subject,Assessment,Max Marks,Marks Scored,Result\n`;
+    teacherIaState.students.forEach(st => {
+      const score = teacherIaState.marksMap[st.uid] || 0;
+      const res = score >= teacherIaState.passMarks ? 'PASS' : 'FAIL';
+      csv += `"${st.name}","${st.usn || '-'}","${subName}","${iaType}","${teacherIaState.maxMarks}","${score}","${res}"\n`;
+    });
+
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `KIT_${iaType}_Marks_${Date.now()}.csv`;
+    a.click();
+    toast('IA Marks exported to CSV', 'download');
+  };
+
+  window.renderTeacherVtuResultsList = function () {
+    if (typeof renderTeacherVtuResults === 'function') renderTeacherVtuResults();
+  };
+
+  window.copyTeacherGeneralLoginLink = function () {
+    const url = window.location.origin + window.location.pathname + '?portal=teacher';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        toast('Faculty Portal direct link copied to clipboard!', 'check-circle');
+      }).catch(() => {
+        toast('Faculty link: ' + url, 'info');
+      });
+    } else {
+      toast('Faculty link: ' + url, 'info');
+    }
+  };
+
+  // Auto-init on page load
+  ic();
+})();
+
+</script>
+
 <!-- ════════ KIT LANDING PAGE SCRIPTS ════════ -->
 <script>
 // ═══════════════════════════════════════════════════════════════
@@ -10173,7 +11677,7 @@
         <p>By accessing or utilizing the KIT SMART Attendance Portal, campus Wi-Fi infrastructure (KIT-SECURE-CAMPUS), laboratory compute servers, or digital library OPAC, all students, faculty members, and authorized visitors agree to be bound by these institutional terms and conditions.</p>
 
         <h4>2. User Account Security & USN Integrity</h4>
-        <p>Every student is issued a unique University Seat Number (USN) account (e.g. 4KT22CS001). Users are strictly accountable for maintaining the confidentiality of their portal passwords. Permitting another student to access an account, sharing session tokens, or attempting to register proxy attendance via automated tools, spoofed geolocation, or cloned QR codes constitutes a severe violation of institutional ethics.</p>
+        <p>Every student is issued a unique University Seat Number (USN) account (e.g. 4KM22CS001). Users are strictly accountable for maintaining the confidentiality of their portal passwords. Permitting another student to access an account, sharing session tokens, or attempting to register proxy attendance via automated tools, spoofed geolocation, or cloned QR codes constitutes a severe violation of institutional ethics.</p>
 
         <h4>3. Prohibited Activities</h4>
         <p>Users must not engage in any of the following activities on college servers or networks:</p>

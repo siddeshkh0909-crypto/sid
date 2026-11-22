@@ -40,7 +40,7 @@
         <p>By accessing or utilizing the KIT SMART Attendance Portal, campus Wi-Fi infrastructure (KIT-SECURE-CAMPUS), laboratory compute servers, or digital library OPAC, all students, faculty members, and authorized visitors agree to be bound by these institutional terms and conditions.</p>
 
         <h4>2. User Account Security & USN Integrity</h4>
-        <p>Every student is issued a unique University Seat Number (USN) account (e.g. 4KT22CS001). Users are strictly accountable for maintaining the confidentiality of their portal passwords. Permitting another student to access an account, sharing session tokens, or attempting to register proxy attendance via automated tools, spoofed geolocation, or cloned QR codes constitutes a severe violation of institutional ethics.</p>
+        <p>Every student is issued a unique University Seat Number (USN) account (e.g. 4KM22CS001). Users are strictly accountable for maintaining the confidentiality of their portal passwords. Permitting another student to access an account, sharing session tokens, or attempting to register proxy attendance via automated tools, spoofed geolocation, or cloned QR codes constitutes a severe violation of institutional ethics.</p>
 
         <h4>3. Prohibited Activities</h4>
         <p>Users must not engage in any of the following activities on college servers or networks:</p>
